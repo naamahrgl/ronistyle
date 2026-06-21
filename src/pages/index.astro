@@ -1,0 +1,623 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Hero from '~/components/widgets/Hero.astro';
+import Note from '~/components/widgets/Note.astro';
+import Features from '~/components/widgets/Features.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Content from '~/components/widgets/Content.astro';
+import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
+import Prices from '~/components/widgets/PricingNew.astro';
+import Steps2 from '~/components/widgets/Steps2.astro';
+import ContactUs from '~/components/widgets/Contact.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+ 
+
+const metadata = {
+  title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
+  ignoreTitleTemplate: true,
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Get template',
+        href: 'https://github.com/arthelokyo/astrowind',
+        target: '_blank',
+        icon: 'tabler:download',
+      },
+      { text: 'Learn more', href: '#features' },
+    ]}
+    image={{ src: '~/assets/images/logo.webp', alt: 'AstroWind Hero Image' }}
+  >
+    <Fragment slot="title">
+      Free template for <span class="hidden xl:inline">creating websites with</span>
+      <span class="text-accent dark:text-white"> Astro v6</span> + Tailwind CSS
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      <span class="hidden sm:inline">
+        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro v6 +
+        Tailwind CSS v4.</span
+      >
+      <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span>
+      Suitable for Startups, Small Business, SaaS websites, Professional Portfolios, Marketing websites, Landing Pages & Blogs.
+    </Fragment>
+  </Hero>
+
+  <!-- Note Widget ******************* -->
+
+  <Note title="Philosophy:" description="Simplicity, Best Practices and High Performance" />
+
+
+
+
+  <!-- Features Widget *************** -->
+
+  <Features
+    id="features"
+    tagline="סקשן ראשון"
+    title="בעיה ופיתרון"
+    subtitle="איך רוני תשפר את חייכם"
+    items={[
+      {
+        title: 'אחלה רוני שבעולם',
+        description:
+          'אם יש לכם בעיה כגון ',
+        icon: 'tabler:user-heart',
+      },
+      {
+        title: 'רוני יש לה סטייל',
+        description:
+          'אם יש לכם בעיה כזאת  ',
+        icon: 'tabler:tie',
+      },
+      {
+        title: 'רוני יודעת',
+        description:
+          'אם יש לכם בעיה כזאת וכזאת ',
+        icon: 'tabler:eye-heart',
+      },
+      {
+        title: 'רוני תסדר אתכם',
+        description:
+          'אם יש לכם בעיה כזאת וכזאת ',
+        icon: 'tabler:clothes-rack',
+      },
+      {
+        title: 'רוני תסדר לכם',
+        description:
+          'אם יש לכם בעיה כזאת וכזאת ',
+        icon: 'tabler:shopping-bag-heart',
+      },
+      {
+        title: 'ההצלחה מובטחת',
+        description:
+          'אם יש לכם בעיה כזאת וכזאת ',
+        icon: 'tabler:bulb',
+      },
+    ]}
+  />
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    tagline="עוד אופציה לסקשן ראשון"
+    title="בעיה ופיתרון"
+    items={[
+      {
+        title: 'רוני יודעת',
+        description:
+          'רוני סטייליסטית של השמחות',
+      },
+      {
+        title: 'רוני יותר טובה מכם',
+        description:
+          'רוני סטייליסטית של השמחות',
+      },
+      {
+        title: 'תוותרו מראש',
+        description:
+          'רוני סטייליסטית של השמחות',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      alt: 'Colorful Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">אין לכם סטייל?</h3>
+בשביל זה רוני כאן    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-white dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isAfterContent
+    items={[
+      {
+        title: 'רוני יודעת',
+        description:
+          'רוני סטייליסטית של השמחות',
+      },
+      {
+        title: 'רוני יותר טובה מכם',
+        description:
+          'רוני סטייליסטית של השמחות',
+      },
+      {
+        title: 'תוותרו מראש',
+        description:
+          'רוני סטייליסטית של השמחות',
+      },
+       {
+        title: 'עוד פתרון',
+        description:
+          'רוני סטייליסטית של השמחות',
+              },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2194&q=80',
+      alt: 'Blueprint Image',
+    }}
+  >
+    <Fragment slot="content">
+            <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">אין לכם סטייל?</h3>
+הארון שלכם זוועת עולם?</Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-white dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    isAfterContent
+    items={[
+      {
+        title: 'רוני יודעת',
+        description:
+          'רוני סטייליסטית של השמחות',
+      },
+      {
+        title: 'רוני יותר טובה מכם',
+        description:
+          'רוני סטייליסטית של השמחות',
+      },
+      {
+        title: 'תוותרו מראש',
+        description:
+          'רוני סטייליסטית של השמחות',
+      },
+      {
+        title: 'עוד פתרון',
+        description:
+          'רוני סטייליסטית של השמחות',
+              },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1611462985358-60d3498e0364?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      alt: 'Astronauts Image',
+    }}
+  >
+    <Fragment slot="content">      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">אין לכם סטייל?</h3>
+אפתור את הבעיה עבורכם</Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-white dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Features3 Widget ************** -->
+
+  <Features3
+    title="מזדהים עם הבעיות הבאות?"
+    subtitle="אופציה ראוששנה לסקשן ראשון"
+    columns={3}
+    isBeforeContent={true}
+    items={[
+      {
+        title: 'חוסר סטייל',
+        description:
+          'Morbi faucibus luctus quam, sit amet aliquet felis tempor id. Cras augue massa, ornare quis dignissim a, molestie vel nulla.',
+        icon: 'tabler:hanger',
+      },
+      {
+        title: 'בעיה 2',
+        description:
+          'Vivamus porttitor, tortor convallis aliquam pretium, turpis enim consectetur elit, vitae egestas purus erat ac nunc nulla.',
+        icon: 'tabler:hanger',
+      },
+      {
+        title: 'בעיה 3',
+        description:
+          'Duis sed lectus in nisl vehicula porttitor eget quis odio. Aliquam erat volutpat. Nulla eleifend nulla id sem fermentum.',
+        icon: 'tabler:hanger',
+      },
+    ]}
+  />
+
+  <!-- Features3 Widget ************** -->
+
+  <Features3
+    columns={3}
+    isAfterContent={true}
+    items={[
+      {
+        title: 'בעיה 4?',
+        description:
+          'Rutrum non odio at vehicula. Proin ipsum justo, dignissim in vehicula sit amet, dignissim id quam. Sed ac tincidunt sapien.',
+        icon: 'tabler:hanger',
+      },
+      {
+        title: 'בעיה 5 שיהיה',
+        description:
+          'Nullam efficitur volutpat sem sed fringilla. Suspendisse et enim eu orci volutpat laoreet ac vitae libero.',
+        icon: 'tabler:hanger',
+      },
+      {
+        title: 'עוד בעיה',
+        description:
+          'Morbi et elit finibus, facilisis justo ut, pharetra ipsum. Donec efficitur, ipsum quis congue luctus, mauris magna.',
+        icon: 'tabler:hanger',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
+      alt: 'Colorful Image',
+    }}
+  />
+
+    <Features
+    id="features"
+    title="רוני תפתור לכם את הבעיות"
+    columns={3}
+    items={[
+
+      {
+        title: 'פתרון 1',
+        description: 'Optimized for speed to ensure a smooth user experience and favorable search engine rankings.',
+        icon: 'tabler:rocket',
+      },
+      {
+        title: 'פתרון 2',
+        description:
+          'Incorporate SEO best practices in template structure and code to improve visibility in search engine results.',
+        icon: 'tabler:shirt',
+      },
+      {
+        title: 'פתרון 3',
+        description: 'The templates work seamlessly across various content management systems and website builders.',
+        icon: 'tabler:heart',
+      },
+    ]}
+  />
+  
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    id="about"
+    columns={3}
+ 
+    image={{
+      src: 'https://images.unsplash.com/photo-1491349174775-aaafddd81942?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+      alt: 'Colorful Image',
+      loading: 'eager',
+    }}
+        callToAction={{
+      target: '_blank',
+      text: 'עוד עליי',
+      href: '/about',
+      icon: 'tabler:chevron-left',
+    }}
+  >
+    <Fragment slot="content"
+    
+    >
+      <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">קצת עליי</h2>
+      <p>
+        היי אני רוני
+      </p>
+      <br />
+      <p>
+       עוד מידע
+      </p>
+      <br />
+      <p>תקראו עוד משהו</p>
+    </Fragment>
+
+    <Fragment slot="bg" >
+      <div class="absolute inset-0 bg-white dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+
+    <Prices
+    title="השירותים שלי"
+    subtitle="סקשן שלישי"
+    prices={[
+      {
+        title: 'בסיסי',
+        subtitle: 'בקטנה',
+        price: 29,
+        period: 'כל חודש',
+        items: [
+          {
+            description: 'Etiam in libero, et volutpat',
+          },
+          {
+            description: 'Aenean ac nunc dolor tristique',
+          },
+          {
+            description: 'Cras scelerisque accumsan lib',
+          },
+          {
+            description: 'In hac habitasse',
+          },
+        ],
+        callToAction: {
+          target: '_blank',
+          text: 'Get started',
+          href: '#',
+        },
+      },
+      {
+        title: 'מורחב',
+        subtitle: 'עוד אופציה, הפעם',
+        price: 69,
+        period: 'Per Month',
+        items: [
+          {
+            description: 'Proin vel laoreet',
+          },
+          {
+            description: 'Ut efficitur habitasse egestas',
+          },
+          {
+            description: 'Volutpat hac curabitur',
+          },
+          {
+            description: 'Pellentesque blandit ut nibh',
+          },
+          {
+            description: 'Donec fringilla sem',
+          },
+        ],
+        callToAction: {
+          target: '_blank',
+          text: 'Get started',
+          href: '#',
+        },
+        hasRibbon: true,
+        ribbonTitle: 'popular',
+      },
+      {
+        title: 'פרימיום',
+        subtitle: 'שווה יותר',
+        price: 199,
+        period: 'Per Month',
+        items: [
+          {
+            description: 'Curabitur suscipit risus',
+          },
+          {
+            description: 'Aliquam habitasse malesuada',
+          },
+          {
+            description: 'Suspendisse sit amet blandit',
+          },
+          {
+            description: 'Suspendisse auctor blandit dui',
+          },
+        ],
+        callToAction: {
+          target: '_blank',
+          text: 'Get started',
+          href: '#',
+        },
+      },
+    ]}
+  />
+
+
+
+  <Features2
+    title="זה בשבילכם?"
+    subtitle='אופציה 1 לסקשן רביעי '
+    columns={2}
+    items={[
+      {
+        title: ' למי זה מתאים?',
+        description: `Chat with us for inquiries related to account management, website navigation, payment issues, accessing purchased templates or general questions about the website's functionality.`,
+      },
+      {
+        title: 'למי לא מתאים?',
+        description:
+          'Chat with us for questions about purchases, customization options, licensing for commercial use, inquiries about specific template, etc.',
+      },
+
+
+    ]}
+  />
+  <!-- FAQs Widget ******************* -->
+
+  <FAQs
+    title="קהל יעד"
+    subtitle="אוירה של השוואות"
+    tagline="סקשן רביעי - אופציה 2"
+    classes={{ container: 'max-w-6xl' }}
+    items={[
+      {
+        title: 'למי זה מתאים?',
+        description:
+          "לכולם",
+      },
+      {
+        title: 'למי זה לא מתאים?',
+        description:
+          'קבוצה ריקה',
+      },
+
+    ]}
+  />
+
+    <!-- Steps2 Widget ****************** -->
+
+  <Steps2
+    title="למי זה מתאים?"
+    subtitle=" אופציה 3 לסקשן רביעי"
+    items={[
+      {
+        title: 'כולם',
+        description:
+          'Donec id nibh neque. Quisque et fermentum tortor. Fusce vitae dolor a mauris dignissim commodo. Ut eleifend luctus condimentum.',
+      },
+      {
+        title: 'כולל',
+        description:
+          'Phasellus laoreet fermentum venenatis. Vivamus dapibus pulvinar arcu eget mattis. Fusce eget mauris leo.',
+      },
+      {
+        title: 'וכן גם עוד אנשים',
+        description:
+          'Vestibulum imperdiet libero et lectus molestie, et maximus augue porta. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
+      },
+    ]}
+  />
+
+  <!-- Steps2 Widget ****************** -->
+
+  <Steps2
+    title="למי זה לא מתאים?"
+    subtitle="לעידן כהן, לדוגמה"
+    isReversed={true}
+
+    items={[
+      {
+        title: 'א',
+        description: 'Nam malesuada urna in enim imperdiet tincidunt. Phasellus non tincidunt nisi, at elementum mi.',
+      },
+      {
+        title: 'ב',
+        description:
+          'Cras semper nulla leo, eget laoreet erat cursus sed. Praesent faucibus massa in purus iaculis dictum.',
+      },
+      {
+        title: 'ג',
+        description:
+          'Phasellus lacinia cursus velit, eu malesuada magna pretium eu. Etiam aliquet tellus purus, blandit lobortis ex rhoncus vitae.',
+      },
+    ]}
+  />
+
+
+
+    <!-- Testimonials Widget *********** -->
+
+  <Testimonials
+    title="המלצות מלקוחות"
+    testimonials={[
+      {
+        testimonial: `The designs are not only visually appealing but also highly professional. The templates have saved me a significant amount of time while helping me make a lasting impression on my clients.`,
+        name: 'Emily Kennedy',
+ 
+      },
+      {
+        testimonial: `It beautifully showcases my work, with its clean and elegant design that lets my photographs shine. Customization was a breeze, even for a non-tech person like me. The result is a professional and immersive portfolio that's garnered numerous compliments.`,
+        name: 'Sarah Hansen',
+
+      },
+      {
+        testimonial: `I discovered these templates and I'm impressed by their variety and quality. They've helped me establish a consistent brand image across my marketing and social platforms, elevating my business's overall appearance.`,
+        name: 'Mark Wilkinson',
+        job: 'אפשר גם להוסיף טייטל',
+
+      },
+    ]}
+    callToAction={{
+      target: '_blank',
+      text: 'עוד המלצות...',
+      href: '/reccomendations',
+      icon: 'tabler:chevron-left',
+    }}
+  />
+
+    <Stats
+    title="רוצה כזה של מספרים? זה נפוץ"
+    stats={[
+      { amount: '30', title: 'שנות ניסיון', icon: 'tabler:shirt' },
+      { amount: '5K+',title: 'לקוחות מרוצים', icon: 'tabler:users' },
+      { amount: '4.9', title: 'כוכבים',icon: 'tabler:user-star' },
+    ]}
+  />
+
+
+
+  <!-- CallToAction Widget *********** -->
+
+  <ContactUs
+    id="form"
+    title="צרו קשר"
+    subtitle="תכתבו לי ואני אחזור אליכם בהקדם"
+    inputs={[
+      {
+        type: 'text',
+        name: 'name',
+        label: 'שם',
+      },
+      {
+        type: 'email',
+        name: 'email',
+        label: 'אימייל',
+      },
+    ]}
+    textarea={{
+      label: 'הודעה',
+    }}
+    disclaimer={{
+      label:
+        'על ידי שליחת טופס יצירת הקשר הזה, אתה מאשר ומסכים לאיסוף המידע האישי שלך.',
+    }}
+    description="צוות התמיכה שלנו בדרך כלל מגיב תוך 24 ימי עסקים."
+  />
+
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Get template',
+        href: 'https://github.com/arthelokyo/astrowind',
+        target: '_blank',
+        icon: 'tabler:download',
+      },
+    ]}
+  >
+    <Fragment slot="title">
+      Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      Be very surprised by these huge fake numbers you are seeing on this page. <br class="hidden md:inline" />Don't
+      waste more time! :P
+    </Fragment>
+  </CallToAction>
+</Layout>
