@@ -8,7 +8,17 @@ import Layout from '~/layouts/PageLayout.astro';
 import Testimonials from '~/components/widgets/Testimonials.astro';
 import ContactUs from '~/components/widgets/ContactImg.astro';
 
+// Replace this with the URL you copied from your Google Script Deployment
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxDyCd_LuK4CIJwveNPuhvT6T_pkf-HfqbPAh-3UqtAfDLNS7WkAXz9zPB524AqQAc66g/exec';
 
+let testimonials = [];
+
+try {
+  const response = await fetch(SHEET_URL);
+  testimonials = await response.json();
+} catch (e) {
+  console.error("Failed to fetch testimonials", e);
+}
 const metadata = {
   title: 'About us',
 };
@@ -26,56 +36,11 @@ const metadata = {
     </Fragment>
 
   </Hero>
+
+  <Testimonials testimonials={testimonials} />
         <!-- Testimonials Widget *********** -->
 
-  <Testimonials
 
-    testimonials={[
-      {
-        testimonial: `She took our vague concept and turned it into a visual masterpiece that perfectly aligned with our goals. Her attention to detail and ability to translate ideas into compelling visuals exceeded our expectations.`,
-        name: 'Mark Thompson',
-        job: 'Creative director',
-
-      },
-      {
-        testimonial: `She transformed our brand identity with her creative finesse, capturing our essence in every element. Her dedication and talent truly shine through her work.`,
-        name: 'Emily Martinez',
-        job: 'CEO',
-
-      },
-      {
-        testimonial: `She has an uncanny ability to communicate emotions and stories. She crafted a logo for our NGO that not only represents our cause but also evokes empathy. Her professionalism and commitment make her a designer of exceptional caliber.`,
-        name: 'Laura Simmons',
-        job: 'Founder of an NGO',
-  
-      },
-      {
-        testimonial: `We entrusted Sarah with revamping our website's user interface, and the results were astounding. Her intuitive design sense enhanced user experience, leading to a significant increase in engagement. She's a designer who truly understands the synergy of aesthetics and functionality.`,
-        name: 'Alex Foster',
-        job: 'Director of web services',
-
-      },
-      {
-        testimonial: `She took our vision and elevated it beyond imagination. Her ability to capture brand essence and translate it into design is nothing short of remarkable. Working with her has been an inspiring journey.`,
-        name: 'Jessica Collins',
-        job: 'Product Manager',
-
-      },
-      {
-        testimonial: `Her ability to transform concepts into captivating visuals is nothing short of extraordinary. She took our event poster idea and turned it into a visual masterpiece that perfectly captured the essence of our festival. Sarah's dedication, creativity, and knack for delivering beyond expectations make her an invaluable asset to any project.`,
-        name: 'Michael Carter',
-        job: 'Event Coordinator',
-  
-      },
-            {
-        testimonial: `היי מה קורה רציתי שתהיה גם דוגמה בעברית אז אני אכתוב שרוני ועידן הזוג הכי מגניב שיש ודש בבית!`,
-        name: 'נעמה',
-        job: 'בונה את האתר הזה',
-  
-      },
-      
-    ]}
-  />
 
   <ContactUs
   id="contact"
