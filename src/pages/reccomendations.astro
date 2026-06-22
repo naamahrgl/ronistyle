@@ -6,6 +6,8 @@ import Stats from '~/components/widgets/Stats.astro';
 import Steps2 from '~/components/widgets/Steps2.astro';
 import Layout from '~/layouts/PageLayout.astro';
 import Testimonials from '~/components/widgets/Testimonials.astro';
+import ContactUs from '~/components/widgets/ContactImg.astro';
+
 
 const metadata = {
   title: 'About us',
@@ -75,6 +77,23 @@ const metadata = {
     ]}
   />
 
+  <ContactUs
+  id="contact"
+  title="צרו קשר"
+  image={{       src: '~/assets/images/bow2.jpg', alt: 'Contact Us' }}
+  inputs={[
+    { type: 'text', name: 'name', label: 'שם' },
+    { type: 'email', name: 'email', label: 'אימייל' },
+        { type: 'phone', name: 'phone', label: 'טלפון' }
+
+  ]}
+  textarea={{ label: 'הודעה' }}
+  disclaimer={{
+      label:
+        'על ידי שליחת טופס יצירת הקשר הזה, אתה מאשר ומסכים לאיסוף המידע האישי שלך.',
+    }}
+    description="צוות התמיכה שלנו בדרך כלל מגיב תוך 24 ימי עסקים."
+/>
 
 
  </Layout>

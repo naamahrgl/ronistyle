@@ -1,23 +1,48 @@
 ---
 import { Icon } from 'astro-icon/components';
+import Button from '../ui/Button.astro';
+import type { CallToAction } from '~/types';
+
 
 export interface Props {
   icon?: string;
   title?: string;
   description?: string;
+  actions?: string | CallToAction[];
 }
 
 const {
-  icon = 'tabler:info-square',
+  icon = await Astro.slots.render('icon'),
   title = await Astro.slots.render('title'),
   description = await Astro.slots.render('description'),
+      actions = await Astro.slots.render('actions'),
+
+
 } = Astro.props;
 ---
 
 <section class="bg-white dark:bg-slate-800 not-prose">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 text-md text-center font-medium">
+      {
+            icon && (
     <Icon name={icon} class="w-5 h-5 inline-block align-text-bottom font-bold" />
+      )}
     <span class="font-bold" set:html={title} />
     <Fragment set:html={description} />
+          {
+            actions && (
+              <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+                {Array.isArray(actions) ? (
+                  actions.map((action) => (
+                    <div class="flex w-full sm:w-auto">
+                      <Button {...(action || {})} class="w-full sm:mb-0" />
+                    </div>
+                  ))
+                ) : (
+                  <Fragment set:html={actions} />
+                )}
+              </div>
+            )
+          }
   </div>
 </section>

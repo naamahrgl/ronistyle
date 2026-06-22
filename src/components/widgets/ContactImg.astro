@@ -1,0 +1,52 @@
+---
+import Image from '~/components/common/Image.astro';
+import FormContainer from '~/components/ui/Form.astro';
+import type { HTMLAttributes } from 'astro/types';
+
+export interface Props extends HTMLAttributes<'section'> {
+  title?: string;
+  image?: any;
+  inputs?: any;
+  textarea?: any;
+  button?: any;
+  disclaimer?: any;
+  description?: any;
+}
+
+const { title, image, inputs, textarea, button, id, disclaimer, description, ...props } = Astro.props;
+---
+
+<section class="py-12 md:py-20 bg-white" {...id ? { id } : {}}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    
+    {title && <h2 class="text-3xl md:text-4xl font-bold mb-10 text-center">{title}</h2>}
+
+    {/* The Grid: Perfectly synced heights, side-by-side */}
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+      
+      {/* Form Card */}
+      <div class="bg-gray-50 p-6 md:p-8 rounded-3xl border border-gray-100 flex flex-col">
+        <div class="flex-grow">
+          <FormContainer 
+            inputs={inputs} 
+            textarea={textarea} 
+            button={button} 
+                      disclaimer={disclaimer}
+          description={description}
+
+          />
+        </div>
+      </div>
+
+      {/* Image Frame */}
+      <div class="relative w-full h-[300px] lg:h-auto rounded-3xl overflow-hidden shadow-lg">
+        <Image
+          class="absolute inset-0 w-full h-full object-cover"
+          widths={[400, 768, 1024]}
+          sizes="(max-width: 767px) 400px, 768px"
+          {...image}
+        />
+      </div>
+    </div>
+  </div>
+</section>

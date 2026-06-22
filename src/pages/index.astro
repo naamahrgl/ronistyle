@@ -10,12 +10,12 @@ import Content from '~/components/widgets/Content.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
 import Testimonials from '~/components/widgets/Testimonials.astro';
 import Prices from '~/components/widgets/PricingNew.astro';
 import Steps2 from '~/components/widgets/Steps2.astro';
-import ContactUs from '~/components/widgets/Contact.astro';
+import ContactUs from '~/components/widgets/ContactImg.astro';
 import Features3 from '~/components/widgets/Features3.astro';
+import Hero3 from '~/components/widgets/Hero3.astro';
  
 
 const metadata = {
@@ -31,42 +31,50 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/arthelokyo/astrowind',
-        target: '_blank',
-        icon: 'tabler:download',
+        text: 'צרו קשר',
+        href: '#contact',
+        icon: 'tabler:message-circle',
       },
-      { text: 'Learn more', href: '#features' },
+      { text: 'השירותים שלי', href: '/services' },
     ]}
-    image={{ src: '~/assets/images/logo.webp', alt: 'AstroWind Hero Image' }}
+    image={{ src: '~/assets/images/logobg.webp', alt: 'AstroWind Hero Image' }}
   >
-    <Fragment slot="title">
-      Free template for <span class="hidden xl:inline">creating websites with</span>
-      <span class="text-accent dark:text-white"> Astro v6</span> + Tailwind CSS
-    </Fragment>
+
 
     <Fragment slot="subtitle">
       <span class="hidden sm:inline">
-        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro v6 +
-        Tailwind CSS v4.</span
-      >
-      <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span>
-      Suitable for Startups, Small Business, SaaS websites, Professional Portfolios, Marketing websites, Landing Pages & Blogs.
-    </Fragment>
+     
+      <span class="block mb-1  font-bold  mt-1 md:mt-3 lg:mt-4 text-[#9ba9db]">הסלוגן של רוני?</span>
+כותר מינימליסטי - אופציה 1    </Fragment>
   </Hero>
+
+
 
   <!-- Note Widget ******************* -->
 
-  <Note title="Philosophy:" description="Simplicity, Best Practices and High Performance" />
 
+<Hero3
+  title="הכותרת הראשית כאן"
+  actions={[
+    { variant: 'primary', text: 'צרו קשר', href: '#contact' },
+    { text: 'השירותים שלי', href: '/services' },
+  ]}
+  image={{       src: '~/assets/images/shopper.jpg', alt: 'Background' }}
+  logo={{ src: '~/assets/images/logobg.webp', alt: 'Logo' }}
+>
+  <Fragment slot="subtitle">
+    כותר עם תמונה - אופציה 2
+  </Fragment>
+</Hero3>
 
+  <Note title="חוצץ פילוסופי:" description="לכל אחד יש סטייל משלו" icon="tabler:hanger"/>
 
 
   <!-- Features Widget *************** -->
 
   <Features
     id="features"
-    tagline="סקשן ראשון"
+    tagline="סקשן ראשון - אופציה 1"
     title="בעיה ופיתרון"
     subtitle="איך רוני תשפר את חייכם"
     items={[
@@ -113,7 +121,7 @@ const metadata = {
 
   <Content
     isReversed
-    tagline="עוד אופציה לסקשן ראשון"
+    tagline=" אופציה 2 לסקשן ראשון"
     title="בעיה ופיתרון"
     items={[
       {
@@ -133,7 +141,7 @@ const metadata = {
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      src: '~/assets/images/denim.jpg',
       alt: 'Colorful Image',
     }}
   >
@@ -173,7 +181,7 @@ const metadata = {
               },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2194&q=80',
+      src: '~/assets/images/swea.jpg',
       alt: 'Blueprint Image',
     }}
   >
@@ -214,7 +222,7 @@ const metadata = {
               },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1611462985358-60d3498e0364?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      src: '~/assets/images/rack.jpg',
       alt: 'Astronauts Image',
     }}
   >
@@ -230,7 +238,7 @@ const metadata = {
 
   <Features3
     title="מזדהים עם הבעיות הבאות?"
-    subtitle="אופציה ראוששנה לסקשן ראשון"
+    subtitle="אופציה 3 לסקשן ראשון"
     columns={3}
     isBeforeContent={true}
     items={[
@@ -281,7 +289,7 @@ const metadata = {
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
+      src: '~/assets/images/hangers.jpg',
       alt: 'Colorful Image',
     }}
   />
@@ -312,6 +320,20 @@ const metadata = {
   />
   
 
+
+    
+      <Note
+    actions={[
+      {
+        variant: 'primary',
+        text: 'צרו קשר',
+        href: '#contact',
+        icon: 'tabler:message-circle',
+      },
+    ]}
+/>
+
+
   <!-- Content Widget **************** -->
 
   <Content
@@ -324,7 +346,6 @@ const metadata = {
       loading: 'eager',
     }}
         callToAction={{
-      target: '_blank',
       text: 'עוד עליי',
       href: '/about',
       icon: 'tabler:chevron-left',
@@ -375,8 +396,7 @@ const metadata = {
           },
         ],
         callToAction: {
-          target: '_blank',
-          text: 'Get started',
+          text: 'קראו עוד',
           href: '#',
         },
       },
@@ -403,8 +423,7 @@ const metadata = {
           },
         ],
         callToAction: {
-          target: '_blank',
-          text: 'Get started',
+          text: 'קראו עוד',
           href: '#',
         },
         hasRibbon: true,
@@ -430,15 +449,23 @@ const metadata = {
           },
         ],
         callToAction: {
-          target: '_blank',
-          text: 'Get started',
+          text: 'קראו עוד',
           href: '#',
         },
       },
     ]}
   />
 
-
+     <Note
+    actions={[
+      {
+        variant: 'primary',
+        text: 'צרו קשר',
+        href: '#contact',
+        icon: 'tabler:message-circle',
+      },
+    ]}
+/>
 
   <Features2
     title="זה בשבילכם?"
@@ -554,7 +581,6 @@ const metadata = {
       },
     ]}
     callToAction={{
-      target: '_blank',
       text: 'עוד המלצות...',
       href: '/reccomendations',
       icon: 'tabler:chevron-left',
@@ -574,50 +600,27 @@ const metadata = {
 
   <!-- CallToAction Widget *********** -->
 
-  <ContactUs
-    id="form"
-    title="צרו קשר"
-    subtitle="תכתבו לי ואני אחזור אליכם בהקדם"
-    inputs={[
-      {
-        type: 'text',
-        name: 'name',
-        label: 'שם',
-      },
-      {
-        type: 'email',
-        name: 'email',
-        label: 'אימייל',
-      },
-    ]}
-    textarea={{
-      label: 'הודעה',
-    }}
-    disclaimer={{
+
+  <!-- CallToAction Widget *********** -->
+
+<ContactUs
+id="contact"
+  title="צרו קשר"
+  image={{       src: '~/assets/images/bow2.jpg', alt: 'Contact Us' }}
+  inputs={[
+    { type: 'text', name: 'name', label: 'שם' },
+    { type: 'email', name: 'email', label: 'אימייל' },
+        { type: 'phone', name: 'phone', label: 'טלפון' }
+
+  ]}
+  textarea={{ label: 'הודעה' }}
+  disclaimer={{
       label:
         'על ידי שליחת טופס יצירת הקשר הזה, אתה מאשר ומסכים לאיסוף המידע האישי שלך.',
     }}
     description="צוות התמיכה שלנו בדרך כלל מגיב תוך 24 ימי עסקים."
-  />
+/>
 
-  <CallToAction
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/arthelokyo/astrowind',
-        target: '_blank',
-        icon: 'tabler:download',
-      },
-    ]}
-  >
-    <Fragment slot="title">
-      Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span>
-    </Fragment>
 
-    <Fragment slot="subtitle">
-      Be very surprised by these huge fake numbers you are seeing on this page. <br class="hidden md:inline" />Don't
-      waste more time! :P
-    </Fragment>
-  </CallToAction>
+
 </Layout>
