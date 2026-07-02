@@ -5,6 +5,7 @@ import type { HTMLAttributes } from 'astro/types';
 
 export interface Props extends HTMLAttributes<'section'> {
   title?: string;
+  subtitle?: string;
   image?: any;
   inputs?: any;
   textarea?: any;
@@ -13,19 +14,20 @@ export interface Props extends HTMLAttributes<'section'> {
   description?: any;
 }
 
-const { title, image, inputs, textarea, button, id, disclaimer, description, ...props } = Astro.props;
+const { title, subtitle, image, inputs, textarea, button, id, disclaimer, description, ...props } = Astro.props;
 ---
 
-<section class="py-12 md:py-20 bg-white" {...id ? { id } : {}}>
+<section class="py-12 md:py-20 " {...id ? { id } : {}}>
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
     
     {title && <h2 class="text-3xl md:text-4xl font-bold mb-10 text-center">{title}</h2>}
+    {subtitle && <h3 class="text-xl md:text-2xl mb-6    text-center">{subtitle}</h2>}
 
     {/* The Grid: Perfectly synced heights, side-by-side */}
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
       
       {/* Form Card */}
-      <div class="bg-gray-50 p-6 md:p-8 rounded-3xl border border-gray-100 flex flex-col">
+      <div class="bg-thirdly p-6 md:p-8 rounded-3xl border border-primary flex flex-col">
         <div class="flex-grow">
           <FormContainer 
             inputs={inputs} 

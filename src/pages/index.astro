@@ -16,37 +16,20 @@ import Steps2 from '~/components/widgets/Steps2.astro';
 import ContactUs from '~/components/widgets/ContactImg.astro';
 import Features3 from '~/components/widgets/Features3.astro';
 import Hero3 from '~/components/widgets/Hero3.astro';
- 
+import TestimonialCarousel from '~/components/widgets/TestimonialCarousel.astro';
 
 const metadata = {
   title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
   ignoreTitleTemplate: true,
 };
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxDyCd_LuK4CIJwveNPuhvT6T_pkf-HfqbPAh-3UqtAfDLNS7WkAXz9zPB524AqQAc66g/exec';
+const testimonials = await fetch(SHEET_URL).then(res => res.json()).catch(() => []);
+
+
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Widget ******************* -->
 
-  <Hero
-    actions={[
-      {
-        variant: 'primary',
-        text: 'צרו קשר',
-        href: '#contact',
-        icon: 'tabler:message-circle',
-      },
-      { text: 'השירותים שלי', href: '/services' },
-    ]}
-    image={{ src: '~/assets/images/logobg.webp', alt: 'AstroWind Hero Image' }}
-  >
-
-
-    <Fragment slot="subtitle">
-      <span class="hidden sm:inline">
-     
-      <span class="block mb-1  font-bold  mt-1 md:mt-3 lg:mt-4 text-[#9ba9db]">הסלוגן של רוני?</span>
-כותר מינימליסטי - אופציה 1    </Fragment>
-  </Hero>
 
 
 
@@ -63,275 +46,44 @@ const metadata = {
   logo={{ src: '~/assets/images/logobg.webp', alt: 'Logo' }}
 >
   <Fragment slot="subtitle">
-    כותר עם תמונה - אופציה 2
+האם הבגדים שלכם באמת מספרים את הסיפור שלכם?
   </Fragment>
 </Hero3>
 
-  <Note title="חוצץ פילוסופי:" description="לכל אחד יש סטייל משלו" icon="tabler:hanger"/>
+  <Note title="הסטייל שלכם" description="הוא הדרך שבה אתם מציגים לעולם מי אתם" icon="tabler:hanger"/>
+
+ <Features2
+ id="why"
+    title="אולי הגיע הזמן לדייק את המלתחה?"
+    subtitle="היי, אם הגעתם לכאן, כנראה שאתם מרגישים שהמלתחה שלכם כבר לא מספרת את הסיפור שלכם. 
+</br></br>
+אולי אתם עומדים בפני שינוי אישי או מקצועי, אולי אתם מרגישים שאין לכם מה ללבוש למרות שהארון מלא, ואולי אתם רוצים פשוט להרגיש יותר מדויקים, בטוחים ונינוחים עם מה שאתם לובשים
+</br></br>
+אני מאמינה שאין דרך אחת 'נכונה' להתלבש. לכל אדם יש אישיות, סיפור ונוכחות משלו, והתפקיד שלי הוא לזהות אותם ולתרגם אותם לשפה של צבעים, גזרות וסגנון. הניסיון שלי כשחקנית לימד אותי לראות את האדם שמאחורי הבגד, וליצור התאמה מדויקת בין מי שהוא לבין מה שהוא משדר לעולם."
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
 
 
+
+      <Stats
+    title=""
+    stats={[
+      { amount: '30', title: 'שנות ניסיון', icon: 'tabler:shirt' },
+      { amount: '5K+',title: 'לקוחות מרוצים', icon: 'tabler:users' },
+      { amount: '4.9', title: 'כוכבים',icon: 'tabler:user-star' },
+    ]}
+  />
   <!-- Features Widget *************** -->
 
-  <Features
-    id="features"
-    tagline="סקשן ראשון - אופציה 1"
-    title="בעיה ופיתרון"
-    subtitle="איך רוני תשפר את חייכם"
-    items={[
-      {
-        title: 'אחלה רוני שבעולם',
-        description:
-          'אם יש לכם בעיה כגון ',
-        icon: 'tabler:user-heart',
-      },
-      {
-        title: 'רוני יש לה סטייל',
-        description:
-          'אם יש לכם בעיה כזאת  ',
-        icon: 'tabler:tie',
-      },
-      {
-        title: 'רוני יודעת',
-        description:
-          'אם יש לכם בעיה כזאת וכזאת ',
-        icon: 'tabler:eye-heart',
-      },
-      {
-        title: 'רוני תסדר אתכם',
-        description:
-          'אם יש לכם בעיה כזאת וכזאת ',
-        icon: 'tabler:clothes-rack',
-      },
-      {
-        title: 'רוני תסדר לכם',
-        description:
-          'אם יש לכם בעיה כזאת וכזאת ',
-        icon: 'tabler:shopping-bag-heart',
-      },
-      {
-        title: 'ההצלחה מובטחת',
-        description:
-          'אם יש לכם בעיה כזאת וכזאת ',
-        icon: 'tabler:bulb',
-      },
-    ]}
-  />
 
-  <!-- Content Widget **************** -->
 
-  <Content
-    isReversed
-    tagline=" אופציה 2 לסקשן ראשון"
-    title="בעיה ופיתרון"
-    items={[
-      {
-        title: 'רוני יודעת',
-        description:
-          'רוני סטייליסטית של השמחות',
-      },
-      {
-        title: 'רוני יותר טובה מכם',
-        description:
-          'רוני סטייליסטית של השמחות',
-      },
-      {
-        title: 'תוותרו מראש',
-        description:
-          'רוני סטייליסטית של השמחות',
-      },
-    ]}
-    image={{
-      src: '~/assets/images/denim.jpg',
-      alt: 'Colorful Image',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight  sm:text-3xl mb-2">אין לכם סטייל?</h3>
-בשביל זה רוני כאן    </Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-white "></div>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isAfterContent
-    items={[
-      {
-        title: 'רוני יודעת',
-        description:
-          'רוני סטייליסטית של השמחות',
-      },
-      {
-        title: 'רוני יותר טובה מכם',
-        description:
-          'רוני סטייליסטית של השמחות',
-      },
-      {
-        title: 'תוותרו מראש',
-        description:
-          'רוני סטייליסטית של השמחות',
-      },
-       {
-        title: 'עוד פתרון',
-        description:
-          'רוני סטייליסטית של השמחות',
-              },
-    ]}
-    image={{
-      src: '~/assets/images/swea.jpg',
-      alt: 'Blueprint Image',
-    }}
-  >
-    <Fragment slot="content">
-            <h3 class="text-2xl font-bold tracking-tight  sm:text-3xl mb-2">אין לכם סטייל?</h3>
-הארון שלכם זוועת עולם?</Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-white "></div>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    isAfterContent
-    items={[
-      {
-        title: 'רוני יודעת',
-        description:
-          'רוני סטייליסטית של השמחות',
-      },
-      {
-        title: 'רוני יותר טובה מכם',
-        description:
-          'רוני סטייליסטית של השמחות',
-      },
-      {
-        title: 'תוותרו מראש',
-        description:
-          'רוני סטייליסטית של השמחות',
-      },
-      {
-        title: 'עוד פתרון',
-        description:
-          'רוני סטייליסטית של השמחות',
-              },
-    ]}
-    image={{
-      src: '~/assets/images/rack.jpg',
-      alt: 'Astronauts Image',
-    }}
-  >
-    <Fragment slot="content">      <h3 class="text-2xl font-bold tracking-tight  sm:text-3xl mb-2">אין לכם סטייל?</h3>
-אפתור את הבעיה עבורכם</Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-white "></div>
-    </Fragment>
-  </Content>
-
-  <!-- Features3 Widget ************** -->
-
-  <Features3
-    title="מזדהים עם הבעיות הבאות?"
-    subtitle="אופציה 3 לסקשן ראשון"
-    columns={3}
-    isBeforeContent={true}
-    items={[
-      {
-        title: 'חוסר סטייל',
-        description:
-          'Morbi faucibus luctus quam, sit amet aliquet felis tempor id. Cras augue massa, ornare quis dignissim a, molestie vel nulla.',
-        icon: 'tabler:hanger',
-      },
-      {
-        title: 'בעיה 2',
-        description:
-          'Vivamus porttitor, tortor convallis aliquam pretium, turpis enim consectetur elit, vitae egestas purus erat ac nunc nulla.',
-        icon: 'tabler:hanger',
-      },
-      {
-        title: 'בעיה 3',
-        description:
-          'Duis sed lectus in nisl vehicula porttitor eget quis odio. Aliquam erat volutpat. Nulla eleifend nulla id sem fermentum.',
-        icon: 'tabler:hanger',
-      },
-    ]}
-  />
-
-  <!-- Features3 Widget ************** -->
-
-  <Features3
-    columns={3}
-    isAfterContent={true}
-    items={[
-      {
-        title: 'בעיה 4?',
-        description:
-          'Rutrum non odio at vehicula. Proin ipsum justo, dignissim in vehicula sit amet, dignissim id quam. Sed ac tincidunt sapien.',
-        icon: 'tabler:hanger',
-      },
-      {
-        title: 'בעיה 5 שיהיה',
-        description:
-          'Nullam efficitur volutpat sem sed fringilla. Suspendisse et enim eu orci volutpat laoreet ac vitae libero.',
-        icon: 'tabler:hanger',
-      },
-      {
-        title: 'עוד בעיה',
-        description:
-          'Morbi et elit finibus, facilisis justo ut, pharetra ipsum. Donec efficitur, ipsum quis congue luctus, mauris magna.',
-        icon: 'tabler:hanger',
-      },
-    ]}
-    image={{
-      src: '~/assets/images/hangers.jpg',
-      alt: 'Colorful Image',
-    }}
-  />
-
-    <Features
-    id="features"
-    title="רוני תפתור לכם את הבעיות"
-    columns={3}
-    items={[
-
-      {
-        title: 'פתרון 1',
-        description: 'Optimized for speed to ensure a smooth user experience and favorable search engine rankings.',
-        icon: 'tabler:rocket',
-      },
-      {
-        title: 'פתרון 2',
-        description:
-          'Incorporate SEO best practices in template structure and code to improve visibility in search engine results.',
-        icon: 'tabler:shirt',
-      },
-      {
-        title: 'פתרון 3',
-        description: 'The templates work seamlessly across various content management systems and website builders.',
-        icon: 'tabler:heart',
-      },
-    ]}
-  />
-  
 
 
     
-      <Note
-    actions={[
-      {
-        variant: 'primary',
-        text: 'צרו קשר',
-        href: '#contact',
-        icon: 'tabler:message-circle',
-      },
-    ]}
-/>
+
 
 
   <!-- Content Widget **************** -->
@@ -339,7 +91,32 @@ const metadata = {
   <Content
     id="about"
     columns={3}
- 
+    items={[
+      {
+        icon: 'tabler:brand-instagram',
+        callToAction: {
+          target: '_blank',
+          text: 'Instagram',
+          href: '#',
+        },
+      },
+      {
+        icon: 'tabler:brand-whatsapp',
+        callToAction: {
+          target: '_blank',
+          text: 'Whatsapp',
+          href: '#',
+        },
+      },
+      {
+        icon: 'tabler:brand-pinterest',
+        callToAction: {
+          target: '_blank',
+          text: 'Pinterest',
+          href: '#',
+        },
+      },
+    ]}
     image={{
       src: 'https://images.unsplash.com/photo-1491349174775-aaafddd81942?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
       alt: 'Colorful Image',
@@ -354,104 +131,209 @@ const metadata = {
     <Fragment slot="content"
     
     >
-      <h2 class="text-2xl font-bold tracking-tight  sm:text-3xl mb-2">קצת עליי</h2>
+      <h2 class="text-2xl font-bold tracking-tight  sm:text-3xl mb-2">אז מי אני בעצם?</h2>
       <p>
-        היי אני רוני
+אז אני רוני נתנאל, שחקנית וסטייליסטית אישית.
       </p>
       <br />
       <p>
-       עוד מידע
+השילוב בין עולם המשחק ועולם הסטיילינג האלה הוא מה שמייחד אותי, ואולי גם הסיבה שהגעתם דווקא אליי.
       </p>
       <br />
-      <p>תקראו עוד משהו</p>
+      <p>בעבודתי כשחקנית אני נכנסת שוב ושוב לדמויות שונות. בכל ערב אני לובשת תפקיד אחר, והבגד הוא חלק בלתי נפרד מתהליך בניית הדמות. הוא מספר סיפור, משדר נוכחות ומבטא את האישיות של האדם שלובש אותו.
+</p>
+<br/>
+<p>עם השנים הבנתי שהיכולת לראות אנשים, להבין מה מחמיא להם ולבטא את האישיות שלהם דרך לבוש, היא חלק בלתי נפרד ממני. הסטיילינג זורם בדמי, ומתוך התשוקה הזו בחרתי להפוך את הידע והניסיון שלי למקצוע.
+</p>
+<br />
+<p>העבודה שלי משלבת יצירתיות, רגישות והבנה עמוקה של סגנון אישי, מבנה גוף ואורח חיים. אני מלווה נשים וגברים בתהליך שמטרתו ליצור מלתחה מדויקת, מחמיאה ונכונה לחיים עצמם, כזו שמעניקה ביטחון, נוכחות והרגשה טובה בכל יום מחדש.
+</p>
     </Fragment>
 
     <Fragment slot="bg" >
-      <div class="absolute inset-0 bg-white "></div>
+      <div class="absolute inset-0  "></div>
     </Fragment>
   </Content>
 
+        <Note
+    actions={[
+      {
+        variant: 'primary',
+        text: 'טוב תכלס, איפה יוצרים קשר?',
+        href: '#contact',
+        icon: 'tabler:message-circle',
+      },
+    ]}
+/>
 
     <Prices
-    title="השירותים שלי"
-    subtitle="סקשן שלישי"
+    id="services"
+    title="איך זה עובד?"
+    subtitle="(ולמי ששאל – כן, לגמרי גם לנשים וגם לגברים)"
     prices={[
       {
-        title: 'בסיסי',
-        subtitle: 'בקטנה',
+        title: 'באה לביקור בארון',
+        subtitle: 'עד 4 שעות',
         price: 29,
         period: 'כל חודש',
         items: [
+     
           {
-            description: 'Etiam in libero, et volutpat',
+            description: 'מפגש אישי בביתך שבו נעשה סדר בארון, נמיין יחד מה מחמיא לך ומה פחות, ניצור לוקים חדשים מהבגדים שכבר קיימים אצלך, ונצלם את השילובים לשימוש יומיומי. בסיום נכין רשימת פריטים מומלצים להשלמת המלתחה.',
           },
-          {
-            description: 'Aenean ac nunc dolor tristique',
-          },
-          {
-            description: 'Cras scelerisque accumsan lib',
-          },
-          {
-            description: 'In hac habitasse',
+         {
+            description: 'מתאים גם ללקחות חדשים וגם ללקוחות חוזרים',
           },
         ],
         callToAction: {
-          text: 'קראו עוד',
+          text: 'אני רוצה מהפך בארון',
           href: '#',
+          icon: 'tabler:clothes-rack',
         },
       },
       {
-        title: 'מורחב',
-        subtitle: 'עוד אופציה, הפעם',
+        title: 'חבילת הפפיון',
+        subtitle: 'החבילה משלבת את שני שלבי הסטיילינג האישי – החל מהצצה עמוקה לתוך הארון הקיים ועד ליום קניות ממוקד, מדויק וכולו פאן.',
         price: 69,
         period: 'Per Month',
         items: [
           {
-            description: 'Proin vel laoreet',
+            description: 'באה לביקור בארון',
+            more_text:'מפגש אישי בביתך שבו נעשה סדר בארון, נמיין יחד מה מחמיא לך ומה פחות, ניצור לוקים חדשים מהבגדים שכבר קיימים אצלך, ונייצר שילובים לשימוש יומיומי. בסיום נכין רשימת פריטים מומלצים להשלמת המלתחה.'
           },
           {
-            description: 'Ut efficitur habitasse egestas',
+            description: 'יום הקניות הגדול',
+            more_text: 'יום קניות שכולו פאן. לאחר שנכיר את מבנה הגוף, הסגנון האישי והצרכים שלך, אבחר מראש פריטים המתאימים לך באופן מדויק. יחד נמדוד, נדייק ונבנה מלתחה חכמה, מחמיאה ורב-שימושית. בסיום נצלם את כל הלוקים כדי שתוכלי לחזור אליהם בקלות.'
           },
           {
-            description: 'Volutpat hac curabitur',
+            description: 'ליווי מקצה לקצה',
+            more_text: 'לא נשארים עם ארון חצי ריק, ולא יוצאים לחנויות בלי לדעת מה באמת חסר.'
           },
           {
-            description: 'Pellentesque blandit ut nibh',
+            description: 'קטלוג דיגיטלי אישי',
+            more_text: 'אלבום תמונות בנייד עם עשרות שילובים מוכנים (מהארון הישן ומהקניות החדשות) כדי לחסוך את הדילמה של "מה ללבוש בבוקר".'
           },
           {
-            description: 'Donec fringilla sem',
+            description: 'חיסכון בזמן ובכסף',
+            more_text: 'קונים רק מה שצריך ומדויק, ובלי רכישות אימפולסיביות שישכבו בארון.'
           },
         ],
         callToAction: {
-          text: 'קראו עוד',
+          text: 'אני רוצה את המהפך המלא שלי',
           href: '#',
+          icon: 'tabler:star',
         },
         hasRibbon: true,
-        ribbonTitle: 'popular',
+        ribbonTitle: 'הנמכר ביותר!',
       },
       {
-        title: 'פרימיום',
-        subtitle: 'שווה יותר',
+        title: 'יום הקניות הגדול',
+        subtitle: 'עד 6 שעות | תל אביב',
         price: 199,
         period: 'Per Month',
         items: [
           {
-            description: 'Curabitur suscipit risus',
+            description: 'יום קניות שכולו פאן',
           },
           {
-            description: 'Aliquam habitasse malesuada',
+            description: 'לאחר שנכיר את מבנה הגוף, הסגנון האישי והצרכים שלך, אבחר מראש פריטים המתאימים לך באופן מדויק. יחד נמדוד, נדייק ונבנה מלתחה חכמה, מחמיאה ורב-שימושית. בסיום נצלם את כל הלוקים כדי שתוכלי לחזור אליהם בקלות.',
           },
           {
-            description: 'Suspendisse sit amet blandit',
+            description: 'שימו לב! השירות מיועד ללקוחות שרכשו את חבילה "באה לביקור" ו/או לקוחות חוזרים בלבד, מתוך אמונה שתהליך סטיילינג מוצלח מתחיל בהיכרות אישית מעמיקה.',
+          },
+       
+        ],
+        callToAction: {
+          text: 'אני רוצה בגדים חדשים',
+          href: '#',
+          icon: 'tabler:shopping-cart',
+        },
+      },
+      {
+        title: 'סטיילינג לאירוע',
+        subtitle: 'שעתי',
+        price: 69,
+        period: 'Per Month',
+        items: [
+          {
+            description: 'ליווי אישי למציאת הלוק המושלם לאירוע מיוחד.',
           },
           {
-            description: 'Suspendisse auctor blandit dui',
+            description: 'נפתח בפגישת היכרות קצרה בבית קפה, נדייק את הסגנון והצרכים שלך, ומשם נמשיך יחד לקניות ממוקדות ויעילות — כדי שתמצאי את ההופעה שתרגישי בה הכי יפה, בטוחה וזוהרת.',
+          },
+          {
+            description: 'מתאים גם ללקוחות חדשים וגם ללקוחות חוזרים.',
+          },
+   
+        ],
+        callToAction: {
+          text: 'אני רוצה לקבור',
+          href: '#',
+          icon: 'tabler:confetti',
+        },
+      },
+            {
+        title: 'ביקור רענון',
+        subtitle: 'עד שעתיים',
+        price: 29,
+        period: 'כל חודש',
+        items: [
+        
+          {
+            description: 'מפגש קצר לרענון וסידור המלתחה, המיועד ללקוחות שרוצים לבצע עדכון ממוקד לקראת עונה חדשה או סבב קניות נוסף.',
+          },
+      {
+            description: 'השירות מיועד ללקוחות חוזרים בלבד',
           },
         ],
         callToAction: {
-          text: 'קראו עוד',
+          text: 'אני רוצה חיזוק',
           href: '#',
+          icon: 'tabler:focus',
         },
+      },
+            {
+        title: 'שובר מתנה',
+        subtitle: 'עד 4 שעות',
+        price: 29,
+        period: 'כל חודש',
+        items: [
+          {
+            description: 'ניתן לרכוש שובר מתנה לכל אחד מהשירותים שלי — מתנה אישית, מקורית ומרגשת לכל מי שאוהבים.',
+          },
+      
+    
+        ],
+        callToAction: {
+          text: 'אני רוצה לשמח מישהו שאני אוהב',
+          href: '#',
+          icon: 'tabler:gift',
+        },
+      },
+    ]}
+  />
+
+    <Features
+    id="features"
+    title="הערך המוסף של רוניסטייל"
+    columns={3}
+    items={[
+
+      {
+        title: 'ליווי צמוד ומותאם אישית',
+        description: 'ביחס למסלול שבחרתם - לא נשארים עם ארון חצי ריק, ולא יוצאים לחנויות בלי לדעת מה באמת חסר.',
+        icon: 'tabler:heart',
+      },
+      {
+        title: 'קטלוג דיגיטלי אישי',
+        description:
+          'אלבום תמונות בנייד עם עשרות שילובים מוכנים (מהארון הישן ומהקניות החדשות) כדי לחסוך את הדילמה של "מה ללבוש בבוקר".',
+        icon: 'tabler:shirt',
+      },
+      {
+        title: 'חיסכון בזמן ובכסף',
+        description: 'קונים רק מה שצריך ומדויק, ובלי רכישות אימפולסיביות שישכבו בארון.',
+        icon: 'tabler:rocket',
       },
     ]}
   />
@@ -460,142 +342,138 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: 'צרו קשר',
+        text: 'טוב תכלס, איפה יוצרים קשר?',
         href: '#contact',
         icon: 'tabler:message-circle',
       },
     ]}
 />
 
-  <Features2
-    title="זה בשבילכם?"
-    subtitle='אופציה 1 לסקשן רביעי '
-    columns={2}
-    items={[
+
+  <!-- Content Widget **************** -->
+
+  <Content
+  id="who"
+    isReversed
+    tagline=" גלו עוד"
+    title="בשורה התחתונה, למי זה מתאים?"
+    subtitle='השירותים שלי מיועדים לנשים ולגברים בכל גיל ובכל שלב בחיים'
+        items={[
       {
-        title: ' למי זה מתאים?',
-        description: `Chat with us for inquiries related to account management, website navigation, payment issues, accessing purchased templates or general questions about the website's functionality.`,
+        title: 'רוצים לעשות סדר בארון ולנצל טוב יותר את מה שכבר קיים.',
+        icon:'tabler:hanger'
       },
       {
-        title: 'למי לא מתאים?',
-        description:
-          'Chat with us for questions about purchases, customization options, licensing for commercial use, inquiries about specific template, etc.',
-      },
+        title: 'מחפשים להכניס גיוון, צבע ועניין למלתחה.',
+             icon:'tabler:hanger'
 
-
-    ]}
-  />
-  <!-- FAQs Widget ******************* -->
-
-  <FAQs
-    title="קהל יעד"
-    subtitle="אוירה של השוואות"
-    tagline="סקשן רביעי - אופציה 2"
-    classes={{ container: 'max-w-6xl' }}
-    items={[
-      {
-        title: 'למי זה מתאים?',
-        description:
-          "לכולם",
       },
       {
-        title: 'למי זה לא מתאים?',
-        description:
-          'קבוצה ריקה',
-      },
+        title: 'מרגישים מבולבלים מול הארון בכל בוקר.',
+          icon:'tabler:hanger'
 
-    ]}
-  />
+      },  {
+        title: 'רוצים להבין מה באמת מחמיא להם.',
+          icon:'tabler:hanger'
 
-    <!-- Steps2 Widget ****************** -->
+      },  {
+        title: 'עומדים בפני שינוי בחיים: היריון, לידה, חזרה לעבודה, קידום, זוגיות חדשה או שינוי אישי.',
+          icon:'tabler:hanger'
 
-  <Steps2
-    title="למי זה מתאים?"
-    subtitle=" אופציה 3 לסקשן רביעי"
-    items={[
-      {
-        title: 'כולם',
-        description:
-          'Donec id nibh neque. Quisque et fermentum tortor. Fusce vitae dolor a mauris dignissim commodo. Ut eleifend luctus condimentum.',
-      },
-      {
-        title: 'כולל',
-        description:
-          'Phasellus laoreet fermentum venenatis. Vivamus dapibus pulvinar arcu eget mattis. Fusce eget mauris leo.',
-      },
-      {
-        title: 'וכן גם עוד אנשים',
-        description:
-          'Vestibulum imperdiet libero et lectus molestie, et maximus augue porta. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
+      },  {
+        title: 'רוצים לחסוך זמן, כסף והתלבטויות בקניות.',
+          icon:'tabler:hanger'
+
+      },  {
+        title: 'שואפים להרגיש בטוחים, מדויקים ונינוחים יותר בלבוש שלהם.',
+          icon:'tabler:hanger'
+
       },
     ]}
-  />
+    image={{
+      src: '~/assets/images/denim.jpg',
+      alt: 'Colorful Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight  sm:text-3xl mb-2">השירות מתאים למי ש:</h3>
+   </Fragment>
 
-  <!-- Steps2 Widget ****************** -->
+    <Fragment slot="bg">
+      <div class="absolute inset-0  "></div>
+    </Fragment>
+  </Content>
 
-  <Steps2
-    title="למי זה לא מתאים?"
-    subtitle="לעידן כהן, לדוגמה"
-    isReversed={true}
+  <!-- Content Widget **************** -->
 
+  <Content
+    isAfterContent
     items={[
       {
-        title: 'א',
-        description: 'Nam malesuada urna in enim imperdiet tincidunt. Phasellus non tincidunt nisi, at elementum mi.',
+        title: 'מחפשים פתרונות קסם בחמש דקות -',
+        description:
+          'מלתחה חכמה ומדויקת דורשת תהליך, סבלנות ושותפות מלאה שלכם.',
+                    icon:'tabler:hanger'
+
       },
       {
-        title: 'ב',
+        title: 'רוצים רק שופינג מהיר ללא הכנה -',
         description:
-          'Cras semper nulla leo, eget laoreet erat cursus sed. Praesent faucibus massa in purus iaculis dictum.',
+          'אני מאמינה שסטיילינג מוצלח באמת מגיע מתוך היכרות, הבנת הצרכים ודיוק של מבנה הגוף, ולא ממסע קניות אקראי.',
+                    icon:'tabler:hanger'
+
       },
       {
-        title: 'ג',
+        title: 'לא מרגישים מוכנים לפנות קצת מקום בארון -',
         description:
-          'Phasellus lacinia cursus velit, eu malesuada magna pretium eu. Etiam aliquet tellus purus, blandit lobortis ex rhoncus vitae.',
+          'אל דאגה, אני ממש לא מחייבת אף אחד לזרוק פריטים אהובים או סנטימנטליים. יחד עם זאת, סטיילינג מוצלח דורש מאיתנו פתיחות וכנות כדי להבין מה באמת משרת את מי שאתם היום ומה סתם תופס מקום ומעמיס עליכם בבוקר.',
+                    icon:'tabler:hanger'
+
+      },
+       {
+        title: 'פחות פתוחים לצאת מאזור הנוחות -',
+        description:
+          'סטיילינג, בדיוק כמו עולם המשחק, דורש לפעמים להעז למדוד תפקיד חדש. אם לא ננסה שילובים או גזרות שמעולם לא לבשתם, נפספס חצי מהכיף בתהליך.',
+                    icon:'tabler:hanger'
+
+              },
+    ]}
+    image={{
+      src: '~/assets/images/swea.jpg',
+      alt: 'Blueprint Image',
+    }}
+  >
+    <Fragment slot="content">
+            <h3 class="text-2xl font-bold tracking-tight  sm:text-3xl mb-2">ולמי זה פחות מתאים?</h3>
+</Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 "></div>
+    </Fragment>
+  </Content>
+
+ 
+     <Note
+    actions={[
+      {
+        variant: 'primary',
+        text: 'טוב תכלס, איפה יוצרים קשר?',
+        href: '#contact',
+        icon: 'tabler:message-circle',
       },
     ]}
-  />
-
+/>
 
 
     <!-- Testimonials Widget *********** -->
 
-  <Testimonials
-    title="המלצות מלקוחות"
-    testimonials={[
-      {
-        testimonial: `The designs are not only visually appealing but also highly professional. The templates have saved me a significant amount of time while helping me make a lasting impression on my clients.`,
-        name: 'Emily Kennedy',
- 
-      },
-      {
-        testimonial: `It beautifully showcases my work, with its clean and elegant design that lets my photographs shine. Customization was a breeze, even for a non-tech person like me. The result is a professional and immersive portfolio that's garnered numerous compliments.`,
-        name: 'Sarah Hansen',
 
-      },
-      {
-        testimonial: `I discovered these templates and I'm impressed by their variety and quality. They've helped me establish a consistent brand image across my marketing and social platforms, elevating my business's overall appearance.`,
-        name: 'Mark Wilkinson',
-        job: 'אפשר גם להוסיף טייטל',
 
-      },
-    ]}
-    callToAction={{
-      text: 'עוד המלצות...',
-      href: '/reccomendations',
-      icon: 'tabler:chevron-left',
-    }}
-  />
-
-    <Stats
-    title="רוצה כזה של מספרים? זה נפוץ"
-    stats={[
-      { amount: '30', title: 'שנות ניסיון', icon: 'tabler:shirt' },
-      { amount: '5K+',title: 'לקוחות מרוצים', icon: 'tabler:users' },
-      { amount: '4.9', title: 'כוכבים',icon: 'tabler:user-star' },
-    ]}
-  />
-
+<TestimonialCarousel 
+id="testimonials"
+  title="מה אומרים הלקוחות שלי?" 
+  testimonials={testimonials} 
+/>
 
 
   <!-- CallToAction Widget *********** -->
@@ -605,7 +483,8 @@ const metadata = {
 
 <ContactUs
 id="contact"
-  title="צרו קשר"
+  title="מוכנים להתחיל לכתוב את הסיפור שלכם מחדש?"
+  subtitle="השאירו פרטים ואחזור אליכם, או שלחו לי הודעה ישירה לוואטסאפ."
   image={{       src: '~/assets/images/bow2.jpg', alt: 'Contact Us' }}
   inputs={[
     { type: 'text', name: 'name', label: 'שם' },

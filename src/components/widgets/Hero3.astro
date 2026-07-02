@@ -14,20 +14,20 @@ const {
 } = Astro.props;
 ---
 
-<section class="relative min-h-[80vh] flex items-center overflow-hidden" {...id ? { id } : {}}>
+<section class="relative min-h-[60vh] flex items-center overflow-hidden" {...id ? { id } : {}}>
   
 
 
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full">
     {/* GRID: Content in first column, Spacer in second */}
-    <div class="grid md:grid-cols-2 gap-8 items-center">
+    <div class="grid md:grid-cols-1 gap-8 items-center">
             {/* COLUMN 2: Empty spacer */}
       <div class="hidden md:block"></div>
 
       {/* COLUMN 1: Content (Logo, Text, Buttons) */}
       <div class="flex flex-col items-center text-center  text-[#451113]"> 
         {logo && (
-          <div class="mb-8 w-full max-w-[560px]">
+          <div class="mb-8 w-full max-w-[560px] ">
             <Image class="w-full h-auto drop-shadow-2xl" {...logo} />
           </div>
         )}

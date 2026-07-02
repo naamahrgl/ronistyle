@@ -1,0 +1,64 @@
+---
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import Headline from '~/components/ui/Headline.astro';
+import 'swiper/css';
+import 'swiper/css/navigation'; // Added navigation styles
+import 'swiper/css/autoplay';
+
+interface Testimonial { testimonial: string; name: string; job: string; }
+interface Props { title?: string; subtitle?: string; tagline?: string; testimonials?: Testimonial[]; id?: string; isDark?: boolean; }
+
+const { title = '', subtitle = '', tagline = '', testimonials = [], id, isDark = false } = Astro.props;
+---
+
+<WidgetWrapper id={id} isDark={isDark} containerClass="max-w-6xl mx-auto relative group">
+  <Headline title={title} subtitle={subtitle} tagline={tagline} />
+
+  <!-- Add group-hover class to trigger arrows -->
+  <div class="swiper testimonial-swiper relative px-10 flex">
+<!-- Add h-full to wrapper, remove redundant flex classes -->
+    <div class="swiper-wrapper">
+      {
+        Array.isArray(testimonials) && testimonials.map(({ testimonial, name, job }) => (
+          <!-- Force slide to display as flex so children can use h-full -->
+          <div class="swiper-slide !h-auto flex">
+            <div class="flex flex-col p-6 rounded-md shadow-xl h-full border border-slate-200 bg-white">
+              <blockquote class="flex-auto">
+                <p class="text-lg italic text-muted">"{testimonial}"</p>
+              </blockquote>
+              <div class="mt-6 border-t border-slate-100 pt-4">
+                <p class="font-semibold">{name}</p>
+                <p class="text-sm text-muted">{job}</p>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Navigation Arrows -->
+    <div class="swiper-button-prev !text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+    <div class="swiper-button-next !text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+  </div>
+</WidgetWrapper>
+
+<script>
+  import Swiper from 'swiper';
+  import { Autoplay, Navigation } from 'swiper/modules';
+
+  new Swiper('.testimonial-swiper', {
+    modules: [Autoplay, Navigation],
+    loop: true,
+    autoplay: { delay: 4000, disableOnInteraction: false },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    slidesPerView: 1,
+    spaceBetween: 30,
+    breakpoints: {
+      768: { slidesPerView: 2 },
+      1024: { slidesPerView: 3 },
+    },
+  });
+</script>

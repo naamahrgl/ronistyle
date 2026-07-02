@@ -2,21 +2,33 @@ import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
 
 export const headerData = {
   links: [
+     {
+      text: 'למה?',
+      href: '/#why',
+    },
       {
-      text: 'השירותים שלי',
-      href: '/services',
+      text: 'המסלולים שלי',
+      href: '/#services',
     },
           {
       text: 'אודות',
-      href: '/about',
+      href: '/#about',
+    },
+           {
+      text: 'למי?',
+      href: '/#who',
     },
       {
       text: 'המלצות',
-      href: '/reccomendations',
+      href: '/#testimonials',
+    },
+      {
+      text: 'צרו קשר',
+      href: '/#contact',
     },
 
   ],
-  actions: [{ text: 'צרו קשר', href: '/contact', }],
+  actions: [{ text: 'whatsapp', href: 'https://wa.me/972543452440', icon: 'tabler:brand-whatsapp' }],
 };
 
 export const footerData = {
