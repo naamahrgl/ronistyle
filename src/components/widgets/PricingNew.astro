@@ -57,7 +57,12 @@ const { title = '', subtitle = '', tagline = '', prices = [], id, isDark = false
             </div>
 
             <label for={`toggle-${price.title}`} class="flex justify-center mt-4 cursor-pointer text-muted hover:text-primary transition">
-              <Icon name="tabler:chevron-down" class="w-6 h-6 transition-transform duration-300 peer-checked:rotate-180" />
+         <Button {...{
+          text: 'קראו עוד',
+          icon: 'tabler:chevron-down',
+          } }/>
+                          
+
             </label>
           </div>
 

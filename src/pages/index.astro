@@ -39,8 +39,8 @@ const testimonials = await fetch(SHEET_URL).then(res => res.json()).catch(() => 
 <Hero3
   title="הכותרת הראשית כאן"
   actions={[
-    { variant: 'primary', text: 'צרו קשר', href: '#contact' },
-    { text: 'השירותים שלי', href: '/services' },
+    { variant: 'primary', text: 'צרו קשר', href: '/#contact' },
+    { text: 'המסלולים שלי', href: '/#services' },
   ]}
   image={{       src: '~/assets/images/shopper.jpg', alt: 'Background' }}
   logo={{ src: '~/assets/images/logobg.webp', alt: 'Logo' }}
@@ -97,7 +97,7 @@ const testimonials = await fetch(SHEET_URL).then(res => res.json()).catch(() => 
         callToAction: {
           target: '_blank',
           text: 'Instagram',
-          href: '#',
+          href: 'https://www.instagram.com/roninathanel',
         },
       },
       {
@@ -105,7 +105,7 @@ const testimonials = await fetch(SHEET_URL).then(res => res.json()).catch(() => 
         callToAction: {
           target: '_blank',
           text: 'Whatsapp',
-          href: '#',
+          href: 'https://wa.me/972543452440',
         },
       },
       {
@@ -113,20 +113,16 @@ const testimonials = await fetch(SHEET_URL).then(res => res.json()).catch(() => 
         callToAction: {
           target: '_blank',
           text: 'Pinterest',
-          href: '#',
+          href: 'https://www.pinterest.com/roninathanel/',
         },
       },
     ]}
     image={{
       src: 'https://images.unsplash.com/photo-1491349174775-aaafddd81942?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
       alt: 'Colorful Image',
-      loading: 'eager',
+      loading: 'lazy',
     }}
-        callToAction={{
-      text: 'עוד עליי',
-      href: '/about',
-      icon: 'tabler:chevron-left',
-    }}
+ 
   >
     <Fragment slot="content"
     
@@ -186,8 +182,10 @@ const testimonials = await fetch(SHEET_URL).then(res => res.json()).catch(() => 
           },
         ],
         callToAction: {
+                    variant: 'primary',
+
           text: 'אני רוצה מהפך בארון',
-          href: '#',
+          href: '/#contact',
           icon: 'tabler:clothes-rack',
         },
       },
@@ -219,8 +217,10 @@ const testimonials = await fetch(SHEET_URL).then(res => res.json()).catch(() => 
           },
         ],
         callToAction: {
+                    variant: 'primary',
+
           text: 'אני רוצה את המהפך המלא שלי',
-          href: '#',
+          href: '/#contact',
           icon: 'tabler:star',
         },
         hasRibbon: true,
@@ -244,8 +244,10 @@ const testimonials = await fetch(SHEET_URL).then(res => res.json()).catch(() => 
        
         ],
         callToAction: {
+                    variant: 'primary',
+
           text: 'אני רוצה בגדים חדשים',
-          href: '#',
+          href: '/#contact',
           icon: 'tabler:shopping-cart',
         },
       },
@@ -267,8 +269,10 @@ const testimonials = await fetch(SHEET_URL).then(res => res.json()).catch(() => 
    
         ],
         callToAction: {
+                    variant: 'primary',
+
           text: 'אני רוצה לקבור',
-          href: '#',
+          href: '/#contact',
           icon: 'tabler:confetti',
         },
       },
@@ -287,8 +291,10 @@ const testimonials = await fetch(SHEET_URL).then(res => res.json()).catch(() => 
           },
         ],
         callToAction: {
+                    variant: 'primary',
+
           text: 'אני רוצה חיזוק',
-          href: '#',
+          href: '/#contact',
           icon: 'tabler:focus',
         },
       },
@@ -305,8 +311,10 @@ const testimonials = await fetch(SHEET_URL).then(res => res.json()).catch(() => 
     
         ],
         callToAction: {
+                    variant: 'primary',
+
           text: 'אני רוצה לשמח מישהו שאני אוהב',
-          href: '#',
+          href: '/#contact',
           icon: 'tabler:gift',
         },
       },
@@ -482,15 +490,28 @@ id="testimonials"
   <!-- CallToAction Widget *********** -->
 
 <ContactUs
-id="contact"
+  id="contact"
   title="מוכנים להתחיל לכתוב את הסיפור שלכם מחדש?"
   subtitle="השאירו פרטים ואחזור אליכם, או שלחו לי הודעה ישירה לוואטסאפ."
-  image={{       src: '~/assets/images/bow2.jpg', alt: 'Contact Us' }}
+  image={{ src: '~/assets/images/bow2.jpg', alt: 'Contact Us' }}
   inputs={[
     { type: 'text', name: 'name', label: 'שם' },
     { type: 'email', name: 'email', label: 'אימייל' },
-        { type: 'phone', name: 'phone', label: 'טלפון' }
-
+    { type: 'tel', name: 'phone', label: 'טלפון' },
+    { 
+      type: 'dropdown', 
+      name: 'service', 
+      label: 'איזה שירות מעניין אותך?',
+      placeholder: 'בחר שירות...',
+      options: [
+        { value: 'bowtie', label: 'חבילת הפפיון' },
+        { value: 'closet', label: 'ביקור בארון' },
+        { value: 'shopping', label: 'יום הקניות הגדול' },
+           { value: 'refresh', label: 'ביקור רענון' },
+        { value: 'event', label: 'סטיילינג לאיורע' },
+        { value: 'gift', label: 'שובר מתנה' }
+      ]
+    },
   ]}
   textarea={{ label: 'הודעה' }}
   disclaimer={{

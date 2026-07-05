@@ -15,6 +15,7 @@ export interface Props extends HTMLAttributes<'section'> {
 }
 
 const { title, subtitle, image, inputs, textarea, button, id, disclaimer, description, ...props } = Astro.props;
+// Read the URL parameter on the server
 ---
 
 <section class="py-12 md:py-20 " {...id ? { id } : {}}>
@@ -29,14 +30,13 @@ const { title, subtitle, image, inputs, textarea, button, id, disclaimer, descri
       {/* Form Card */}
       <div class="bg-thirdly p-6 md:p-8 rounded-3xl border border-primary flex flex-col">
         <div class="flex-grow">
-          <FormContainer 
-            inputs={inputs} 
-            textarea={textarea} 
-            button={button} 
-                      disclaimer={disclaimer}
-          description={description}
-
-          />
+<FormContainer 
+  inputs={inputs} 
+  textarea={textarea} 
+  button={button} 
+  disclaimer={disclaimer}
+  description={description}
+/>
         </div>
       </div>
 
