@@ -46,7 +46,9 @@ export const footerData = {
     { text: 'תנאי שימוש', href: '/terms' },
   ],
   socialLinks: [
-    { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: '#' },
-    { ariaLabel: 'WhatsApp', icon: 'tabler:brand-whatsapp', href: '#' },
+    { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: 'https://www.instagram.com/roninathanel' },
+    { ariaLabel: 'WhatsApp', icon: 'tabler:brand-whatsapp', href: 'https://wa.me/972543452440' },
+        { ariaLabel: 'Email', icon: 'tabler:mail', href: 'mailto:Roni.Nathanel@gmail.com ' },
+
   ],
 };

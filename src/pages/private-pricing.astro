@@ -1,0 +1,321 @@
+---
+// src/pages/private-pricing.astro
+// NOT linked in navigation - share this URL directly with potential clients
+import Layout from '~/layouts/PageLayout.astro';
+import Image from '~/components/common/Image.astro';
+import { Icon } from 'astro-icon/components';
+import Button from '~/components/ui/Button.astro';
+import logoImg from '~/assets/images/logobg.webp';
+
+const metadata = {
+  title: 'התהליך והמחירון | Roni Style',
+};
+---
+
+<Layout metadata={metadata}>
+  <section class="bg-page py-10 md:py-16 px-4">
+
+    <!-- INTRO -->
+    <div class="max-w-3xl mx-auto text-center mb-10 md:mb-16">
+  <div class="mb-5 flex justify-center">
+  <Image src={logoImg} alt="Roni Style" width={180} class="h-auto" />
+</div>
+      <h1 class="text-2xl md:text-4xl font-bold text-[#451113] mb-4">איך אנחנו עובדות ביחד</h1>
+      <p class="text-muted text-base md:text-lg">
+        כאן תמצאי הסבר על התהליך, סוגי המפגשים והמחירון — כדי שתדעי בדיוק למה לצפות.
+      </p>
+    </div>
+
+    <!-- PROCESS: two main sessions -->
+    <div class="max-w-5xl mx-auto flex flex-col md:grid md:grid-cols-2 gap-4 md:gap-6 mb-4 md:mb-8 items-stretch">
+
+      <div class="flex flex-col h-full rounded-xl border border-accent bg-[#f9e4e4] shadow px-5 py-6 md:px-6 md:py-8">
+        <div class="flex items-center gap-4 mb-5">
+          <div class="rounded-full bg-primary p-2.5 shrink-0">
+            <Icon name="tabler:home" class="w-5 h-5 text-accent" />
+          </div>
+          <div>
+            <h2 class="text-lg md:text-xl font-semibold text-[#451113] leading-tight">מפגש ראשון — "באה לביקור"</h2>
+            <p class="text-xs text-muted mt-1">אצלך בבית · עד 4 שעות</p>
+          </div>
+        </div>
+
+  <div class="text-sm text-[#451113] font-medium">
+  <p style="line-height: 1.25rem; margin-bottom: 1rem;">
+    היעד שלנו היא ליצור ארון בגדים אפקטיבי, שיהפוך את תהליך ההתארגנות שלך לפשוט ומהיר. כשתפתחי את
+    הארון בבוקר, הבגדים המתאימים יהיו זמינים ומסודרים עבורך, ויהיה לך קל יותר לבחור את מה שנחוץ לכל
+    מטרה - עבודה, פגישות, נסיעות, בילויים וכו׳.
+  </p>
+  <p style="line-height: 1.25rem; margin-bottom: 1rem;">
+    השלב הראשון הוא מיון יסודי של המלתחה הקיימת: נבדוק יחד אילו גזרות, צבעים ובגדים מתאימים ומחמיאים לך,
+    ונגדיר ביחד לך מה שכבר לא נוח או לא תואם לסגנון שלך. לאחר מכן ניצור יחד מגוון לוקים מתוך מה שכבר יש לך,
+    ונעשה שילובים חדשים ומעניינים, כדי שתוכלי להפיק את המקסימום מכל בגד שקיים לך בארון.
+  </p>
+  <p style="line-height: 1.25rem; margin-bottom: 1rem;">
+    במהלך התהליך, אני כמובן מצלמת אותך עם הלוקים שנבנה כדי שתוכלי לחזור אליהם במידת הצורך.
+  </p>
+  <p style="line-height: 1.25rem;">
+    לבסוף, נבנה רשימה של פריטים שאולי חסרים במלתחה ויכולים להעשיר אותה בעתיד ובמידה ותרצי נעשה לנו את
+    המפגש השני שהוא "יום שכולו FUN" (ממליצה בחום).
+  </p>
+</div>
+      </div>
+
+      <div class="flex flex-col h-full rounded-xl border border-accent bg-[#f9e4e4] shadow px-5 py-6 md:px-6 md:py-8">
+        <div class="flex items-center gap-4 ">
+          <div class="rounded-full bg-primary p-2.5 shrink-0">
+            <Icon name="tabler:shopping-bag" class="w-5 h-5 text-accent" />
+          </div>
+          <div>
+            <h2 class="text-lg md:text-xl font-semibold text-[#451113] leading-tight">מפגש שני — "יום הקניות הגדול"</h2>
+            <p class="text-xs text-muted mt-1">המתקיים בת"א · יום שכולו fun · עד 6 שעות</p>
+          </div>
+        </div>
+
+  <div class="text-sm text-[#451113] font-medium">
+  <p style="line-height: 1.25rem; margin-bottom: 1rem;">
+            אני מגיעה לפניך למקום שנבחר יחד, ומכינה עבורך מלתחה התחלתית שתתאים לך.
+          </p>
+  <p style="line-height: 1.25rem; margin-bottom: 1rem;">
+            כשתצטרפי, נתחיל במדידות, ונבדוק יחד מה מתאים לך ומה פחות, למה את מתחברת יותר ולמה פחות, ומשם
+            נתגלגל ונדייק לך מלתחה עם פריטים שעושים לך הכי טוב ושתרגישי בהם הכי וואו.
+          </p>
+          <p style="line-height: 1.25rem; margin-bottom: 1rem;">
+            בדרך כלל אני עורכת את היום הזה בקניון TLV - יש שם מגוון של הכל מהכל, גם פריטי יוקרה וגם בסיסיים.
+          </p>
+          <p style="line-height: 1.25rem; margin-bottom: 1rem;">
+            אבל אם תרצי משהו אחר, אפשר ללכת לחנויות ייחודיות שנדוק לפי הכל התקציב וההסגנון שלך כמובן.
+          </p>
+          <p style="line-height: 1.25rem; margin-bottom: 1rem;">
+            עם הרשימה שהכנו מראש, נבחר לך בגדים שיחמיאו ויתאימו למבנה הגוף שלך, נבחר צבעים ובגדים שעובדים טוב
+            עבורך, והכי חשוב נעשה מזה יום שהוא FUN.
+          </p>
+          <p style="line-height: 1.25rem; margin-bottom: 1rem;">
+            במהלך היום, אשתף אותך בטיפים איך לבחור את הפריטים המדויקים לך ואיך ליצור מגוון הופעות שלא היית
+            חושבת עליהם.
+          </p>
+          <p style="line-height: 1.25rem; margin-bottom: 1rem;">
+            נצא עם מלתחה חכמה, ממוקדת, ובסוף המסע הזה גם תדעי איך לגשת לרכישות לבדך בצורה חכמה ומדויקת יותר.
+          </p>
+  <p style="line-height: 1.25rem;">
+            במהלך היום הזה אני כמובן מצלמת עבורך את הלוקים כדי שתוכלי לחזור "להעתיק" במידת הצורך.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ADDITIONAL OPTIONS -->
+    <div class="max-w-5xl mx-auto flex flex-col md:grid md:grid-cols-2 gap-4 md:gap-6 mb-10 md:mb-16 items-stretch">
+
+      <div class="flex flex-col h-full rounded-xl border border-accent bg-[#f9e4e4] shadow px-5 py-6 md:px-6 md:py-8">
+        <div class="flex items-center gap-4 mb-5">
+          <div class="rounded-full bg-primary p-2.5 shrink-0">
+            <Icon name="tabler:refresh" class="w-5 h-5 text-accent" />
+          </div>
+          <div>
+            <h3 class="text-base md:text-lg font-semibold text-[#451113] leading-tight">חבילת ביקור קטן : "באה לביקור"</h3>
+            <p class="text-xs text-muted mt-1">עד שעתיים</p>
+          </div>
+        </div>
+  <div class="text-sm text-[#451113] font-medium">
+  <p style="line-height: 1.25rem; ">
+            (מיועד ללקוחות שרכשו חבילה שלמה בעבר), ורוצות לחדש מלתחה עם ביקור ביתי קצר עבור חידוש ורענון לקראת
+            סיבוב קניות מחודש.
+          </p>
+        </div>
+      </div>
+
+      <div class="flex flex-col h-full rounded-xl border border-accent bg-[#f9e4e4] shadow px-5 py-6 md:px-6 md:py-8">
+        <div class="flex items-center gap-4 mb-5">
+          <div class="rounded-full bg-primary p-2.5 shrink-0 mb-4">
+            <Icon name="tabler:calendar-star" class="w-5 h-5 text-accent " />
+          </div>
+          <div>
+            <h3 class="text-base md:text-lg font-semibold text-[#451113] leading-tight">חבילת "ארוע ממוקד"</h3>
+            <p class="text-xs text-muted mt-1">מתקיים בת"א · שעתיים</p>
+          </div>
+        </div>
+      <div class="text-sm text-[#451113] font-medium">
+  <p style="line-height: 1.25rem; margin-bottom: 1rem;">
+            (מיועד לכל סוגי הלקוחות), מעניק ליווי אישי למציאת הלוק המושלם עבור אירוע ספציפי.
+          </p>
+  <p style="line-height: 1.25rem; margin-bottom: 1rem;">
+            את יום הקניות נפתח בפגישת היכרות קצרה בבית קפה, שבה נכיר אחת את השנייה, נבין את הצרכים שלך ונדייק
+            את הסגנון והלוק המתאימים לך במיוחד עבור האירוע.
+          </p>
+  <p style="line-height: 1.25rem; ">
+            ומשם נמשיך יחד לקניות ממוקדות, מדויקת ויעילה.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRICING -->
+    <div class="max-w-5xl mx-auto text-center mb-6 md:mb-8">
+      <h2 class="text-xl md:text-2xl font-bold text-[#451113] mb-2">תמחור</h2>
+      <p class="text-muted text-sm">כל המחירים כוללים ליווי אישי מלא לאורך המפגש</p>
+    </div>
+
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row sm:flex-wrap items-stretch justify-center gap-5 md:gap-6 mb-10 md:mb-12">
+
+      <!-- 1. Combo package - highlighted -->
+      <div class="w-full sm:w-[48%] lg:w-[30%] flex flex-col">
+        <div class="flex flex-col w-full h-full rounded-xl border-2 border-primary bg-[#f9e4e4] shadow-lg px-5 py-6">
+          <div class="flex-grow flex flex-col justify-between">
+            <div>
+              <div class="flex justify-center mb-4">
+                <span class="bg-primary text-accent text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                  המומלץ ביותר
+                </span>
+              </div>
+              <div class="flex flex-col items-center mb-4">
+                <div class="rounded-full bg-primary p-3 mb-4">
+                  <Icon name="tabler:sparkles" class="w-6 h-6 text-accent" />
+                </div>
+                <h3 class="text-lg font-semibold uppercase text-[#451113] text-center">חבילה מלאה</h3>
+              </div>
+              <p class="font-light text-muted text-center mb-4 text-sm leading-snug">
+                "באה לביקור" (עד 4 שעות) + "יום שכולו fun" (עד 6 שעות)
+              </p>
+              <p class="text-3xl font-bold text-center text-[#451113] mb-1">2,500 ₪</p>
+              <p class="text-xs text-muted text-center mb-4">+250 ₪ נסיעה מחוץ לעיר, לפי מרחק היעד</p>
+            </div>
+          </div>
+          <div class="mt-2 flex justify-center">
+            <Button text="לתיאום פגישה" href="https://wa.me/972543452440" class="w-full sm:w-auto" />
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Shopping day only -->
+      <div class="w-full sm:w-[48%] lg:w-[30%] flex flex-col">
+        <div class="flex flex-col w-full h-full rounded-xl border border-accent bg-[#f9e4e4] shadow px-5 py-6">
+          <div class="flex-grow flex flex-col justify-between">
+            <div>
+              <div class="flex justify-center mb-4">
+                <span class="invisible text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                  המומלץ ביותר
+                </span>
+              </div>
+              <div class="flex flex-col items-center mb-4">
+                <div class="rounded-full bg-primary p-3 mb-4">
+                  <Icon name="tabler:shopping-bag" class="w-6 h-6 text-accent" />
+                </div>
+                <h3 class="text-lg font-semibold uppercase text-[#451113] text-center">"יום שכולו fun" בלבד</h3>
+              </div>
+              <p class="font-light text-muted text-center mb-4 text-sm leading-snug">עד 6 שעות</p>
+              <p class="text-3xl font-bold text-center text-[#451113] mb-1">1,800 ₪</p>
+              <p class="text-xs text-muted text-center mb-4">*מיועד אך ורק ללקוחות קבועים שכבר עברו סשן אחד אצלי לפחות</p>
+            </div>
+          </div>
+          <div class="mt-2 flex justify-center">
+            <Button text="לתיאום פגישה" href="https://wa.me/972543452440" class="w-full sm:w-auto" />
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Small return visit -->
+      <div class="w-full sm:w-[48%] lg:w-[30%] flex flex-col">
+        <div class="flex flex-col w-full h-full rounded-xl border border-accent bg-[#f9e4e4] shadow px-5 py-6">
+          <div class="flex-grow flex flex-col justify-between">
+            <div>
+              <div class="flex justify-center mb-4">
+                <span class="invisible text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                  המומלץ ביותר
+                </span>
+              </div>
+              <div class="flex flex-col items-center mb-4">
+                <div class="rounded-full bg-primary p-3 mb-4">
+                  <Icon name="tabler:refresh" class="w-6 h-6 text-accent" />
+                </div>
+                <h3 class="text-lg font-semibold uppercase text-[#451113] text-center">"באה לביקור קטן"</h3>
+              </div>
+              <p class="font-light text-muted text-center mb-4 text-sm leading-snug">עד שעתיים</p>
+              <p class="text-3xl font-bold text-center text-[#451113] mb-1">650 ₪</p>
+              <p class="text-xs text-muted text-center mb-4">
+                + תוספת נסיעה מחוץ לעיר תלויה במרחק היעד<br/><br/>
+                *מיועד אך ורק ללקוחות קבועים שכבר עברו סשן אחד אצלי לפחות ומעוניינים בביקור קצר בארון לפני מסע קניות נוסף
+              </p>
+            </div>
+          </div>
+          <div class="mt-2 flex justify-center">
+            <Button text="לתיאום פגישה" href="https://wa.me/972543452440" class="w-full sm:w-auto" />
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Home visit standalone -->
+      <div class="w-full sm:w-[48%] lg:w-[30%] flex flex-col">
+        <div class="flex flex-col w-full h-full rounded-xl border border-accent bg-[#f9e4e4] shadow px-5 py-6">
+          <div class="flex-grow flex flex-col justify-between">
+            <div>
+              <div class="flex justify-center mb-4">
+                <span class="invisible text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                  המומלץ ביותר
+                </span>
+              </div>
+              <div class="flex flex-col items-center mb-4">
+                <div class="rounded-full bg-primary p-3 mb-4">
+                  <Icon name="tabler:home" class="w-6 h-6 text-accent" />
+                </div>
+                <h3 class="text-lg font-semibold uppercase text-[#451113] text-center">"באה לביקור" בלבד</h3>
+              </div>
+              <p class="font-light text-muted text-center mb-4 text-sm leading-snug">עד 5 שעות</p>
+              <p class="text-3xl font-bold text-center text-[#451113] mb-1">1,500 ₪</p>
+              <p class="text-xs text-muted text-center mb-4">
+                + תוספת נסיעה מחוץ לעיר תלויה במרחק היעד<br/><br/>
+                *מיועד לכל סוגי הלקוחות
+              </p>
+            </div>
+          </div>
+          <div class="mt-2 flex justify-center">
+            <Button text="לתיאום פגישה" href="https://wa.me/972543452440" class="w-full sm:w-auto" />
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Focused event -->
+      <div class="w-full sm:w-[48%] lg:w-[30%] flex flex-col">
+        <div class="flex flex-col w-full h-full rounded-xl border border-accent bg-[#f9e4e4] shadow px-5 py-6">
+          <div class="flex-grow flex flex-col justify-between">
+            <div>
+              <div class="flex justify-center mb-4">
+                <span class="invisible text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                  המומלץ ביותר
+                </span>
+              </div>
+              <div class="flex flex-col items-center mb-4">
+                <div class="rounded-full bg-primary p-3 mb-4">
+                  <Icon name="tabler:calendar-star" class="w-6 h-6 text-accent" />
+                </div>
+                <h3 class="text-lg font-semibold uppercase text-[#451113] text-center">"ארוע ממוקד"</h3>
+              </div>
+              <p class="font-light text-muted text-center mb-4 text-sm leading-snug">תמחור שעתי</p>
+              <p class="text-3xl font-bold text-center text-[#451113] mb-1">320 ₪</p>
+              <p class="text-xs text-muted text-center mb-4">
+                + תוספת נסיעה מחוץ לעיר במקרים חריגים. מאפשר גמישות בהתאם לצורך ולמשך זמן הליווי בפועל<br/><br/>
+                *מיועד לכל סוגי הלקוחות
+              </p>
+            </div>
+          </div>
+          <div class="mt-2 flex justify-center">
+            <Button text="לתיאום פגישה" href="https://wa.me/972543452440" class="w-full sm:w-auto" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER NOTES -->
+    <div class="max-w-3xl mx-auto mb-10">
+      <div class="rounded-xl border border-accent bg-[#f9e4e4] shadow px-5 py-5 md:px-6 md:py-6 text-center space-y-2 text-sm text-muted">
+        <p>הקניות כמובן מתבצעות מכיסך ולפי תקציב שנקבע יחד מראש על מנת להיות ממוקדות ובכדי לא להתפזר.</p>
+        <p>התשלום עבורי יכול להתבצע באמצעות: העברה בנקאית / ביט / מזומן.</p>
+        <p>לכל שאלה נוספת ניתן לפנות בוואטסאפ.</p>
+      </div>
+    </div>
+
+    <div class="text-center mb-6">
+      <Button text="לשאלות ותיאום — בואי נדבר" href="https://wa.me/972543452440" icon="tabler:brand-whatsapp" />
+    </div>
+  </section>
+</Layout>

@@ -130,6 +130,7 @@ export interface Item {
 export interface Price {
   title?: string;
   subtitle?: string;
+  feat?: string;
   description?: string;
   price?: number | string;
   period?: string;
@@ -169,7 +170,7 @@ export interface Disclaimer {
 
 // COMPONENTS
 export interface CallToAction extends Omit<HTMLAttributes<'a'>, 'slot'> {
-  variant?: 'primary' | 'secondary' | 'tertiary' | 'link';
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'link' |'third';
   text?: string;
   icon?: string;
   classes?: Record<string, string>;
@@ -198,6 +199,7 @@ export interface Hero extends Omit<Headline, 'classes'>, Omit<Widget, 'isDark' |
   actions?: string | CallToAction[];
   image?: string | unknown;
   logo?:  string | unknown;
+  imagePosition?: string;
 }
 
 export interface Team extends Omit<Headline, 'classes'>, Widget {

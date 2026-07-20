@@ -1,5 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
+import Logo from '~/components/Logo.astro';
+
 
 interface Link { text?: string; href?: string; ariaLabel?: string; icon?: string; }
 interface ContactInfo { name: string; title: string; email: string; }
@@ -11,23 +13,23 @@ const { contact, quickLinks = [], secondaryLinks = [], socialLinks = [] } = Astr
 <footer class="border-t border-muted py-16 bg-thirdly ">
   <div class="max-w-4xl mx-auto px-6 text-center">
     
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+    <div class="grid grid-cols-2 md:grid-cols-2 gap-12 mb-6">
       
-      <div class="flex flex-col items-center gap-2">
+      <div class="flex flex-col items-center gap-4">
         <h2 class="text-2xl font-bold tracking-tight">{contact.name}</h2>
         <p class="text-primary ">{contact.title}</p>
-        <a href={`mailto:${contact.email}`} class="text-muted hover:underline font-medium">{contact.email}</a>
         <ul class="flex gap-6">
         {socialLinks.map((social: Link) => (
           <li>
-            <a href={social.href} aria-label={social.ariaLabel} class="text-muted hover:text-accent  transition">
+            <a href={social.href} aria-label={social.ariaLabel} class="text-muted hover:text-primary  transition">
               {social.icon && <Icon name={social.icon} class="w-6 h-6" />}
             </a>
           </li>
         ))}
       </ul>
       
-   
+           <Logo />
+
       </div>
 
       <div class="flex flex-col items-center  gap-2">
@@ -44,7 +46,7 @@ const { contact, quickLinks = [], secondaryLinks = [], socialLinks = [] } = Astr
       </div>
     </div>
 
-    <div class="flex flex-col items-center gap-6 pt-8 border-t border-muted ">
+    <div class="flex flex-col items-center gap-0 pt-4 border-t border-muted ">
 
       
       <div class="text-sm text-muted">

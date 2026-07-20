@@ -2,8 +2,9 @@
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 import Headline from '~/components/ui/Headline.astro';
 import 'swiper/css';
-import 'swiper/css/navigation'; // Added navigation styles
+import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
+import 'swiper/css/scrollbar';
 
 interface Testimonial { testimonial: string; name: string; job: string; }
 interface Props { title?: string; subtitle?: string; tagline?: string; testimonials?: Testimonial[]; id?: string; isDark?: boolean; }
@@ -14,21 +15,18 @@ const { title = '', subtitle = '', tagline = '', testimonials = [], id, isDark =
 <WidgetWrapper id={id} isDark={isDark} containerClass="max-w-6xl mx-auto relative group">
   <Headline title={title} subtitle={subtitle} tagline={tagline} />
 
-  <!-- Add group-hover class to trigger arrows -->
   <div class="swiper testimonial-swiper relative px-10 flex">
-<!-- Add h-full to wrapper, remove redundant flex classes -->
     <div class="swiper-wrapper">
       {
         Array.isArray(testimonials) && testimonials.map(({ testimonial, name, job }) => (
-          <!-- Force slide to display as flex so children can use h-full -->
           <div class="swiper-slide !h-auto flex">
-            <div class="flex flex-col p-6 rounded-md shadow-xl h-full border border-slate-200 bg-white">
+            <div class="flex flex-col p-6 rounded-lg shadow-xl h-full border border-accent  bg-primary text-accent">
               <blockquote class="flex-auto">
-                <p class="text-lg italic text-muted">"{testimonial}"</p>
+                <p class="text-lg italic  text-accent">"{testimonial}"</p>
               </blockquote>
-              <div class="mt-6 border-t border-slate-100 pt-4">
-                <p class="font-semibold">{name}</p>
-                <p class="text-sm text-muted">{job}</p>
+              <div class="mt-6 border-t border-accent pt-4">
+                <p class="font-semibold text-thirdly">{name}</p>
+                <p class="text-sm text-thirdly ">{job}</p>
               </div>
             </div>
           </div>
@@ -36,29 +34,46 @@ const { title = '', subtitle = '', tagline = '', testimonials = [], id, isDark =
       }
     </div>
 
-    <!-- Navigation Arrows -->
-    <div class="swiper-button-prev !text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-    <div class="swiper-button-next !text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+    <!-- Arrows: always visible on mobile, hover-reveal on desktop -->
+    <div class="swiper-button-prev !text-muted opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"></div>
+    <div class="swiper-button-next !text-muted opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"></div>
+
+    <!-- Progress bar instead of per-slide dots -->
+    <div class="swiper-scrollbar !bottom-0 !top-auto !w-[calc(100%-5rem)] !left-10"></div>
   </div>
 </WidgetWrapper>
 
+<style>
+  .testimonial-swiper {
+    padding-bottom: 2rem; /* room for the scrollbar */
+  }
+  .swiper-scrollbar-drag {
+    background: rgb(var(--color-primary, 0 0 0) / 0.6);
+  }
+</style>
+
 <script>
   import Swiper from 'swiper';
-  import { Autoplay, Navigation } from 'swiper/modules';
+  import { Autoplay, Navigation, Scrollbar } from 'swiper/modules';
 
   new Swiper('.testimonial-swiper', {
-    modules: [Autoplay, Navigation],
+    modules: [Autoplay, Navigation, Scrollbar],
     loop: true,
     autoplay: { delay: 4000, disableOnInteraction: false },
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
     },
+    scrollbar: {
+      el: '.swiper-scrollbar',
+      draggable: true,
+      hide: false,
+    },
     slidesPerView: 1,
-    spaceBetween: 30,
+    spaceBetween: 20,
     breakpoints: {
-      768: { slidesPerView: 2 },
-      1024: { slidesPerView: 3 },
+      768: { slidesPerView: 2, spaceBetween: 24 },
+      1024: { slidesPerView: 3, spaceBetween: 30 },
     },
   });
 </script>

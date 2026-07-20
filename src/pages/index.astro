@@ -17,6 +17,10 @@ import ContactUs from '~/components/widgets/ContactImg.astro';
 import Features3 from '~/components/widgets/Features3.astro';
 import Hero3 from '~/components/widgets/Hero3.astro';
 import TestimonialCarousel from '~/components/widgets/TestimonialCarousel.astro';
+import aboutimg from '~/assets/images/bw.jpeg';
+import heroimg from '~/assets/images/denim.jpeg';
+import heroimg2 from '~/assets/images/red1.jpeg';
+
 
 const metadata = {
   title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
@@ -42,7 +46,7 @@ const testimonials = await fetch(SHEET_URL).then(res => res.json()).catch(() => 
     { variant: 'primary', text: 'צרו קשר', href: '/#contact' },
     { text: 'המסלולים שלי', href: '/#services' },
   ]}
-  image={{       src: '~/assets/images/shopper.jpg', alt: 'Background' }}
+  image={{       src: heroimg, alt: 'Background' }}
   logo={{ src: '~/assets/images/logobg.webp', alt: 'Logo' }}
 >
   <Fragment slot="subtitle">
@@ -50,16 +54,17 @@ const testimonials = await fetch(SHEET_URL).then(res => res.json()).catch(() => 
   </Fragment>
 </Hero3>
 
-  <Note title="הסטייל שלכם" description="הוא הדרך שבה אתם מציגים לעולם מי אתם" icon="tabler:hanger"/>
 
  <Features2
  id="why"
-    title="אולי הגיע הזמן לדייק את המלתחה?"
+    title="איך יודעים שהגיע הזמן לדייק את הסטייל שלי?"
     subtitle="היי, אם הגעתם לכאן, כנראה שאתם מרגישים שהמלתחה שלכם כבר לא מספרת את הסיפור שלכם. 
 </br></br>
 אולי אתם עומדים בפני שינוי אישי או מקצועי, אולי אתם מרגישים שאין לכם מה ללבוש למרות שהארון מלא, ואולי אתם רוצים פשוט להרגיש יותר מדויקים, בטוחים ונינוחים עם מה שאתם לובשים
 </br></br>
-אני מאמינה שאין דרך אחת 'נכונה' להתלבש. לכל אדם יש אישיות, סיפור ונוכחות משלו, והתפקיד שלי הוא לזהות אותם ולתרגם אותם לשפה של צבעים, גזרות וסגנון. הניסיון שלי כשחקנית לימד אותי לראות את האדם שמאחורי הבגד, וליצור התאמה מדויקת בין מי שהוא לבין מה שהוא משדר לעולם."
+אני מאמינה שאין דרך אחת 'נכונה' להתלבש. לכל אדם יש אישיות, סיפור ונוכחות משלו, והתפקיד שלי הוא לזהות אותם ולתרגם אותם לשפה של צבעים, גזרות וסגנון. 
+</br>
+הניסיון שלי כשחקנית לימד אותי לראות את האדם שמאחורי הבגד, וליצור התאמה מדויקת בין מי שהוא לבין מה שהוא משדר לעולם."
   >
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
@@ -109,16 +114,16 @@ const testimonials = await fetch(SHEET_URL).then(res => res.json()).catch(() => 
         },
       },
       {
-        icon: 'tabler:brand-pinterest',
+        icon: 'tabler:mail',
         callToAction: {
           target: '_blank',
-          text: 'Pinterest',
-          href: 'https://www.pinterest.com/roninathanel/',
+          text: 'Email',
+          href: 'mailto:roni.nathanel@gmail.com',
         },
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1491349174775-aaafddd81942?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+      src: aboutimg,
       alt: 'Colorful Image',
       loading: 'lazy',
     }}
@@ -154,7 +159,7 @@ const testimonials = await fetch(SHEET_URL).then(res => res.json()).catch(() => 
         <Note
     actions={[
       {
-        variant: 'primary',
+        variant: 'third',
         text: 'טוב תכלס, איפה יוצרים קשר?',
         href: '#contact',
         icon: 'tabler:message-circle',
@@ -170,6 +175,7 @@ const testimonials = await fetch(SHEET_URL).then(res => res.json()).catch(() => 
       {
         title: 'באה לביקור בארון',
         subtitle: 'עד 4 שעות',
+        feat: 'מפגש אישי בביתך שבו נעשה סדר בארון',
         price: 29,
         period: 'כל חודש',
         items: [
@@ -194,6 +200,7 @@ const testimonials = await fetch(SHEET_URL).then(res => res.json()).catch(() => 
         subtitle: 'החבילה משלבת את שני שלבי הסטיילינג האישי – החל מהצצה עמוקה לתוך הארון הקיים ועד ליום קניות ממוקד, מדויק וכולו פאן.',
         price: 69,
         period: 'Per Month',
+        feat: 'החבילה המלאה שלי – מהארון ועד הקניות',
         items: [
           {
             description: 'באה לביקור בארון',
@@ -231,6 +238,7 @@ const testimonials = await fetch(SHEET_URL).then(res => res.json()).catch(() => 
         subtitle: 'עד 6 שעות | תל אביב',
         price: 199,
         period: 'Per Month',
+        feat: 'יום קניות שכולו פאן',
         items: [
           {
             description: 'יום קניות שכולו פאן',
@@ -255,6 +263,7 @@ const testimonials = await fetch(SHEET_URL).then(res => res.json()).catch(() => 
         title: 'סטיילינג לאירוע',
         subtitle: 'שעתי',
         price: 69,
+        feat: 'ליווי אישי למציאת הלוק המושלם לאירוע מיוחד',
         period: 'Per Month',
         items: [
           {
@@ -281,6 +290,7 @@ const testimonials = await fetch(SHEET_URL).then(res => res.json()).catch(() => 
         subtitle: 'עד שעתיים',
         price: 29,
         period: 'כל חודש',
+        feat: 'מפגש קצר לרענון וסידור המלתחה',
         items: [
         
           {
@@ -303,6 +313,7 @@ const testimonials = await fetch(SHEET_URL).then(res => res.json()).catch(() => 
         subtitle: 'עד 4 שעות',
         price: 29,
         period: 'כל חודש',
+        feat: 'מתנה אישית, מקורית ומרגשת לכל מי שאוהבים.',
         items: [
           {
             description: 'ניתן לרכוש שובר מתנה לכל אחד מהשירותים שלי — מתנה אישית, מקורית ומרגשת לכל מי שאוהבים.',
@@ -349,7 +360,7 @@ const testimonials = await fetch(SHEET_URL).then(res => res.json()).catch(() => 
      <Note
     actions={[
       {
-        variant: 'primary',
+        variant: 'third',
         text: 'טוב תכלס, איפה יוצרים קשר?',
         href: '#contact',
         icon: 'tabler:message-circle',
@@ -363,8 +374,7 @@ const testimonials = await fetch(SHEET_URL).then(res => res.json()).catch(() => 
   <Content
   id="who"
     isReversed
-    tagline=" גלו עוד"
-    title="בשורה התחתונה, למי זה מתאים?"
+    title="בשורה התחתונה,</br> למי זה מתאים?"
     subtitle='השירותים שלי מיועדים לנשים ולגברים בכל גיל ובכל שלב בחיים'
         items={[
       {
@@ -404,7 +414,7 @@ const testimonials = await fetch(SHEET_URL).then(res => res.json()).catch(() => 
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight  sm:text-3xl mb-2">השירות מתאים למי ש:</h3>
+      <h3 class="text-2xl font-bold tracking-tight text-center md:text-right sm:text-3xl ">השירות מתאים למי ש:</h3>
    </Fragment>
 
     <Fragment slot="bg">
@@ -464,7 +474,7 @@ const testimonials = await fetch(SHEET_URL).then(res => res.json()).catch(() => 
      <Note
     actions={[
       {
-        variant: 'primary',
+        variant: 'third',
         text: 'טוב תכלס, איפה יוצרים קשר?',
         href: '#contact',
         icon: 'tabler:message-circle',
