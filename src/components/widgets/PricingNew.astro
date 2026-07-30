@@ -17,7 +17,7 @@ const { title = '', subtitle = '', tagline = '', prices = [], id, isDark = false
     {prices && prices.map((price) => (
       <div class="w-full sm:w-[48%] lg:w-[30%] flex flex-col">
         
-        <div class="flex flex-col w-full h-full rounded-lg backdrop-blur border border-accent bg-[#f9e4e4] shadow px-4 py-6 relative transition-all duration-300">
+        <div class="flex flex-col w-full h-full rounded-lg backdrop-blur border border-accent bg-thirdly text-primary shadow px-4 py-6 relative transition-all duration-300">
           <div class="flex-grow flex flex-col justify-between">
 
             <div>
@@ -32,13 +32,13 @@ const { title = '', subtitle = '', tagline = '', prices = [], id, isDark = false
                   </div>
                 )}
                 <h3 class="text-center text-xl font-semibold uppercase mb-1">{price.title}</h3>
-                {price.feat && <p class="font-light text-muted text-center mb-1">{price.feat}</p>}
+                {price.feat && <p class="font-light  text-center mb-1">{price.feat}</p>}
               </div>
 
               <input type="checkbox" id={`toggle-${price.title}`} class="peer hidden" />
               
               <div class="max-h-0 overflow-hidden peer-checked:max-h-[1000px] transition-all duration-500 ease-in-out">
-                {price.subtitle && <p class="font-light text-muted mb-6">{price.subtitle}</p>}
+                {price.subtitle && <p class="font-light text-accent mb-6">{price.subtitle}</p>}
                 {price.items && (
                   <ul class="space-y-3 text-right mb-2">
                     {price.items.map(({ description, icon, more_text }) => (
@@ -47,7 +47,7 @@ const { title = '', subtitle = '', tagline = '', prices = [], id, isDark = false
                           <div class="rounded-full bg-primary mt-1 shrink-0"><Icon name={icon || 'tabler:check'} class="w-4 h-4 p-0.5 text-white" /></div>
                           <span class="font-medium text-primary">{description}</span>
                         </div>
-                        {more_text && <p class="text-sm text-muted mt-1 mr-7">{more_text}</p>}
+                        {more_text && <p class="text-sm text-accent mt-1 mr-7">{more_text}</p>}
                       </li>
                     ))}
                   </ul>
@@ -55,7 +55,7 @@ const { title = '', subtitle = '', tagline = '', prices = [], id, isDark = false
               </div>
             </div>
 
-            <label for={`toggle-${price.title}`} class="flex justify-center mt-4 cursor-pointer text-muted hover:text-primary transition">
+            <label for={`toggle-${price.title}`} class="flex justify-center mt-4 cursor-pointer hover:text-primary transition">
               <Button {...{
                 text: 'קראו עוד',
                 icon: 'tabler:chevron-down',
