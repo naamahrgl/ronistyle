@@ -19,7 +19,7 @@ import Hero3 from '~/components/widgets/Hero3.astro';
 import TestimonialCarousel from '~/components/widgets/TestimonialCarousel.astro';
 import aboutimg from '~/assets/images/bw.jpeg';
 import heroimg from '~/assets/images/denim.jpeg';
-import heroimg2 from '~/assets/images/red1.jpeg';
+import heroimg2 from '~/assets/images/red1t.png';
 
 
 const metadata = {
@@ -41,16 +41,17 @@ const testimonials = await fetch(SHEET_URL).then(res => res.json()).catch(() => 
 
 
 <Hero3
-  title="הכותרת הראשית כאן"
-  actions={[
+id="hero"
+
+actions={[
     { variant: 'primary', text: 'צרו קשר', href: '/#contact' },
     { text: 'המסלולים שלי', href: '/#services' },
   ]}
-  image={{       src: heroimg, alt: 'Background' }}
+  image={{       src: heroimg2, alt: 'Background' }}
   logo={{ src: '~/assets/images/logobg.webp', alt: 'Logo' }}
 >
   <Fragment slot="subtitle">
-האם הבגדים שלכם באמת מספרים את הסיפור שלכם?
+האם הבגדים שלכם באמת </br>מספרים את הסיפור שלכם?
   </Fragment>
 </Hero3>
 
@@ -280,7 +281,7 @@ const testimonials = await fetch(SHEET_URL).then(res => res.json()).catch(() => 
         callToAction: {
                     variant: 'primary',
 
-          text: 'אני רוצה לקבור',
+          text: 'אני רוצה לנצוץ',
           href: '/#contact',
           icon: 'tabler:confetti',
         },
@@ -313,7 +314,7 @@ const testimonials = await fetch(SHEET_URL).then(res => res.json()).catch(() => 
         subtitle: 'עד 4 שעות',
         price: 29,
         period: 'כל חודש',
-        feat: 'מתנה אישית, מקורית ומרגשת לכל מי שאוהבים.',
+        feat: 'מתנה אישית, מקורית ומרגשת לכל מי שאוהבים',
         items: [
           {
             description: 'ניתן לרכוש שובר מתנה לכל אחד מהשירותים שלי — מתנה אישית, מקורית ומרגשת לכל מי שאוהבים.',
@@ -531,6 +532,15 @@ id="testimonials"
     description="צוות התמיכה שלנו בדרך כלל מגיב תוך 24 ימי עסקים."
 />
 
-
+        <Note
+    actions={[
+      {
+        variant: 'third',
+        text: 'חזרה למעלה',
+        href: '#hero',
+        icon: 'tabler:chevrons-up',
+      },
+    ]}
+/>
 
 </Layout>
