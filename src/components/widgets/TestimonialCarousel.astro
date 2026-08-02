@@ -15,31 +15,37 @@ const { title = '', subtitle = '', tagline = '', testimonials = [], id, isDark =
 <WidgetWrapper id={id} isDark={isDark} containerClass="max-w-6xl mx-auto relative group">
   <Headline title={title} subtitle={subtitle} tagline={tagline} />
 
-  <div class="swiper testimonial-swiper relative px-10 flex">
-    <div class="swiper-wrapper">
-      {
-        Array.isArray(testimonials) && testimonials.map(({ testimonial, name, job }) => (
-          <div class="swiper-slide !h-auto flex">
-            <div class="flex flex-col p-6 rounded-lg shadow-xl h-full border border-accent  bg-primary text-accent">
-              <blockquote class="flex-auto">
-                <p class="text-lg italic  text-accent">"{testimonial}"</p>
-              </blockquote>
-              <div class="mt-6 border-t border-accent pt-4">
-                <p class="font-semibold text-thirdly">{name}</p>
-                <p class="text-sm text-thirdly ">{job}</p>
+  {/* Overflow guard lives on this outer wrapper only — the Swiper root
+      element itself stays unclipped so its internal UI (scrollbar,
+      arrows) is never at risk of being cut off. */}
+  <div class="relative overflow-hidden">
+    <div class="swiper testimonial-swiper relative px-10 flex" dir="rtl">
+      <div class="swiper-wrapper">
+        {
+          Array.isArray(testimonials) && testimonials.map(({ testimonial, name, job }) => (
+            <div class="swiper-slide !h-auto flex">
+              <div class="flex flex-col p-6 rounded-lg shadow-xl h-full border border-accent bg-primary text-accent">
+                <blockquote class="flex-auto">
+                  <p class="text-lg italic text-accent">"{testimonial}"</p>
+                </blockquote>
+                <div class="mt-6 border-t border-accent pt-4">
+                  <p class="font-semibold text-thirdly">{name}</p>
+                  <p class="text-sm text-thirdly">{job}</p>
+                </div>
               </div>
             </div>
-          </div>
-        ))
-      }
+          ))
+        }
+      </div>
+
+      <!-- Arrows: always visible on mobile, hover-reveal on desktop -->
+      <div class="swiper-button-prev !text-muted opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"></div>
+      <div class="swiper-button-next !text-muted opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"></div>
+
+      <!-- Progress bar instead of per-slide dots. inset-x (not left/right)
+           so it stays centered correctly regardless of text direction. -->
+      <div class="swiper-scrollbar !bottom-0 !top-auto !inset-x-10 !w-auto"></div>
     </div>
-
-    <!-- Arrows: always visible on mobile, hover-reveal on desktop -->
-    <div class="swiper-button-prev !text-muted opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"></div>
-    <div class="swiper-button-next !text-muted opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"></div>
-
-    <!-- Progress bar instead of per-slide dots -->
-    <div class="swiper-scrollbar !bottom-0 !top-auto !w-[calc(100%-5rem)] !left-10"></div>
   </div>
 </WidgetWrapper>
 
@@ -47,8 +53,16 @@ const { title = '', subtitle = '', tagline = '', testimonials = [], id, isDark =
   .testimonial-swiper {
     padding-bottom: 2rem; /* room for the scrollbar */
   }
-  .swiper-scrollbar-drag {
-    background: rgb(var(--color-primary, 0 0 0) / 0.6);
+</style>
+
+{/* is:global — required because Swiper creates .swiper-scrollbar-drag
+    via client-side JS, so a scoped style would never match it. */}
+<style is:global>
+  .testimonial-swiper .swiper-scrollbar {
+    background: (#4C1416 / 0.15);
+  }
+  .testimonial-swiper .swiper-scrollbar-drag {
+    background: (#4C1416 / 0.6);
   }
 </style>
 
@@ -69,6 +83,8 @@ const { title = '', subtitle = '', tagline = '', testimonials = [], id, isDark =
       draggable: true,
       hide: false,
     },
+    observer: true,
+    observeParents: true,
     slidesPerView: 1,
     spaceBetween: 20,
     breakpoints: {
