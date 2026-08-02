@@ -58,12 +58,12 @@ const { title = '', subtitle = '', tagline = '', testimonials = [], id, isDark =
 {/* is:global — required because Swiper creates .swiper-scrollbar-drag
     via client-side JS, so a scoped style would never match it. */}
 <style is:global>
-  .testimonial-swiper .swiper-scrollbar {
-    background: (#4C1416 / 0.15);
-  }
-  .testimonial-swiper .swiper-scrollbar-drag {
-    background: (#4C1416 / 0.6);
-  }
+.testimonial-swiper .swiper-scrollbar {
+  background: rgb(76 20 22 / 0.15);
+}
+.testimonial-swiper .swiper-scrollbar-drag {
+  background: rgb(76 20 22 / 0.6);
+}
 </style>
 
 <script>
