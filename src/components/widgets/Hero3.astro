@@ -8,10 +8,13 @@ const {
   subtitle = await Astro.slots.render('subtitle'),
   tagline,
   actions = await Astro.slots.render('actions'),
-  image,
+  image,     // extended-desktop crop (~1:1) — default across mobile/tablet/most laptops
+  imageWide, // 2:1 crop — only for genuinely large screens, falls back to `image`
   logo,
   id,
 } = Astro.props;
+
+const wideImage = imageWide ?? image;
 ---
 
 <section
@@ -19,24 +22,35 @@ const {
   {...id ? { id } : {}}
 >
 
-  {/* Image layer — pinned to the left edge, free to bleed toward center.
-      This no longer participates in the content's flex layout at all,
-      so it can never push or overlap-on-top-of the logo/text again. */}
-  <div class="absolute right-0 top-0 h-full w-[58%] sm:w-[50%] md:w-[45%] z-0 overflow-visible">
-    {image && (
+  {/* Default background — extended-desktop crop, used at every size
+      up until the "genuinely wide screen" tier below */}
+  {image && (
+    <div class="absolute inset-0 w-full h-full z-0 2xl:hidden">
       <Image
         layout="cover"
         style="width: 100%; height: 100%; object-position: top center;"
-        widths={[400, 768, 1024, 2040]}
-        sizes="60vw"
+        widths={[400, 768, 1024, 1600]}
+        sizes="100vw"
         loading="eager"
         {...image}
       />
-    )}
-  </div>
+    </div>
+  )}
 
-  {/* Content layer — sits above the image (z-10), anchored to the right
-      regardless of how far the image bleeds underneath it. */}
+  {/* Wide-screen background — only at 2xl and up (1536px+) */}
+  {wideImage && (
+    <div class="hidden 2xl:block absolute inset-0 w-full h-full z-0">
+      <Image
+        layout="cover"
+        style="width: 100%; height: 100%; object-position: top center;"
+        widths={[1536, 1920, 2800]}
+        sizes="100vw"
+        loading="eager"
+        {...wideImage}
+      />
+    </div>
+  )}
+
   <div class="relative z-10 h-full flex items-center justify-center">
     <div class="w-full max-w-sm md:max-w-md lg:max-w-lg px-4 sm:px-6 md:pr-10 lg:pr-16
                 flex flex-col items-end md:items-center text-end md:text-center
@@ -53,7 +67,7 @@ const {
       )}
 
       {subtitle && (
-        <div class="text-lg sm:text-xl md:text-2xl font-bold" set:html={subtitle} />
+        <div class="text-lg sm:text-xl md:text-2xl font-bold text-accent" set:html={subtitle} />
       )}
 
       {actions && (

@@ -1,10 +1,6 @@
 ---
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 import Headline from '~/components/ui/Headline.astro';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/autoplay';
-import 'swiper/css/scrollbar';
 
 interface Testimonial { testimonial: string; name: string; job: string; }
 interface Props { title?: string; subtitle?: string; tagline?: string; testimonials?: Testimonial[]; id?: string; isDark?: boolean; }
@@ -15,81 +11,100 @@ const { title = '', subtitle = '', tagline = '', testimonials = [], id, isDark =
 <WidgetWrapper id={id} isDark={isDark} containerClass="max-w-6xl mx-auto relative group">
   <Headline title={title} subtitle={subtitle} tagline={tagline} />
 
-  {/* Overflow guard lives on this outer wrapper only — the Swiper root
-      element itself stays unclipped so its internal UI (scrollbar,
-      arrows) is never at risk of being cut off. */}
-  <div class="relative overflow-hidden">
-    <div class="swiper testimonial-swiper relative px-10 flex" dir="rtl">
-      <div class="swiper-wrapper">
-        {
-          Array.isArray(testimonials) && testimonials.map(({ testimonial, name, job }) => (
-            <div class="swiper-slide !h-auto flex">
-              <div class="flex flex-col p-6 rounded-lg shadow-xl h-full border border-accent bg-primary text-accent">
-                <blockquote class="flex-auto">
-                  <p class="text-lg italic text-accent">"{testimonial}"</p>
-                </blockquote>
-                <div class="mt-6 border-t border-accent pt-4">
-                  <p class="font-semibold text-thirdly">{name}</p>
-                  <p class="text-sm text-thirdly">{job}</p>
-                </div>
-              </div>
-            </div>
-          ))
-        }
+  <div class="relative px-10" data-testimonial-carousel>
+  <div
+  class="testimonial-track flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+  dir="rtl"
+>
+  {testimonials.map(({ testimonial, name, job }, i) => (
+    <div class="testimonial-slide shrink-0 basis-full snap-start" data-index={i}>
+      <div class="max-w-xl mx-auto flex flex-col p-6 rounded-lg shadow-xl h-full border border-accent bg-primary text-accent">
+        <blockquote class="flex-auto">
+          <p class="text-lg italic text-accent">"{testimonial}"</p>
+        </blockquote>
+        <div class="mt-6 border-t border-accent pt-4">
+          <p class="font-semibold text-thirdly">{name}</p>
+          <p class="text-sm text-thirdly">{job}</p>
+        </div>
       </div>
+    </div>
+  ))}
+</div>
 
-      <!-- Arrows: always visible on mobile, hover-reveal on desktop -->
-      <div class="swiper-button-prev !text-muted opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"></div>
-      <div class="swiper-button-next !text-muted opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"></div>
+    <!-- RTL: "prev" (earlier content) sits on the right, "next" on the left — mirrored on purpose -->
+    <button type="button" class="testimonial-prev absolute top-1/2 -translate-y-1/2 -right-2 md:-right-4 text-muted hover:text-primary opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 disabled:opacity-20" aria-label="הקודם">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+    </button>
+    <button type="button" class="testimonial-next absolute top-1/2 -translate-y-1/2 -left-2 md:-left-4 text-muted hover:text-primary opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 disabled:opacity-20" aria-label="הבא">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg>
+    </button>
 
-      <!-- Progress bar instead of per-slide dots. inset-x (not left/right)
-           so it stays centered correctly regardless of text direction. -->
-      <div class="swiper-scrollbar !bottom-0 !top-auto !inset-x-10 !w-auto"></div>
+    <div class="mt-4 h-1 w-full rounded-full bg-primary/15 overflow-hidden">
+      <div class="testimonial-progress h-full rounded-full bg-primary transition-[width] duration-300" style="width:0%"></div>
     </div>
   </div>
 </WidgetWrapper>
 
-<style>
-  .testimonial-swiper {
-    padding-bottom: 2rem; /* room for the scrollbar */
-  }
-</style>
-
-{/* is:global — required because Swiper creates .swiper-scrollbar-drag
-    via client-side JS, so a scoped style would never match it. */}
-<style is:global>
-.testimonial-swiper .swiper-scrollbar {
-  background: rgb(76 20 22 / 0.15);
-}
-.testimonial-swiper .swiper-scrollbar-drag {
-  background: rgb(76 20 22 / 0.6);
-}
-</style>
-
 <script>
-  import Swiper from 'swiper';
-  import { Autoplay, Navigation, Scrollbar } from 'swiper/modules';
+  function initTestimonialCarousel(root: HTMLElement) {
+    const track = root.querySelector<HTMLElement>('.testimonial-track');
+    const slides = Array.from(root.querySelectorAll<HTMLElement>('.testimonial-slide'));
+    const prevBtn = root.querySelector<HTMLButtonElement>('.testimonial-prev');
+    const nextBtn = root.querySelector<HTMLButtonElement>('.testimonial-next');
+    const progress = root.querySelector<HTMLElement>('.testimonial-progress');
+    if (!track || !slides.length) return;
 
-  new Swiper('.testimonial-swiper', {
-    modules: [Autoplay, Navigation, Scrollbar],
-    loop: true,
-    autoplay: { delay: 4000, disableOnInteraction: false },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    scrollbar: {
-      el: '.swiper-scrollbar',
-      draggable: true,
-      hide: false,
-    },
-    observer: true,
-    observeParents: true,
-    slidesPerView: 1,
-    spaceBetween: 20,
-    breakpoints: {
-      768: { slidesPerView: 2, spaceBetween: 24 },
-      1024: { slidesPerView: 3, spaceBetween: 30 },
-    },
-  });
+    let current = 0;
+    let isProgrammaticScroll = false;
+    let scrollEndTimer: number;
+
+    const update = () => {
+      if (progress) progress.style.width = `${(current / (slides.length - 1)) * 100}%`;
+    };
+
+  const goTo = (index: number) => {
+  current = (index + slides.length) % slides.length;
+  isProgrammaticScroll = true;
+
+  const trackRect = track.getBoundingClientRect();
+  const slideRect = slides[current].getBoundingClientRect();
+  const delta = slideRect.left - trackRect.left;
+  track.scrollBy({ left: delta, behavior: 'smooth' });
+
+  update();
+  window.clearTimeout(scrollEndTimer);
+  scrollEndTimer = window.setTimeout(() => { isProgrammaticScroll = false; }, 500);
+};
+
+    prevBtn?.addEventListener('click', () => goTo(current - 1));
+    nextBtn?.addEventListener('click', () => goTo(current + 1));
+
+    // Only resync `current` from scroll position after a manual drag/swipe —
+    // never during our own programmatic steps.
+    let dragDebounce: number;
+    track.addEventListener('scroll', () => {
+      if (isProgrammaticScroll) return;
+      window.clearTimeout(dragDebounce);
+      dragDebounce = window.setTimeout(() => {
+        let closest = 0;
+        let closestDist = Infinity;
+        slides.forEach((slide, i) => {
+          const dist = Math.abs(slide.offsetLeft - track.scrollLeft);
+          if (dist < closestDist) { closestDist = dist; closest = i; }
+        });
+        current = closest;
+        update();
+      }, 120);
+    });
+
+    let autoplay = window.setInterval(() => goTo(current + 1), 4000);
+    root.addEventListener('mouseenter', () => window.clearInterval(autoplay));
+    root.addEventListener('mouseleave', () => {
+      autoplay = window.setInterval(() => goTo(current + 1), 4000);
+    });
+
+    update();
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-testimonial-carousel]').forEach(initTestimonialCarousel);
 </script>
