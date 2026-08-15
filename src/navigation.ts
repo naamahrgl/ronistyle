@@ -28,7 +28,7 @@ export const headerData = {
     },
 
   ],
-  actions: [{ text: 'whatsapp', href: 'https://wa.me/972543452440', icon: 'tabler:brand-whatsapp' }],
+  actions: [{ text: 'WhatsApp', href: 'https://wa.me/972543452440', icon: 'tabler:brand-whatsapp' }],
 };
 
 export const footerData = {

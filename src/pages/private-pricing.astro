@@ -6,6 +6,7 @@ import Image from '~/components/common/Image.astro';
 import { Icon } from 'astro-icon/components';
 import Button from '~/components/ui/Button.astro';
 import logoImg from '~/assets/images/logobg.webp';
+import bowtieImg from '~/assets/images/bowtie2.png';
 
 const metadata = {
   title: 'התהליך והמחירון | Roni Style',
@@ -20,7 +21,7 @@ const metadata = {
   <div class="mb-5 flex justify-center">
   <Image src={logoImg} alt="Roni Style" width={180} class="h-auto" />
 </div>
-      <h1 class="text-2xl md:text-4xl font-bold text-[#451113] mb-4">איך זה עובד?</h1>
+      <h1 class="text-2xl md:text-2xl font-bold text-primary mb-4">איך זה עובד?</h1>
       <p class="text-muted text-base md:text-lg">
         כאן תמצאו הסבר על התהליך, סוגי המפגשים והמחירון — כדי שתדעו בדיוק למה לצפות.
       </p>
@@ -35,12 +36,12 @@ const metadata = {
             <Icon name="tabler:home" class="w-5 h-5 text-accent" />
           </div>
           <div>
-            <h2 class="text-lg md:text-xl font-semibold text-[#451113] leading-tight">באה לביקור</h2>
+            <h2 class="text-lg md:text-xl font-semibold text-primary leading-tight">באה לביקור</h2>
             <p class="text-xs text-muted mt-1">אצלך בבית · עד 4 שעות · לקוחות חדשים וחוזרים</p>
           </div>
         </div>
 
-  <div class="text-sm text-[#451113] font-medium">
+  <div class="text-sm text-primary font-medium">
   <p style="line-height: 1.25rem; margin-bottom: 1rem;">
     היעד שלנו היא ליצור ארון בגדים אפקטיבי, שיהפוך את תהליך ההתארגנות שלך לפשוט ומהיר. כשתפתחו את
     הארון בבוקר, הבגדים המתאימים יהיו זמינים ומסודרים עבורך, ויהיה לך קל יותר לבחור את מה שנחוץ לכל
@@ -67,12 +68,12 @@ const metadata = {
             <Icon name="tabler:shopping-bag" class="w-5 h-5 text-accent" />
           </div>
           <div>
-            <h2 class="text-lg md:text-xl font-semibold text-[#451113] leading-tight">יום הקניות הגדול</h2>
+            <h2 class="text-lg md:text-xl font-semibold text-primary leading-tight">יום הקניות הגדול</h2>
             <p class="text-xs text-muted mt-1">המתקיים בת"א · עד 6 שעות · לקוחות חוזרים בלבד</p>
           </div>
         </div>
 
-  <div class="text-sm text-[#451113] font-medium">
+  <div class="text-sm text-primary font-medium">
   <p style="line-height: 1.25rem; margin-bottom: 1rem; margin-top: 1rem;">
             יום שכולו FUN! אני מגיעה לפניך למקום שנבחר יחד, ומכינה עבורך מלתחה התחלתית שתתאים לך.
           </p>
@@ -113,11 +114,11 @@ const metadata = {
             <Icon name="tabler:refresh" class="w-5 h-5 text-accent" />
           </div>
           <div>
-            <h3 class="text-base md:text-lg font-semibold text-[#451113] leading-tight">באה לביקור קטן</h3>
+            <h3 class="text-base md:text-lg font-semibold text-primary leading-tight">באה לביקור קטן</h3>
             <p class="text-xs text-muted mt-1">עד שעתיים · לקוחות חוזרים בלבד</p>
           </div>
         </div>
-  <div class="text-sm text-[#451113] font-medium">
+  <div class="text-sm text-primary font-medium">
   <p style="line-height: 1.25rem; ">
             מיועד ללקוחות שרוצים לחדש מלתחה עם ביקור ביתי קצר עבור חידוש ורענון לקראת
             סיבוב קניות מחודש.
@@ -131,11 +132,11 @@ const metadata = {
             <Icon name="tabler:calendar-star" class="w-5 h-5 text-accent " />
           </div>
           <div>
-            <h3 class="text-base md:text-lg font-semibold text-[#451113] leading-tight">ארוע ממוקד</h3>
+            <h3 class="text-base md:text-lg font-semibold text-primary leading-tight">ארוע ממוקד</h3>
             <p class="text-xs text-muted mt-1">מתקיים בת"א · שעתיים · לקוחות חדשים וחוזרים</p>
           </div>
         </div>
-      <div class="text-sm text-[#451113] font-medium">
+      <div class="text-sm text-primary font-medium">
   <p style="line-height: 1.25rem; margin-bottom: 1rem;">
             מעניק ליווי אישי למציאת הלוק המושלם עבור אירוע ספציפי.
           </p>
@@ -151,155 +152,128 @@ const metadata = {
     </div>
 
     <!-- PRICING -->
+ <!-- PRICING -->
     <div class="max-w-5xl mx-auto text-center mb-6 md:mb-8">
-      <h2 class="text-xl md:text-2xl font-bold text-[#451113] mb-2">תמחור</h2>
+      <h2 class="text-xl md:text-2xl font-bold text-primary mb-2">כמה זה עולה?</h2>
       <p class="text-muted text-sm">כל המחירים כוללים ליווי אישי מלא לאורך המפגש</p>
     </div>
 
-    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row sm:flex-wrap items-stretch justify-center gap-5 md:gap-6 mb-10 md:mb-12">
+    <div class="max-w-6xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4 mb-10 md:mb-12 items-stretch">
 
       <!-- 1. Combo package - highlighted -->
-      <div class="w-full sm:w-[48%] lg:w-[30%] flex flex-col">
-        <div class="flex flex-col w-full h-full rounded-xl border-2 border-primary bg-thirdly shadow-lg px-5 py-6">
+      <div class="flex flex-col">
+        <div class="relative flex flex-col w-full h-full rounded-xl border-2 border-primary bg-thirdly shadow-lg px-3 py-4 md:px-4 md:py-5">
+          <div class="absolute -top-3 -right-3 z-[1] w-16 h-16 overflow-visible">
+            <img src={bowtieImg.src} alt="Bowtie" class="w-full h-full object-contain rotate-45" />
+          </div>
           <div class="flex-grow flex flex-col justify-between">
             <div>
-              <div class="flex justify-center mb-4">
-                <span class="bg-primary text-accent text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">
-                  המומלץ ביותר
-                </span>
+              <div class="rounded-full bg-primary p-2.5 mx-auto mb-2 w-fit">
+                <Icon name="tabler:sparkles" class="w-5 h-5 text-accent" />
               </div>
-              <div class="flex flex-col items-center mb-4">
-                <div class="rounded-full bg-primary p-3 mb-4">
-                  <Icon name="tabler:sparkles" class="w-6 h-6 text-accent" />
-                </div>
-                <h3 class="text-lg font-semibold uppercase text-[#451113] text-center">חבילת הפפיון</h3>
-              </div>
-              <p class="font-light text-muted text-center mb-4 text-sm leading-snug">
-באה לביקור + יום הקניות הגדול
+              <h3 class="text-sm md:text-base font-semibold uppercase text-primary text-center leading-tight">חבילת הפפיון</h3>
+              <p class="font-light text-muted text-center mt-1 mb-2 text-xs leading-snug">באה לביקור + יום הקניות הגדול</p>
+              <p class="text-center text-primary mb-1">
+                <span class="text-2xl md:text-3xl font-bold">2,500</span>
+                <span class="text-xs md:text-sm font-medium align-bottom">₪</span>
               </p>
-              <p class="text-3xl font-bold text-center text-[#451113] mb-1">2,500 ₪</p>
-              <p class="text-xs text-muted text-center mb-4">+250 ₪ נסיעה מחוץ לעיר, לפי מרחק היעד</p>
+              <p class="text-[11px] text-muted text-center mb-3">המחיר עשוי להשתנות בהתאם למרחק הנסיעה</p>
             </div>
           </div>
-          <div class="mt-2 flex justify-center">
-            <Button text="לתיאום פגישה" href="https://wa.me/972543452440" class="w-full sm:w-auto" />
+          <div class="flex justify-center">
+            <Button text="לתיאום פגישה" href="https://wa.me/972543452440" class="w-full text-sm" />
           </div>
         </div>
       </div>
 
       <!-- 2. Shopping day only -->
-      <div class="w-full sm:w-[48%] lg:w-[30%] flex flex-col">
-        <div class="flex flex-col w-full h-full rounded-xl border border-accent bg-thirdly shadow px-5 py-6">
+      <div class="flex flex-col">
+        <div class="flex flex-col w-full h-full rounded-xl border border-accent bg-thirdly shadow px-3 py-4 md:px-4 md:py-5">
           <div class="flex-grow flex flex-col justify-between">
             <div>
-              <div class="flex justify-center mb-4">
-                <span class="invisible text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">
-                  המומלץ ביותר
-                </span>
+              <div class="rounded-full bg-primary p-2.5 mx-auto mb-2 w-fit">
+                <Icon name="tabler:shopping-bag" class="w-5 h-5 text-accent" />
               </div>
-              <div class="flex flex-col items-center mb-4">
-                <div class="rounded-full bg-primary p-3 mb-4">
-                  <Icon name="tabler:shopping-bag" class="w-6 h-6 text-accent" />
-                </div>
-                <h3 class="text-lg font-semibold uppercase text-[#451113] text-center">יום הקניות הגדול</h3>
-              </div>
-              <p class="font-light text-muted text-center mb-4 text-sm leading-snug">יום שכולו FUN</p>
-              <p class="text-3xl font-bold text-center text-[#451113] mb-1">1,800 ₪</p>
-              <p class="text-xs text-muted text-center mb-4">*מיועד אך ורק ללקוחות קבועים שכבר עברו סשן אחד אצלי לפחות</p>
+              <h3 class="text-sm md:text-base font-semibold uppercase text-primary text-center leading-tight">יום הקניות הגדול</h3>
+              <p class="font-light text-muted text-center mt-1 mb-2 text-xs leading-snug">יום שכולו FUN</p>
+              <p class="text-center text-primary mb-1">
+                <span class="text-2xl md:text-3xl font-bold">1,800</span>
+                <span class="text-xs md:text-sm font-medium align-bottom">₪</span>
+              </p>
+              <p class="text-[11px] text-muted text-center mb-3">&nbsp;</p>
             </div>
           </div>
-          <div class="mt-2 flex justify-center">
-            <Button text="לתיאום פגישה" href="https://wa.me/972543452440" class="w-full sm:w-auto" />
+          <div class="flex justify-center">
+            <Button text="לתיאום פגישה" href="https://wa.me/972543452440" class="w-full text-sm" />
           </div>
         </div>
       </div>
 
       <!-- 3. Small return visit -->
-      <div class="w-full sm:w-[48%] lg:w-[30%] flex flex-col">
-        <div class="flex flex-col w-full h-full rounded-xl border border-accent bg-thirdly shadow px-5 py-6">
+      <div class="flex flex-col">
+        <div class="flex flex-col w-full h-full rounded-xl border border-accent bg-thirdly shadow px-3 py-4 md:px-4 md:py-5">
           <div class="flex-grow flex flex-col justify-between">
             <div>
-              <div class="flex justify-center mb-4">
-                <span class="invisible text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">
-                  המומלץ ביותר
-                </span>
+              <div class="rounded-full bg-primary p-2.5 mx-auto mb-2 w-fit">
+                <Icon name="tabler:refresh" class="w-5 h-5 text-accent" />
               </div>
-              <div class="flex flex-col items-center mb-4">
-                <div class="rounded-full bg-primary p-3 mb-4">
-                  <Icon name="tabler:refresh" class="w-6 h-6 text-accent" />
-                </div>
-                <h3 class="text-lg font-semibold uppercase text-[#451113] text-center">באה לביקור קטן</h3>
-              </div>
-              <p class="font-light text-muted text-center mb-4 text-sm leading-snug">ביקור רענון</p>
-              <p class="text-3xl font-bold text-center text-[#451113] mb-1">650 ₪</p>
-              <p class="text-xs text-muted text-center mb-4">
-                + תוספת נסיעה מחוץ לעיר תלויה במרחק היעד<br/><br/>
-                *מיועד אך ורק ללקוחות קבועים שכבר עברו סשן אחד אצלי לפחות ומעוניינים בביקור קצר בארון לפני מסע קניות נוסף
+              <h3 class="text-sm md:text-base font-semibold uppercase text-primary text-center leading-tight">באה לביקור קטן</h3>
+              <p class="font-light text-muted text-center mt-1 mb-2 text-xs leading-snug">ביקור רענון</p>
+              <p class="text-center text-primary mb-1">
+                <span class="text-2xl md:text-3xl font-bold">650</span>
+                <span class="text-xs md:text-sm font-medium align-bottom">₪</span>
               </p>
+              <p class="text-[11px] text-muted text-center mb-3">המחיר עשוי להשתנות בהתאם למרחק הנסיעה</p>
             </div>
           </div>
-          <div class="mt-2 flex justify-center">
-            <Button text="לתיאום פגישה" href="https://wa.me/972543452440" class="w-full sm:w-auto" />
+          <div class="flex justify-center">
+            <Button text="לתיאום פגישה" href="https://wa.me/972543452440" class="w-full text-sm" />
           </div>
         </div>
       </div>
 
       <!-- 4. Home visit standalone -->
-      <div class="w-full sm:w-[48%] lg:w-[30%] flex flex-col">
-        <div class="flex flex-col w-full h-full rounded-xl border border-accent bg-thirdly shadow px-5 py-6">
+      <div class="flex flex-col">
+        <div class="flex flex-col w-full h-full rounded-xl border border-accent bg-thirdly shadow px-3 py-4 md:px-4 md:py-5">
           <div class="flex-grow flex flex-col justify-between">
             <div>
-              <div class="flex justify-center mb-4">
-                <span class="invisible text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">
-                  המומלץ ביותר
-                </span>
+              <div class="rounded-full bg-primary p-2.5 mx-auto mb-2 w-fit">
+                <Icon name="tabler:home" class="w-5 h-5 text-accent" />
               </div>
-              <div class="flex flex-col items-center mb-4">
-                <div class="rounded-full bg-primary p-3 mb-4">
-                  <Icon name="tabler:home" class="w-6 h-6 text-accent" />
-                </div>
-                <h3 class="text-lg font-semibold uppercase text-[#451113] text-center">באה לביקור בלבד</h3>
-              </div>
-              <p class="font-light text-muted text-center mb-4 text-sm leading-snug">הפכו את הארון לאפקטיבי</p>
-              <p class="text-3xl font-bold text-center text-[#451113] mb-1">1,500 ₪</p>
-              <p class="text-xs text-muted text-center mb-4">
-                + תוספת נסיעה מחוץ לעיר תלויה במרחק היעד<br/><br/>
-                *מיועד לכל סוגי הלקוחות
+              <h3 class="text-sm md:text-base font-semibold uppercase text-primary text-center leading-tight">באה לביקור בלבד</h3>
+              <p class="font-light text-muted text-center mt-1 mb-2 text-xs leading-snug">הפכו את הארון לאפקטיבי</p>
+              <p class="text-center text-primary mb-1">
+                <span class="text-2xl md:text-3xl font-bold">1,500</span>
+                <span class="text-xs md:text-sm font-medium align-bottom">₪</span>
               </p>
+              <p class="text-[11px] text-muted text-center mb-3">המחיר עשוי להשתנות בהתאם למרחק הנסיעה</p>
             </div>
           </div>
-          <div class="mt-2 flex justify-center">
-            <Button text="לתיאום פגישה" href="https://wa.me/972543452440" class="w-full sm:w-auto" />
+          <div class="flex justify-center">
+            <Button text="לתיאום פגישה" href="https://wa.me/972543452440" class="w-full text-sm" />
           </div>
         </div>
       </div>
 
       <!-- 5. Focused event -->
-      <div class="w-full sm:w-[48%] lg:w-[30%] flex flex-col">
-        <div class="flex flex-col w-full h-full rounded-xl border border-accent bg-thirdly shadow px-5 py-6">
+      <div class="flex flex-col">
+        <div class="flex flex-col w-full h-full rounded-xl border border-accent bg-thirdly shadow px-3 py-4 md:px-4 md:py-5">
           <div class="flex-grow flex flex-col justify-between">
             <div>
-              <div class="flex justify-center mb-4">
-                <span class="invisible text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">
-                  המומלץ ביותר
-                </span>
+              <div class="rounded-full bg-primary p-2.5 mx-auto mb-2 w-fit">
+                <Icon name="tabler:calendar-star" class="w-5 h-5 text-accent" />
               </div>
-              <div class="flex flex-col items-center mb-4">
-                <div class="rounded-full bg-primary p-3 mb-4">
-                  <Icon name="tabler:calendar-star" class="w-6 h-6 text-accent" />
-                </div>
-                <h3 class="text-lg font-semibold uppercase text-[#451113] text-center">ארוע ממוקד</h3>
-              </div>
-              <p class="font-light text-muted text-center mb-4 text-sm leading-snug">תמחור שעתי</p>
-              <p class="text-3xl font-bold text-center text-[#451113] mb-1">320 ₪</p>
-              <p class="text-xs text-muted text-center mb-4">
-                + תוספת נסיעה מחוץ לעיר במקרים חריגים. מאפשר גמישות בהתאם לצורך ולמשך זמן הליווי בפועל<br/><br/>
-                *מיועד לכל סוגי הלקוחות
+              <h3 class="text-sm md:text-base font-semibold uppercase text-primary text-center leading-tight">ארוע ממוקד</h3>
+              <p class="font-light text-muted text-center mt-1 mb-2 text-xs leading-snug">תמחור שעתי</p>
+              <p class="text-center text-primary mb-1">
+                <span class="text-2xl md:text-3xl font-bold">320</span>
+                <span class="text-xs md:text-sm font-medium align-bottom">₪</span>
               </p>
+              <p class="text-[11px] text-muted text-center mb-3">המחיר עשוי להשתנות בהתאם למרחק הנסיעה</p>
             </div>
           </div>
-          <div class="mt-2 flex justify-center">
-            <Button text="לתיאום פגישה" href="https://wa.me/972543452440" class="w-full sm:w-auto" />
+          <div class="flex justify-center">
+            <Button text="לתיאום פגישה" href="https://wa.me/972543452440" class="w-full text-sm" />
           </div>
         </div>
       </div>
@@ -315,7 +289,7 @@ const metadata = {
     </div>
 
     <div class="text-center mb-6">
-      <Button text="לשאלות ותיאום — בואי נדבר" href="https://wa.me/972543452440" icon="tabler:brand-whatsapp" />
+      <Button text="לשאלות ותיאום — בואו נדבר" href="https://wa.me/972543452440" icon="tabler:brand-whatsapp" />
     </div>
   </section>
 </Layout>
