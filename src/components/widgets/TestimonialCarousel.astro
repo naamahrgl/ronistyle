@@ -11,89 +11,133 @@ const { title = '', subtitle = '', tagline = '', testimonials = [], id, isDark =
 <WidgetWrapper id={id} isDark={isDark} containerClass="max-w-6xl mx-auto relative group">
   <Headline title={title} subtitle={subtitle} tagline={tagline} />
 
-  <div class="relative px-10" data-testimonial-carousel>
-  <div
-  class="testimonial-track flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
-  dir="rtl"
->
-  {testimonials.map(({ testimonial, name, job }, i) => (
-    <div class="testimonial-slide shrink-0 basis-full snap-start" data-index={i}>
-      <div class="max-w-xl mx-auto flex flex-col p-6 rounded-lg shadow-xl h-full border border-accent bg-primary text-accent">
-        <blockquote class="flex-auto">
-          <p class="text-lg italic text-accent">"{testimonial}"</p>
-        </blockquote>
-        <div class="mt-6 border-t border-accent pt-4">
-          <p class="font-semibold text-thirdly">{name}</p>
-          <p class="text-sm text-thirdly">{job}</p>
+  <!-- Wrapper is capped to the card's own max width (max-w-xl) so the arrows
+       stay adjacent to the card on every screen size, instead of sitting out
+       at the edge of the much wider outer container. -->
+  <div class="relative max-w-xl mx-auto px-8 md:px-10" data-testimonial-carousel>
+    <div
+      class="testimonial-track flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+      dir="rtl"
+    >
+      {testimonials.map(({ testimonial, name, job }, i) => (
+        <div class="testimonial-slide shrink-0 basis-full snap-start" data-index={i}>
+          <div class="flex flex-col p-6 rounded-lg shadow-xl h-full border border-accent bg-primary text-accent">
+            <blockquote class="flex-auto">
+              <p class="text-lg italic text-accent">"{testimonial}"</p>
+            </blockquote>
+            <div class="mt-6 border-t border-accent pt-4">
+              <p class="font-semibold text-thirdly">{name}</p>
+              <p class="text-sm text-thirdly">{job}</p>
+            </div>
+          </div>
         </div>
-      </div>
+      ))}
     </div>
-  ))}
-</div>
 
-    <!-- RTL: "prev" (earlier content) sits on the right, "next" on the left — mirrored on purpose -->
-    <button type="button" class="testimonial-prev absolute top-1/2 -translate-y-1/2 -right-2 md:-right-4 text-muted hover:text-primary opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 disabled:opacity-20" aria-label="הקודם">
+    <!-- RTL: "prev" (earlier content) sits on the right, "next" on the left — mirrored on purpose.
+         Positioned close to the card edge on both mobile and desktop now. -->
+    <button type="button" class="testimonial-prev absolute top-1/2 -translate-y-1/2 -right-1 md:-right-2 text-muted hover:text-primary opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 disabled:opacity-20" aria-label="הקודם">
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
     </button>
-    <button type="button" class="testimonial-next absolute top-1/2 -translate-y-1/2 -left-2 md:-left-4 text-muted hover:text-primary opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 disabled:opacity-20" aria-label="הבא">
+    <button type="button" class="testimonial-next absolute top-1/2 -translate-y-1/2 -left-1 md:-left-2 text-muted hover:text-primary opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 disabled:opacity-20" aria-label="הבא">
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg>
     </button>
 
-    <div class="mt-4 h-1 w-full rounded-full bg-primary/15 overflow-hidden">
-      <div class="testimonial-progress h-full rounded-full bg-primary transition-[width] duration-300" style="width:0%"></div>
+    <!-- Dot indicators. Each dot's size/opacity is a pure function of its
+         distance from the active one — no persisted "visible window" state
+         at all, so it can never get stuck once you're a few slides in. Only
+         nearby dots change size at each step (by exactly one tier), which is
+         what makes it read as smooth, continuous motion rather than a
+         reshuffle — the same idea iOS/Instagram-style paginators use. -->
+    <div class="mt-4 flex items-center justify-center">
+      {testimonials.map((_, i) => (
+        <button
+          type="button"
+          class="testimonial-dot shrink-0 rounded-full bg-primary/30 transition-all duration-300 ease-out"
+          style="width:8px;height:8px;"
+          data-index={i}
+          aria-label={`מעבר לעדות ${i + 1}`}
+        ></button>
+      ))}
     </div>
   </div>
 </WidgetWrapper>
 
 <script>
-  function initTestimonialCarousel(root: HTMLElement) {
-    const track = root.querySelector<HTMLElement>('.testimonial-track');
-    const slides = Array.from(root.querySelectorAll<HTMLElement>('.testimonial-slide'));
-    const prevBtn = root.querySelector<HTMLButtonElement>('.testimonial-prev');
-    const nextBtn = root.querySelector<HTMLButtonElement>('.testimonial-next');
-    const progress = root.querySelector<HTMLElement>('.testimonial-progress');
+  // Distance-from-active tiers: [diameter (px), half-gap margin (px), opacity].
+  // Distance 4+ collapses to nothing (0 size, 0 margin, invisible) so a huge
+  // testimonial list never grows the row — only ~7 dots ever take up space.
+  const DOT_LEVELS = [
+    { diameter: 10, margin: 3, opacity: 1 },    // distance 0 — active
+    { diameter: 8, margin: 3, opacity: 1 },     // distance 1
+    { diameter: 6, margin: 2, opacity: 0.6 },   // distance 2
+    { diameter: 4, margin: 1, opacity: 0.35 },  // distance 3 — the "more this way" hint
+  ];
+  const COLLAPSED = { diameter: 0, margin: 0, opacity: 0 };
+
+  function initTestimonialCarousel(root:any) {
+    const track = root.querySelector('.testimonial-track');
+    const slides = Array.from(root.querySelectorAll('.testimonial-slide')) as any;
+    const prevBtn = root.querySelector('.testimonial-prev');
+    const nextBtn = root.querySelector('.testimonial-next');
+    const dots = Array.from(root.querySelectorAll('.testimonial-dot'));
     if (!track || !slides.length) return;
 
     let current = 0;
     let isProgrammaticScroll = false;
-    let scrollEndTimer: number;
+    let scrollEndTimer =0;
 
-    const update = () => {
-      if (progress) progress.style.width = `${(current / (slides.length - 1)) * 100}%`;
+    const updateDots = () => {
+      if (!dots.length) return;
+
+      dots.forEach((dot :any, i) => {
+        const dist = Math.abs(i - current);
+        const level = DOT_LEVELS[dist] ?? COLLAPSED;
+        const isActive = dist === 0;
+
+        dot.style.width = `${level.diameter}px`;
+        dot.style.height = `${level.diameter}px`;
+        dot.style.marginInline = `${level.margin}px`;
+        dot.style.opacity = String(level.opacity);
+        dot.style.pointerEvents = level.diameter === 0 ? 'none' : 'auto';
+        dot.classList.toggle('bg-primary', isActive);
+        dot.classList.toggle('bg-primary/30', !isActive);
+      });
     };
 
-  const goTo = (index: number) => {
-  current = (index + slides.length) % slides.length;
-  isProgrammaticScroll = true;
+    const goTo = (index :number) => {
+      current = (index + slides.length) % slides.length;
+      isProgrammaticScroll = true;
 
-  const trackRect = track.getBoundingClientRect();
-  const slideRect = slides[current].getBoundingClientRect();
-  const delta = slideRect.left - trackRect.left;
-  track.scrollBy({ left: delta, behavior: 'smooth' });
+      const trackRect = track.getBoundingClientRect();
+      const slideRect = slides[current].getBoundingClientRect();
+      const delta = slideRect.left - trackRect.left;
+      track.scrollBy({ left: delta, behavior: 'smooth' });
 
-  update();
-  window.clearTimeout(scrollEndTimer);
-  scrollEndTimer = window.setTimeout(() => { isProgrammaticScroll = false; }, 500);
-};
+      updateDots();
+      window.clearTimeout(scrollEndTimer);
+      scrollEndTimer = window.setTimeout(() => { isProgrammaticScroll = false; }, 500);
+    };
 
     prevBtn?.addEventListener('click', () => goTo(current - 1));
     nextBtn?.addEventListener('click', () => goTo(current + 1));
+    dots.forEach((dot :any, i) => dot.addEventListener('click', () => goTo(i)));
 
     // Only resync `current` from scroll position after a manual drag/swipe —
     // never during our own programmatic steps.
-    let dragDebounce: number;
+    let dragDebounce = 0;
     track.addEventListener('scroll', () => {
       if (isProgrammaticScroll) return;
       window.clearTimeout(dragDebounce);
       dragDebounce = window.setTimeout(() => {
         let closest = 0;
         let closestDist = Infinity;
-        slides.forEach((slide, i) => {
+        slides.forEach((slide :any, i :any) => {
           const dist = Math.abs(slide.offsetLeft - track.scrollLeft);
           if (dist < closestDist) { closestDist = dist; closest = i; }
         });
         current = closest;
-        update();
+        updateDots();
       }, 120);
     });
 
@@ -103,8 +147,8 @@ const { title = '', subtitle = '', tagline = '', testimonials = [], id, isDark =
       autoplay = window.setInterval(() => goTo(current + 1), 4000);
     });
 
-    update();
+    updateDots();
   }
 
-  document.querySelectorAll<HTMLElement>('[data-testimonial-carousel]').forEach(initTestimonialCarousel);
+  document.querySelectorAll('[data-testimonial-carousel]').forEach(initTestimonialCarousel);
 </script>

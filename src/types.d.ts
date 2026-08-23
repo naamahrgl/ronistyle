@@ -230,6 +230,7 @@ export interface Features extends Omit<Headline, 'classes'>, Widget {
   items?: Array<Item>;
   columns?: number;
   defaultIcon?: string;
+  actions?: string | CallToAction[];
   isBeforeContent?: boolean;
   isAfterContent?: boolean;
 }
@@ -251,6 +252,8 @@ export interface Content extends Omit<Headline, 'classes'>, Widget {
   image?: string | unknown;
   items?: Array<Item>;
   columns?: number;
+    mobileColumns?: number;
+
   isReversed?: boolean;
   isAfterContent?: boolean;
   callToAction?: CallToAction;

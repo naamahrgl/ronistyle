@@ -53,6 +53,7 @@ id="hero"
  <Features2
  id="why"
     title="איך יודעים שהגיע הזמן לדייק את הסטייל שלי?"
+    
     subtitle="היי, אם הגעתם לכאן, כנראה שאתם מרגישים שהמלתחה שלכם כבר לא מספרת את הסיפור שלכם. 
 </br></br>
 אולי אתם עומדים בפני שינוי אישי או מקצועי, אולי אתם מרגישים שאין לכם מה ללבוש למרות שהארון מלא, ואולי אתם רוצים פשוט להרגיש יותר מדויקים, בטוחים ונינוחים עם מה שאתם לובשים.
@@ -60,8 +61,17 @@ id="hero"
 אני מאמינה שאין דרך אחת 'נכונה' להתלבש. לכל אדם יש אישיות, סיפור ונוכחות משלו, והתפקיד שלי הוא לזהות אותם ולתרגם אותם לשפה של צבעים, גזרות וסגנון. 
 </br>
 הניסיון שלי כשחקנית לימד אותי לראות את האדם שמאחורי הבגד, וליצור התאמה מדויקת בין מי שהוא לבין מה שהוא משדר לעולם."
+    actions={[
+      {
+        variant: 'third',
+        text: 'שכנעת אותי, בואי נקבע!',
+        href: '#contact',
+        icon: 'tabler:message-circle',
+      },
+    ]}
   >
-    <Fragment slot="bg">
+    <Fragment slot="bg"
+    >
       <div class="absolute inset-0  bg-thirdly"></div>
     </Fragment>
   </Features2>
@@ -75,6 +85,7 @@ id="hero"
       { amount: '5K+',title: 'לקוחות מרוצים', icon: 'tabler:users' },
       { amount: '4.9', title: 'כוכבים',icon: 'tabler:user-star' },
     ]}
+    
   />
   <!-- Features Widget *************** -->
 
@@ -91,6 +102,8 @@ id="hero"
   <Content
     id="about"
     columns={3}
+        mobileColumns={3}
+
     items={[
       {
         icon: 'tabler:brand-instagram',
@@ -127,7 +140,7 @@ id="hero"
     <Fragment slot="content"
     
     >
-      <h2 class="text-2xl font-bold  sm:text-3xl mb-2 tracking-wide">אז מי אני בעצם?</h2>
+      <h2 class="text-3xl font-bold  md:text-4xl mb-2 tracking-wide">אז מי אני בעצם?</h2>
       <p>
 אז אני רוני נתנאל, שחקנית וסטייליסטית אישית.
       </p>
@@ -146,7 +159,8 @@ id="hero"
 </p>
     </Fragment>
 
-    <Fragment slot="bg" >
+    <Fragment slot="bg"
+     >
       <div class="absolute inset-0  "></div>
     </Fragment>
   </Content>
@@ -495,7 +509,7 @@ id="testimonials"
 
 <ContactUs
   id="contact"
-  title="מוכנים להתחיל לכתוב את הסיפור שלכם מחדש?"
+  title="מוכנים להתחיל לעצב את הסיפור שלכם מחדש?"
   subtitle="השאירו פרטים ואחזור אליכם, או שלחו לי הודעה ישירה לוואטסאפ."
   image={{ src: '~/assets/images/bow2.jpg', alt: 'Contact Us' }}
   inputs={[

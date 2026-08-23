@@ -14,6 +14,7 @@ const {
   callToAction,
   items = [],
   columns,
+  mobileColumns,
   image = await Astro.slots.render('image'),
   isReversed = false,
   isAfterContent = false,
@@ -23,6 +24,9 @@ const {
   classes = {},
   bg = await Astro.slots.render('bg'),
 } = Astro.props;
+
+const mobileColumnsClass =
+  mobileColumns === 4 ? 'grid-cols-4' : mobileColumns === 3 ? 'grid-cols-3' : mobileColumns === 2 ? 'grid-cols-2' : '';
 
 const columnsClass =
   columns === 4
@@ -65,42 +69,42 @@ const columnsClass =
 
         {
           items.length > 0 && (
-            <div class:list={['grid mx-auto gap-y-2 md:gap-y-8 gap-0 ', columnsClass]}>
-              {items.map(({ title: itemTitle, description, icon, callToAction }) => (
-                <div class="intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
-                  <div class="flex flex-row max-w-none">
-                    <div class="flex justify-center">
-                      <Icon
-                        name={icon || 'tabler:check'}
-                        class="flex h-7 w-7 items-center justify-center rounded-full bg-thirdly  text-primary p-1 "
-                      />
-                    </div>
-                    <div class="">
-                      {itemTitle && (
-                        <h3 class="text-lg  leading-6  ml-4 rtl:ml-4 rtl:mr-4 ">
-                          {itemTitle}
-                        </h3>
-                      )}
-                      {description && (
-                        <p
-                          class:list={[{ 'mt-0': itemTitle }, 'text-muted  ml-0 rtl:ml-0 rtl:mr-0']}
-                          set:html={description}
-                        />
-                      )}
-                      {callToAction && (
-                        <div
-                          class:list={[
-                            { 'mt-1': itemTitle || description },
-                            'text-lg font-medium leading-6  ml-2 rtl:ml-0 rtl:mr-2',
-                          ]}
-                        >
-                          <Button variant="link" {...callToAction} />
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              ))}
+<div class:list={['grid mx-auto gap-y-2 md:gap-y-8 gap-0 ', mobileColumnsClass, columnsClass]}>              
+       {items.map(({ title: itemTitle, description, icon, callToAction }) => (
+  <div class="intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+    <div class="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-right max-w-none">
+      <div class="flex justify-center">
+        <Icon
+          name={icon || 'tabler:check'}
+          class="flex h-7 w-7 items-center justify-center rounded-full bg-thirdly text-primary p-1"
+        />
+      </div>
+      <div>
+        {itemTitle && (
+          <h3 class="text-lg leading-6 mt-2 sm:mt-0 sm:ml-4 rtl:sm:ml-4 rtl:sm:mr-4">
+            {itemTitle}
+          </h3>
+        )}
+        {description && (
+          <p
+            class:list={[{ 'mt-0': itemTitle }, 'text-muted ml-0 rtl:ml-0 rtl:mr-0']}
+            set:html={description}
+          />
+        )}
+        {callToAction && (
+          <div
+            class:list={[
+              { 'mt-1': itemTitle || description },
+              'text-lg font-medium leading-6 mt-2 sm:mt-0 sm:ml-2 rtl:sm:ml-0 rtl:sm:mr-2',
+            ]}
+          >
+            <Button variant="link" {...callToAction} />
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+))}
             </div>
           )
         }
