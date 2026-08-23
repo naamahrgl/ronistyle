@@ -41,6 +41,11 @@
   }
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 @utility bg-page {
   background-color: var(--aw-color-bg-page);
 }
