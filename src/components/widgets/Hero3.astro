@@ -8,8 +8,8 @@ const {
   subtitle = await Astro.slots.render('subtitle'),
   tagline,
   actions = await Astro.slots.render('actions'),
-  image,      // used from phone up through most laptops
-  imageWide,  // used only on very large/wide screens, falls back to `image`
+  image,
+  imageWide,
   logo,
   id,
 } = Astro.props;
@@ -18,13 +18,11 @@ const wideImage = imageWide ?? image;
 ---
 
 <section
-  class="relative h-[70vh] sm:h-[70vh] md:h-[70vh] overflow-hidden bg-accent"
+  class="hero-section relative overflow-hidden bg-accent"
   {...id ? { id } : {}}
 >
-
-  {/* image — every screen size, until the wide tier below kicks in */}
   {image && (
-    <div class="absolute inset-0 w-full h-full z-0 ">
+    <div class="absolute inset-0 w-full h-full z-0">
       <Image
         layout="cover"
         style="width: 100%; height: 100%; object-position: top center;"
@@ -36,12 +34,9 @@ const wideImage = imageWide ?? image;
     </div>
   )}
 
-  {/* imageWide — only 2xl and up (1536px+) */}
-
-
   <div class="relative z-10 h-full flex items-end justify-end">
     <div class="w-full max-w-sm md:max-w-md lg:max-w-lg px-4 py-4 sm:px-6 md:pr-10 lg:pr-16
-                flex flex-col items-end text-end 
+                flex flex-col items-end text-end
                 gap-4 md:gap-6 text-primary">
 
       {logo && (
@@ -69,5 +64,22 @@ const wideImage = imageWide ?? image;
       )}
     </div>
   </div>
-
 </section>
+
+<style>
+  .hero-section {
+    height: 70vh;
+    height: 70dvh;
+    min-height: 420px;
+    max-height: 900px;
+  }
+
+  @media (max-width: 639px) {
+    .hero-section {
+      height: 56vh;
+      height: 56dvh;
+      min-height: 380px;
+      max-height: 640px;
+    }
+  }
+</style>
