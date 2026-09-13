@@ -5,278 +5,263 @@ import Layout from '~/layouts/PageLayout.astro';
 import Image from '~/components/common/Image.astro';
 import { Icon } from 'astro-icon/components';
 import Button from '~/components/ui/Button.astro';
-import logoImg from '~/assets/images/logobg.webp';
+import logoImg from '~/assets/images/bowtie.png';
 import bowtieImg from '~/assets/images/bowtie2.png';
 
 const metadata = {
   title: 'התהליך והמחירון | Roni Style',
 };
+
+
+interface PackageSection {
+  heading?: string;
+  meta?: string;
+  paragraphs: string[];
+}
+
+interface Package {
+  id: string;
+  highlight?: boolean;
+  icon: string;
+  title: string;
+  subtitle: string;
+  duration?: string;
+  price: string;
+  priceNote: string | null;
+  sections: PackageSection[];
+}
+// Each package carries its own service description(s),
+// so price + explanation always live in the same card.
+const packages: Package[] = [
+  {
+    id: 'combo',
+    highlight: true,
+    icon: 'tabler:sparkles',
+    title: 'חבילת הפפיון',
+    subtitle: 'באה לביקור + יום הקניות הגדול',
+    price: '2,500',
+    priceNote: 'המחיר עשוי להשתנות בהתאם למרחק הנסיעה',
+    sections: [
+      {
+        heading: 'באה לביקור',
+        meta: 'אצלך בבית · עד 4 שעות',
+        paragraphs: [
+          'היעד שלנו היא ליצור ארון בגדים אפקטיבי, שיהפוך את תהליך ההתארגנות שלך לפשוט ומהיר. כשתפתחו את הארון בבוקר, הבגדים המתאימים יהיו זמינים ומסודרים עבורך, ויהיה לך קל יותר לבחור את מה שנחוץ לכל מטרה - עבודה, פגישות, נסיעות, בילויים וכו׳.',
+          'השלב הראשון הוא מיון יסודי של המלתחה הקיימת: נבדוק יחד אילו גזרות, צבעים ובגדים מתאימים ומחמיאים לך, ונגדיר ביחד לך מה שכבר לא נוח או לא תואם לסגנון שלך. לאחר מכן ניצור יחד מגוון לוקים מתוך מה שכבר יש לך, ונעשה שילובים חדשים ומעניינים, כדי שתוכלי להפיק את המקסימום מכל בגד שקיים לך בארון.',
+          'במהלך התהליך, אני כמובן מצלמת אותך עם הלוקים שנבנה כדי שתוכלו לחזור אליהם במידת הצורך.',
+          'לבסוף, נבנה רשימה של פריטים שאולי חסרים במלתחה ויכולים להעשיר אותה בעתיד.',
+        ],
+      },
+      {
+        heading: 'יום הקניות הגדול',
+        meta: 'המתקיים בת"א · עד 6 שעות',
+        paragraphs: [
+          'יום שכולו FUN! אני מגיעה לפניך למקום שנבחר יחד, ומכינה עבורך מלתחה התחלתית שתתאים לך.',
+          'כשתצטרפו, נתחיל במדידות, ונבדוק יחד מה מתאים לך ומה פחות, למה את מתחברים יותר ולמה פחות, ומשם נתגלגל ונדייק לך מלתחה עם פריטים שעושים לך הכי טוב ושתרגישו בהם הכי וואו.',
+          'בדרך כלל אני עורכת את היום הזה בקניון TLV - יש שם מגוון של הכל מהכל, גם פריטי יוקרה וגם בסיסיים. אבל אם תרצו משהו אחר, אפשר ללכת לחנויות ייחודיות שנדוק לפי הכל התקציב וההסגנון שלך כמובן.',
+          'עם הרשימה שהכנו מראש, נבחר לך בגדים שיחמיאו ויתאימו למבנה הגוף שלך, נבחר צבעים ובגדים שעובדים טוב עבורך, והכי חשוב נעשה מזה יום שהוא FUN.',
+          'במהלך היום, אשתף אותך בטיפים איך לבחור את הפריטים המדויקים לך ואיך ליצור מגוון הופעות שלא היית חושבת עליהם.',
+          'נצא עם מלתחה חכמה, ממוקדת, ובסוף המסע הזה גם תדעו איך לגשת לרכישות לבדך בצורה חכמה ומדויקת יותר.',
+          'במהלך היום הזה אני כמובן מצלמת עבורך את הלוקים כדי שתוכלו לחזור "להעתיק" במידת הצורך.',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'home-visit',
+    icon: 'tabler:home',
+    title: 'באה לביקור בלבד',
+    subtitle: 'הפכו את הארון לאפקטיבי',
+    duration: 'אצלך בבית · עד 4 שעות · לקוחות חדשים וחוזרים',
+    price: '1,500',
+    priceNote: 'המחיר עשוי להשתנות בהתאם למרחק הנסיעה',
+    sections: [
+      {
+        paragraphs: [
+          'היעד שלנו היא ליצור ארון בגדים אפקטיבי, שיהפוך את תהליך ההתארגנות שלך לפשוט ומהיר. כשתפתחו את הארון בבוקר, הבגדים המתאימים יהיו זמינים ומסודרים עבורך, ויהיה לך קל יותר לבחור את מה שנחוץ לכל מטרה - עבודה, פגישות, נסיעות, בילויים וכו׳.',
+          'השלב הראשון הוא מיון יסודי של המלתחה הקיימת: נבדוק יחד אילו גזרות, צבעים ובגדים מתאימים ומחמיאים לך, ונגדיר ביחד לך מה שכבר לא נוח או לא תואם לסגנון שלך. לאחר מכן ניצור יחד מגוון לוקים מתוך מה שכבר יש לך, ונעשה שילובים חדשים ומעניינים, כדי שתוכלי להפיק את המקסימום מכל בגד שקיים לך בארון.',
+          'במהלך התהליך, אני כמובן מצלמת אותך עם הלוקים שנבנה כדי שתוכלו לחזור אליהם במידת הצורך.',
+          'לבסוף, נבנה רשימה של פריטים שאולי חסרים במלתחה ויכולים להעשיר אותה בעתיד ובמידה ותרצו נעשה לנו את המפגש השני שהוא "יום הקניות הגדול" (ממליצה בחום).',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'shopping-day',
+    icon: 'tabler:shopping-bag',
+    title: 'יום הקניות הגדול',
+    subtitle: 'יום שכולו FUN',
+    duration: 'המתקיים בת"א · עד 6 שעות · לקוחות חוזרים בלבד',
+    price: '1,800',
+    priceNote: null,
+    sections: [
+      {
+        paragraphs: [
+          'יום שכולו FUN! אני מגיעה לפניך למקום שנבחר יחד, ומכינה עבורך מלתחה התחלתית שתתאים לך.',
+          'כשתצטרפו, נתחיל במדידות, ונבדוק יחד מה מתאים לך ומה פחות, למה את מתחברים יותר ולמה פחות, ומשם נתגלגל ונדייק לך מלתחה עם פריטים שעושים לך הכי טוב ושתרגישו בהם הכי וואו.',
+          'בדרך כלל אני עורכת את היום הזה בקניון TLV - יש שם מגוון של הכל מהכל, גם פריטי יוקרה וגם בסיסיים.',
+          'אבל אם תרצו משהו אחר, אפשר ללכת לחנויות ייחודיות שנדוק לפי הכל התקציב וההסגנון שלך כמובן.',
+          'עם הרשימה שהכנו מראש, נבחר לך בגדים שיחמיאו ויתאימו למבנה הגוף שלך, נבחר צבעים ובגדים שעובדים טוב עבורך, והכי חשוב נעשה מזה יום שהוא FUN.',
+          'במהלך היום, אשתף אותך בטיפים איך לבחור את הפריטים המדויקים לך ואיך ליצור מגוון הופעות שלא היית חושבת עליהם.',
+          'נצא עם מלתחה חכמה, ממוקדת, ובסוף המסע הזה גם תדעו איך לגשת לרכישות לבדך בצורה חכמה ומדויקת יותר.',
+          'במהלך היום הזה אני כמובן מצלמת עבורך את הלוקים כדי שתוכלו לחזור "להעתיק" במידת הצורך.',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'refresh-visit',
+    icon: 'tabler:refresh',
+    title: 'באה לביקור קטן',
+    subtitle: 'ביקור רענון',
+    duration: 'עד שעתיים · לקוחות חוזרים בלבד',
+    price: '650',
+    priceNote: 'המחיר עשוי להשתנות בהתאם למרחק הנסיעה',
+    sections: [
+      {
+        paragraphs: [
+          'מיועד ללקוחות שרוצים לחדש מלתחה עם ביקור ביתי קצר עבור חידוש ורענון לקראת סיבוב קניות מחודש.',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'event',
+    icon: 'tabler:calendar-star',
+    title: 'ארוע ממוקד',
+    subtitle: 'אם תרצו לנצוץ',
+    duration: 'מתקיים בת"א · לקוחות חדשים וחוזרים',
+    price: '320',
+    priceNote: 'התמחור הוא שעתי ועשוי להשתנות בהתאם למרחק הנסיעה',
+    sections: [
+      {
+        paragraphs: [
+          'מעניק ליווי אישי למציאת הלוק המושלם עבור אירוע ספציפי.',
+          'את יום הקניות נפתח בפגישת היכרות קצרה בבית קפה, שבה נכיר אחת את השנייה, נבין את הצרכים שלך ונדייק את הסגנון והלוק המתאימים לך במיוחד עבור האירוע.',
+          'ומשם נמשיך יחד לקניות ממוקדות, מדויקת ויעילה.',
+        ],
+      },
+    ],
+  },
+];
+
+const combo = packages.find((p) => p.highlight);
+const rest = packages.filter((p) => !p.highlight);
 ---
 
 <Layout metadata={metadata}>
   <section class="bg-page py-10 md:py-16 px-4">
 
     <!-- INTRO -->
-    <div class="max-w-3xl mx-auto text-center mb-10 md:mb-16">
-  <div class="mb-5 flex justify-center">
-  <Image src={logoImg} alt="Roni Style" width={180} class="h-auto" />
-</div>
-      <h1 class="text-2xl md:text-2xl font-bold text-primary mb-4">איך זה עובד?</h1>
-      <p class="text-muted text-base md:text-lg">
-        כאן תמצאו הסבר על התהליך, סוגי המפגשים והמחירון — כדי שתדעו בדיוק למה לצפות.
+    <div class="max-w-3xl mx-auto text-center mb-10 md:mb-14">
+      <div class="mb-5 flex justify-center">
+        <Image src={logoImg} alt="Roni Style" width={180} class="h-auto" />
+      </div>
+      <h1 class="text-2xl md:text-3xl font-bold text-primary mb-4">
+        אם הגעתם לכאן כנראה שהגיע הזמן לדייק את הסטייל שלכם
+      </h1>
+      <p class="text-muted text-base md:text-lg font-bold">
+        השירותים שלי מיועדים לנשים ולגברים בכל גיל ובכל שלב בחיים
       </p>
     </div>
 
-    <!-- PROCESS: two main sessions -->
-    <div class="max-w-5xl mx-auto flex flex-col md:grid md:grid-cols-2 gap-4 md:gap-6 mb-4 md:mb-8 items-stretch">
+    <!-- PACKAGES -->
 
-      <div class="flex flex-col h-full rounded-xl border border-accent bg-thirdly shadow px-5 py-6 md:px-6 md:py-8">
-        <div class="flex items-center gap-4 mb-5">
-          <div class="rounded-full bg-primary p-2.5 shrink-0">
-            <Icon name="tabler:home" class="w-5 h-5 text-accent" />
-          </div>
-          <div>
-            <h2 class="text-lg md:text-xl font-semibold text-primary leading-tight">באה לביקור</h2>
-            <p class="text-xs text-muted mt-1">אצלך בבית · עד 4 שעות · לקוחות חדשים וחוזרים</p>
-          </div>
-        </div>
 
-  <div class="text-sm text-primary font-medium">
-  <p style="line-height: 1.25rem; margin-bottom: 1rem;">
-    היעד שלנו היא ליצור ארון בגדים אפקטיבי, שיהפוך את תהליך ההתארגנות שלך לפשוט ומהיר. כשתפתחו את
-    הארון בבוקר, הבגדים המתאימים יהיו זמינים ומסודרים עבורך, ויהיה לך קל יותר לבחור את מה שנחוץ לכל
-    מטרה - עבודה, פגישות, נסיעות, בילויים וכו׳.
-  </p>
-  <p style="line-height: 1.25rem; margin-bottom: 1rem;">
-    השלב הראשון הוא מיון יסודי של המלתחה הקיימת: נבדוק יחד אילו גזרות, צבעים ובגדים מתאימים ומחמיאים לך,
-    ונגדיר ביחד לך מה שכבר לא נוח או לא תואם לסגנון שלך. לאחר מכן ניצור יחד מגוון לוקים מתוך מה שכבר יש לך,
-    ונעשה שילובים חדשים ומעניינים, כדי שתוכלי להפיק את המקסימום מכל בגד שקיים לך בארון.
-  </p>
-  <p style="line-height: 1.25rem; margin-bottom: 1rem;">
-    במהלך התהליך, אני כמובן מצלמת אותך עם הלוקים שנבנה כדי שתוכלו לחזור אליהם במידת הצורך.
-  </p>
-  <p style="line-height: 1.25rem;">
-    לבסוף, נבנה רשימה של פריטים שאולי חסרים במלתחה ויכולים להעשיר אותה בעתיד ובמידה ותרצו נעשה לנו את
-    המפגש השני שהוא "יום הקניות הגדול" (ממליצה בחום).
-  </p>
-</div>
-      </div>
+    <div class="max-w-5xl mx-auto flex flex-col gap-4 md:gap-5 mb-6 md:mb-8">
 
-      <div class="flex flex-col h-full rounded-xl border border-accent bg-thirdly shadow px-5 py-6 md:px-6 md:py-8">
-        <div class="flex items-center gap-4 ">
-          <div class="rounded-full bg-primary p-2.5 shrink-0">
-            <Icon name="tabler:shopping-bag" class="w-5 h-5 text-accent" />
-          </div>
-          <div>
-            <h2 class="text-lg md:text-xl font-semibold text-primary leading-tight">יום הקניות הגדול</h2>
-            <p class="text-xs text-muted mt-1">המתקיים בת"א · עד 6 שעות · לקוחות חוזרים בלבד</p>
-          </div>
-        </div>
-
-  <div class="text-sm text-primary font-medium">
-  <p style="line-height: 1.25rem; margin-bottom: 1rem; margin-top: 1rem;">
-            יום שכולו FUN! אני מגיעה לפניך למקום שנבחר יחד, ומכינה עבורך מלתחה התחלתית שתתאים לך.
-          </p>
-  <p style="line-height: 1.25rem; margin-bottom: 1rem;">
-            כשתצטרפו, נתחיל במדידות, ונבדוק יחד מה מתאים לך ומה פחות, למה את מתחברים יותר ולמה פחות, ומשם
-            נתגלגל ונדייק לך מלתחה עם פריטים שעושים לך הכי טוב ושתרגישו בהם הכי וואו.
-          </p>
-          <p style="line-height: 1.25rem; margin-bottom: 1rem;">
-            בדרך כלל אני עורכת את היום הזה בקניון TLV - יש שם מגוון של הכל מהכל, גם פריטי יוקרה וגם בסיסיים.
-          </p>
-          <p style="line-height: 1.25rem; margin-bottom: 1rem;">
-            אבל אם תרצו משהו אחר, אפשר ללכת לחנויות ייחודיות שנדוק לפי הכל התקציב וההסגנון שלך כמובן.
-          </p>
-          <p style="line-height: 1.25rem; margin-bottom: 1rem;">
-            עם הרשימה שהכנו מראש, נבחר לך בגדים שיחמיאו ויתאימו למבנה הגוף שלך, נבחר צבעים ובגדים שעובדים טוב
-            עבורך, והכי חשוב נעשה מזה יום שהוא FUN.
-          </p>
-          <p style="line-height: 1.25rem; margin-bottom: 1rem;">
-            במהלך היום, אשתף אותך בטיפים איך לבחור את הפריטים המדויקים לך ואיך ליצור מגוון הופעות שלא היית
-            חושבת עליהם.
-          </p>
-          <p style="line-height: 1.25rem; margin-bottom: 1rem;">
-            נצא עם מלתחה חכמה, ממוקדת, ובסוף המסע הזה גם תדעו איך לגשת לרכישות לבדך בצורה חכמה ומדויקת יותר.
-          </p>
-  <p style="line-height: 1.25rem;">
-            במהלך היום הזה אני כמובן מצלמת עבורך את הלוקים כדי שתוכלו לחזור "להעתיק" במידת הצורך.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- ADDITIONAL OPTIONS -->
-    <div class="max-w-5xl mx-auto flex flex-col md:grid md:grid-cols-2 gap-4 md:gap-6 mb-10 md:mb-16 items-stretch">
-
-      <div class="flex flex-col h-full rounded-xl border border-accent bg-thirdly shadow px-5 py-6 md:px-6 md:py-8">
-        <div class="flex items-center gap-4 mb-5">
-          <div class="rounded-full bg-primary p-2.5 shrink-0">
-            <Icon name="tabler:refresh" class="w-5 h-5 text-accent" />
-          </div>
-          <div>
-            <h3 class="text-base md:text-lg font-semibold text-primary leading-tight">באה לביקור קטן</h3>
-            <p class="text-xs text-muted mt-1">עד שעתיים · לקוחות חוזרים בלבד</p>
-          </div>
-        </div>
-  <div class="text-sm text-primary font-medium">
-  <p style="line-height: 1.25rem; ">
-            מיועד ללקוחות שרוצים לחדש מלתחה עם ביקור ביתי קצר עבור חידוש ורענון לקראת
-            סיבוב קניות מחודש.
-          </p>
-        </div>
-      </div>
-
-      <div class="flex flex-col h-full rounded-xl border border-accent bg-thirdly shadow px-5 py-6 md:px-6 md:py-8">
-        <div class="flex items-center gap-4 mb-5">
-          <div class="rounded-full bg-primary p-2.5 shrink-0 mb-4">
-            <Icon name="tabler:calendar-star" class="w-5 h-5 text-accent " />
-          </div>
-          <div>
-            <h3 class="text-base md:text-lg font-semibold text-primary leading-tight">ארוע ממוקד</h3>
-            <p class="text-xs text-muted mt-1">מתקיים בת"א · שעתיים · לקוחות חדשים וחוזרים</p>
-          </div>
-        </div>
-      <div class="text-sm text-primary font-medium">
-  <p style="line-height: 1.25rem; margin-bottom: 1rem;">
-            מעניק ליווי אישי למציאת הלוק המושלם עבור אירוע ספציפי.
-          </p>
-  <p style="line-height: 1.25rem; margin-bottom: 1rem;">
-            את יום הקניות נפתח בפגישת היכרות קצרה בבית קפה, שבה נכיר אחת את השנייה, נבין את הצרכים שלך ונדייק
-            את הסגנון והלוק המתאימים לך במיוחד עבור האירוע.
-          </p>
-  <p style="line-height: 1.25rem; ">
-            ומשם נמשיך יחד לקניות ממוקדות, מדויקת ויעילה.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- PRICING -->
- <!-- PRICING -->
-    <div class="max-w-5xl mx-auto text-center mb-6 md:mb-8">
-      <h2 class="text-xl md:text-2xl font-bold text-primary mb-2">כמה זה עולה?</h2>
-      <p class="text-muted text-sm">כל המחירים כוללים ליווי אישי מלא לאורך המפגש</p>
-    </div>
-
-    <div class="max-w-6xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4 mb-10 md:mb-12 items-stretch">
-
-      <!-- 1. Combo package - highlighted -->
-      <div class="flex flex-col">
-        <div class="relative flex flex-col w-full h-full rounded-xl border-2 border-primary bg-thirdly shadow-lg px-3 py-4 md:px-4 md:py-5">
+      <!-- Highlighted combo package -->
+      {combo && (
+        <div class="relative rounded-xl border-2 border-primary bg-thirdly shadow-lg overflow-visible">
           <div class="absolute -top-3 -right-3 z-[1] w-16 h-16 overflow-visible">
             <img src={bowtieImg.src} alt="Bowtie" class="w-full h-full object-contain rotate-45" />
           </div>
-          <div class="flex-grow flex flex-col justify-between">
-            <div>
-              <div class="rounded-full bg-primary p-2.5 mx-auto mb-2 w-fit">
-                <Icon name="tabler:sparkles" class="w-5 h-5 text-accent" />
-              </div>
-              <h3 class="text-sm md:text-base font-semibold uppercase text-primary text-center leading-tight">חבילת הפפיון</h3>
-              <p class="font-light text-muted text-center mt-1 mb-2 text-xs leading-snug">באה לביקור + יום הקניות הגדול</p>
-              <p class="text-center text-primary mb-1">
-                <span class="text-2xl md:text-3xl font-bold">2,500</span>
-                <span class="text-xs md:text-sm font-medium align-bottom">₪</span>
-              </p>
-              <p class="text-[11px] text-muted text-center mb-3">המחיר עשוי להשתנות בהתאם למרחק הנסיעה</p>
+
+          <div class="flex flex-col items-center text-center px-5 pt-6 pb-4 md:px-8 md:pt-8">
+            <div class="rounded-full bg-primary p-2.5 mb-2">
+              <Icon name={combo.icon} class="w-5 h-5 text-accent" />
+            </div>
+            <h3 class="text-base md:text-lg font-semibold uppercase text-primary leading-tight">{combo.title}</h3>
+            <p class="font-light text-muted mt-1 text-xs md:text-sm leading-snug">{combo.subtitle}</p>
+            <p class="text-primary mt-3">
+              <span class="text-2xl md:text-3xl font-bold">{combo.price}</span>
+              <span class="text-xs md:text-sm font-medium align-bottom">₪</span>
+            </p>
+            {combo.priceNote && <p class="text-[11px] text-muted mt-1">{combo.priceNote}</p>}
+          </div>
+
+          <div class="px-5 pb-2 md:px-8">
+            <div class="border-t border-accent/40 pt-4 space-y-5 text-start">
+              {combo.sections.map((section) => (
+                <div>
+                  {section.heading && (
+                    <div class="mb-2">
+                      <h4 class="text-sm md:text-base font-semibold text-primary">{section.heading}</h4>
+                      {section.meta && <p class="text-[11px] text-muted">{section.meta}</p>}
+                    </div>
+                  )}
+                  <div class="text-sm text-primary font-medium space-y-3">
+                    {section.paragraphs.map((p) => (
+                      <p style="line-height: 1.25rem;">{p}</p>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-          <div class="flex justify-center">
-            <Button text="אני רוצה לתאם" href="https://wa.me/972543452440" class="w-full text-sm" />
+
+          <div class="px-5 pb-5 pt-4 md:px-8 flex justify-center">
+            <Button text="אני רוצה לתאם" href="https://wa.me/972543452440" class="w-full sm:w-auto sm:min-w-[220px]" />
           </div>
         </div>
-      </div>
+      )}
 
-            <!-- 4. Home visit standalone -->
-      <div class="flex flex-col">
-        <div class="flex flex-col w-full h-full rounded-xl border border-accent bg-thirdly shadow px-3 py-4 md:px-4 md:py-5">
-          <div class="flex-grow flex flex-col justify-between">
-            <div>
-              <div class="rounded-full bg-primary p-2.5 mx-auto mb-2 w-fit">
-                <Icon name="tabler:home" class="w-5 h-5 text-accent" />
+      <!-- Remaining packages -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
+        {rest.map((pkg) => (
+          <div class="rounded-xl border border-accent bg-thirdly shadow overflow-hidden flex flex-col">
+            <div class="flex flex-col items-center text-center px-4 pt-5 pb-3 md:px-5">
+              <div class="rounded-full bg-primary p-2.5 mb-2">
+                <Icon name={pkg.icon} class="w-5 h-5 text-accent" />
               </div>
-              <h3 class="text-sm md:text-base font-semibold uppercase text-primary text-center leading-tight">באה לביקור בלבד</h3>
-              <p class="font-light text-muted text-center mt-1 mb-2 text-xs leading-snug">הפכו את הארון לאפקטיבי</p>
-              <p class="text-center text-primary mb-1">
-                <span class="text-2xl md:text-3xl font-bold">1,500</span>
+              <h3 class="text-lg md:text-lg font-semibold uppercase text-primary leading-tight">{pkg.title}</h3>
+              <p class="font-light text-muted mt-1 text-sm leading-snug">{pkg.subtitle}</p>
+              <p class="text-xs text-muted mt-1">{pkg.duration}</p>
+              <p class="text-primary mt-2">
+                <span class="text-2xl md:text-3xl font-bold">{pkg.price}</span>
                 <span class="text-xs md:text-sm font-medium align-bottom">₪</span>
               </p>
-              <p class="text-[11px] text-muted text-center mb-3">המחיר עשוי להשתנות בהתאם למרחק הנסיעה</p>
+              {pkg.priceNote && <p class="text-[11px] text-muted mt-1">{pkg.priceNote}</p>}
+            </div>
+
+            <div class="px-4 pb-2 md:px-5">
+              <div class="border-t border-accent/40 pt-4 text-sm text-primary font-medium space-y-3 text-start">
+                {pkg.sections[0].paragraphs.map((p) => (
+                  <p style="line-height: 1.25rem;">{p}</p>
+                ))}
+              </div>
+            </div>
+
+            <div class="px-4 pb-5 pt-4 md:px-5 mt-auto flex justify-center">
+              <Button text="אני רוצה לתאם" href="https://wa.me/972543452440" class="w-full text-sm" />
             </div>
           </div>
-          <div class="flex justify-center">
-            <Button text="אני רוצה לתאם" href="https://wa.me/972543452440" class="w-full text-sm" />
-          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- GIFT COUPON NOTE -->
+    <div class="max-w-5xl mx-auto mb-10 md:mb-14">
+      <div class="flex flex-col sm:flex-row items-center sm:items-start gap-3 sm:gap-4 rounded-xl border border-dashed border-primary bg-thirdly/60 px-5 py-5 md:px-6 text-center sm:text-start">
+        <div class="rounded-full bg-primary p-2.5 shrink-0">
+          <Icon name="tabler:gift" class="w-5 h-5 text-accent" />
         </div>
-      </div>
-
-      <!-- 2. Shopping day only -->
-      <div class="flex flex-col">
-        <div class="flex flex-col w-full h-full rounded-xl border border-accent bg-thirdly shadow px-3 py-4 md:px-4 md:py-5">
-          <div class="flex-grow flex flex-col justify-between">
-            <div>
-              <div class="rounded-full bg-primary p-2.5 mx-auto mb-2 w-fit">
-                <Icon name="tabler:shopping-bag" class="w-5 h-5 text-accent" />
-              </div>
-              <h3 class="text-sm md:text-base font-semibold uppercase text-primary text-center leading-tight">יום הקניות הגדול</h3>
-              <p class="font-light text-muted text-center mt-1 mb-2 text-xs leading-snug">יום שכולו FUN</p>
-              <p class="text-center text-primary mb-1">
-                <span class="text-2xl md:text-3xl font-bold">1,800</span>
-                <span class="text-xs md:text-sm font-medium align-bottom">₪</span>
-              </p>
-              <p class="text-[11px] text-muted text-center mb-3">&nbsp;</p>
-            </div>
-          </div>
-          <div class="flex justify-center">
-            <Button text="אני רוצה לתאם" href="https://wa.me/972543452440" class="w-full text-sm" />
-          </div>
-        </div>
-      </div>
-
-      <!-- 3. Small return visit -->
-      <div class="flex flex-col">
-        <div class="flex flex-col w-full h-full rounded-xl border border-accent bg-thirdly shadow px-3 py-4 md:px-4 md:py-5">
-          <div class="flex-grow flex flex-col justify-between">
-            <div>
-              <div class="rounded-full bg-primary p-2.5 mx-auto mb-2 w-fit">
-                <Icon name="tabler:refresh" class="w-5 h-5 text-accent" />
-              </div>
-              <h3 class="text-sm md:text-base font-semibold uppercase text-primary text-center leading-tight">באה לביקור קטן</h3>
-              <p class="font-light text-muted text-center mt-1 mb-2 text-xs leading-snug">ביקור רענון</p>
-              <p class="text-center text-primary mb-1">
-                <span class="text-2xl md:text-3xl font-bold">650</span>
-                <span class="text-xs md:text-sm font-medium align-bottom">₪</span>
-              </p>
-              <p class="text-[11px] text-muted text-center mb-3">המחיר עשוי להשתנות בהתאם למרחק הנסיעה</p>
-            </div>
-          </div>
-          <div class="flex justify-center">
-            <Button text="אני רוצה לתאם" href="https://wa.me/972543452440" class="w-full text-sm" />
-          </div>
-        </div>
-      </div>
-
-
-
-      <!-- 5. Focused event -->
-      <div class="flex flex-col">
-        <div class="flex flex-col w-full h-full rounded-xl border border-accent bg-thirdly shadow px-3 py-4 md:px-4 md:py-5">
-          <div class="flex-grow flex flex-col justify-between">
-            <div>
-              <div class="rounded-full bg-primary p-2.5 mx-auto mb-2 w-fit">
-                <Icon name="tabler:calendar-star" class="w-5 h-5 text-accent" />
-              </div>
-              <h3 class="text-sm md:text-base font-semibold uppercase text-primary text-center leading-tight">ארוע ממוקד</h3>
-              <p class="font-light text-muted text-center mt-1 mb-2 text-xs leading-snug">תמחור שעתי</p>
-              <p class="text-center text-primary mb-1">
-                <span class="text-2xl md:text-3xl font-bold">320</span>
-                <span class="text-xs md:text-sm font-medium align-bottom">₪</span>
-              </p>
-              <p class="text-[11px] text-muted text-center mb-3">המחיר עשוי להשתנות בהתאם למרחק הנסיעה</p>
-            </div>
-          </div>
-          <div class="flex justify-center">
-            <Button text="אני רוצה לתאם" href="https://wa.me/972543452440" class="w-full text-sm" />
-          </div>
+        <div>
+          <h3 class="text-sm md:text-base font-semibold text-primary mb-1">מחפשים מתנה מיוחדת?</h3>
+          <p class="text-sm text-muted">
+            ניתן לרכוש שובר מתנה שתקף לכל אחת מהחבילות שלמעלה — מושלם לימי הולדת, אירועים ומתנות לחברה הכי טובה.
+            לפרטים ולהזמנה, פשוט תכתבו לי בוואטסאפ.
+          </p>
         </div>
       </div>
     </div>
