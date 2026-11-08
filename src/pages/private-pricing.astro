@@ -33,6 +33,7 @@ interface Package {
 }
 // Each package carries its own service description(s),
 // so price + explanation always live in the same card.
+// Every string in `paragraphs` is rendered as one bullet point.
 const packages: Package[] = [
   {
     id: 'combo',
@@ -65,8 +66,7 @@ const packages: Package[] = [
           'לאורך היום אשתף בטיפים לבחירת פריטים מדויקים, לשילובים מעניינים וליצירת הופעות מגוונות שאולי לא חשבנו עליהן קודם.',
           'את הלוקים שנרכיב אצלם לאורך היום, כדי שתמיד יהיה אפשר לחזור אליהם ולשחזר אותם בקלות בכל שלב .',
           'המטרה היא לצאת עם מלתחה חכמה, מדויקת ומלאה בסטייל, ובעיקר עם כלים וביטחון להמשיך לבחור נכון גם בקניות הבאות.',
-          'והכי חשוב:',
-          'נהפוך את כל התהליך הזה לחוויה קלילה, משחררת ובעיקר ממש כיפית!'
+          'והכי חשוב: נהפוך את כל התהליך הזה לחוויה קלילה, משחררת ובעיקר ממש כיפית!'
         ],
       },
     ],
@@ -87,7 +87,6 @@ const packages: Package[] = [
           'לאחר מכן ניצור מגוון לוקים ושילובים חדשים ומעניינים מתוך מה שכבר יש בארון, כדי להפיק את המקסימום מכל פריט ולגלות אפשרויות שאולי לא חשבנו עליהן קודם.',
           'במהלך המפגש אצלם את הלוקים שנרכיב יחד, כדי שתמיד יהיה אפשר לחזור אליהם ולשחזר אותם בקלות.',
           'לסיום, נכין רשימה ממוקדת של פריטים שחסרים במלתחה ויוכלו להעשיר אותה בהמשך. ואם מתחשק להמשיך לשלב הבא, נקבע גם את המפגש המשלים : ״יום הקניות הגדול״ (ממליצה בחום!)',
-
         ],
       },
     ],
@@ -104,13 +103,12 @@ const packages: Package[] = [
       {
         paragraphs: [
           'אני מגיעה מראש למקום שנבחר יחד, מאתרת את הפריטים המתאימים ומכינה מלתחה ראשונית לקראת המפגש שלנו.',
-'כשניפגש, נתחיל במדידות, נבחן מה מחמיא, מה מרגיש נכון ומה פחות, ומשם נמשיך לדייק ולבנות מלתחה שמתאימה לסגנון האישי, למבנה הגוף ולאורח החיים.',
-'לרוב אני עורכת את יום הקניות בקניון TLV, שמציע מגוון רחב של מותגים וחנויות, מפריטי בסיס ועד פריטי יוקרה. כמובן שאפשר לבחור גם חנויות ייחודיות אחרות, בהתאם לסגנון ולתקציב שנגדיר מראש.',
-'עם הרשימה שהכנו, נבחר פריטים מחמיאים, צבעים מדויקים ושילובים מעניינים, שיהפכו את המלתחה למגוונת ושימושית יותר.',
-'לאורך היום אשתף בטיפים לבחירת פריטים נכונים וליצירת הופעות חדשות, כדי שגם בהמשך יהיה קל יותר לעשות קניות בצורה חכמה ומדויקת.',
-'את הלוקים שנרכיב אצלם לאורך היום, כדי שתמיד יהיה אפשר לחזור אליהם ולשחזר אותם בקלות.',
-'והכי חשוב: נהפוך את כל התהליך הזה לחוויה קלילה, משחררת ובעיקר ממש כיפית!'
-          
+          'כשניפגש, נתחיל במדידות, נבחן מה מחמיא, מה מרגיש נכון ומה פחות, ומשם נמשיך לדייק ולבנות מלתחה שמתאימה לסגנון האישי, למבנה הגוף ולאורח החיים.',
+          'לרוב אני עורכת את יום הקניות בקניון TLV, שמציע מגוון רחב של מותגים וחנויות, מפריטי בסיס ועד פריטי יוקרה. כמובן שאפשר לבחור גם חנויות ייחודיות אחרות, בהתאם לסגנון ולתקציב שנגדיר מראש.',
+          'עם הרשימה שהכנו, נבחר פריטים מחמיאים, צבעים מדויקים ושילובים מעניינים, שיהפכו את המלתחה למגוונת ושימושית יותר.',
+          'לאורך היום אשתף בטיפים לבחירת פריטים נכונים וליצירת הופעות חדשות, כדי שגם בהמשך יהיה קל יותר לעשות קניות בצורה חכמה ומדויקת.',
+          'את הלוקים שנרכיב אצלם לאורך היום, כדי שתמיד יהיה אפשר לחזור אליהם ולשחזר אותם בקלות.',
+          'והכי חשוב: נהפוך את כל התהליך הזה לחוויה קלילה, משחררת ובעיקר ממש כיפית!'
         ],
       },
     ],
@@ -145,8 +143,7 @@ const packages: Package[] = [
         paragraphs: [
           'ליווי אישי למציאת הלוק המושלם לאירוע .',
           'נתחיל בפגישת היכרות קצרה בבית קפה, שבה נכיר, נבין את הצרכים ונדייק את הסגנון וההופעה המתאימה ביותר לאירוע.',
-'משם נמשיך יחד ליום קניות ממוקד, מדויק ויעיל, עד שנמצא את הלוק שיגרום לך להרגיש הכי טוב שאפשר'
-        
+          'משם נמשיך יחד ליום קניות ממוקד, מדויק ויעיל, עד שנמצא את הלוק שיגרום לך להרגיש הכי טוב שאפשר'
         ],
       },
     ],
@@ -165,17 +162,17 @@ const rest = packages.filter((p) => !p.highlight);
       <div class="mb-5 flex justify-center">
         <Image src={logoImg} alt="Roni Style" width={180} class="h-auto" />
       </div>
-      <h1 class="text-2xl md:text-3xl font-bold text-primary mb-4">
+      <h1 class="text-2xl md:text-4xl font-bold text-primary mb-4">
         אם הגעתם לכאן כנראה שהגיע הזמן לדייק את הסטייל שלכם
       </h1>
-      <p class="text-muted text-base md:text-lg font-bold">
-        השירותים שלי מיועדים לנשים ולגברים בכל גיל ובכל שלב בחיים
+      <p class="text-muted text-lg md:text-xl font-bold">
+        השירותים שלי מיועדים לנשים ולגברים
+        <br>
+        בכל גיל ובכל שלב בחיים
       </p>
     </div>
 
     <!-- PACKAGES -->
-
-
     <div class="max-w-5xl mx-auto flex flex-col gap-4 md:gap-5 mb-6 md:mb-8">
 
       <!-- Highlighted combo package -->
@@ -189,38 +186,37 @@ const rest = packages.filter((p) => !p.highlight);
             <div class="rounded-full bg-primary p-2.5 mb-2">
               <Icon name={combo.icon} class="w-5 h-5 text-accent" />
             </div>
-            <h3 class="text-base md:text-lg font-semibold uppercase text-primary leading-tight">{combo.title}</h3>
-            <p class="font-light text-muted mt-1 text-xs md:text-sm leading-snug">{combo.subtitle}</p>
-      
+            <h3 class="text-lg md:text-xl font-semibold uppercase text-primary leading-tight">{combo.title}</h3>
+            <p class="font-light text-muted mt-1 text-sm md:text-base leading-snug">{combo.subtitle}</p>
           </div>
 
           <div class="px-5 pb-2 md:px-8">
-            <div class="border-t border-accent/40 pt-4 space-y-5 text-start">
+            <div class="border-t border-accent/40 pt-4 space-y-6 text-start">
               {combo.sections.map((section) => (
                 <div>
                   {section.heading && (
                     <div class="mb-2">
-                      <h4 class="text-sm md:text-base font-semibold text-primary">{section.heading}</h4>
-                      {section.meta && <p class="text-[11px] text-muted">{section.meta}</p>}
+                      <h4 class="text-base md:text-lg font-semibold text-primary">{section.heading}</h4>
+                      {section.meta && <p class="text-xs md:text-sm text-muted">{section.meta}</p>}
                     </div>
                   )}
-                  <div class="text-sm text-primary font-medium space-y-3">
+                  <ul class="list-disc marker:text-primary ps-5 space-y-2 text-[15px] md:text-base leading-6 text-primary font-medium">
                     {section.paragraphs.map((p) => (
-                      <p style="line-height: 1.25rem;">{p}</p>
+                      <li>{p}</li>
                     ))}
-                  </div>
+                  </ul>
                 </div>
               ))}
             </div>
           </div>
-                    <div class="flex flex-col items-center text-center px-5 pt-6 pb-4 md:px-8 md:pt-8">
 
-                <p class="text-primary mt-3">
-              <span class="text-2xl md:text-3xl font-bold">{combo.price}</span>
-              <span class="text-xs md:text-sm font-medium align-bottom">₪</span>
+          <div class="flex flex-col items-center text-center px-5 pt-6 pb-4 md:px-8 md:pt-8">
+            <p class="text-primary mt-3">
+              <span class="text-3xl md:text-4xl font-bold">{combo.price}</span>
+              <span class="text-sm md:text-base font-medium align-bottom">₪</span>
             </p>
-            {combo.priceNote && <p class="text-[11px] text-muted mt-1">{combo.priceNote}</p>}
-            </div>
+            {combo.priceNote && <p class="text-xs md:text-sm text-muted mt-1">{combo.priceNote}</p>}
+          </div>
 
           <div class="px-5 pb-5 pt-4 md:px-8 flex justify-center">
             <Button text="אני רוצה לתאם" href="https://wa.me/972543452440" class="w-full sm:w-auto sm:min-w-[220px]" />
@@ -236,57 +232,55 @@ const rest = packages.filter((p) => !p.highlight);
               <div class="rounded-full bg-primary p-2.5 mb-2">
                 <Icon name={pkg.icon} class="w-5 h-5 text-accent" />
               </div>
-              <h3 class="text-lg md:text-lg font-semibold uppercase text-primary leading-tight">{pkg.title}</h3>
-              <p class="font-light text-muted mt-1 text-sm leading-snug">{pkg.subtitle}</p>
-              <p class="text-xs text-muted mt-1">{pkg.duration}</p>
-   
+              <h3 class="text-lg md:text-xl font-semibold uppercase text-primary leading-tight">{pkg.title}</h3>
+              <p class="font-light text-muted mt-1 text-sm md:text-base leading-snug">{pkg.subtitle}</p>
+              <p class="text-xs md:text-sm text-muted mt-1">{pkg.duration}</p>
             </div>
 
             <div class="px-4 pb-2 md:px-5">
-              <div class="border-t border-accent/40 pt-4 text-sm text-primary font-medium space-y-3 text-start">
+              <ul class="border-t border-accent/40 pt-4 list-disc marker:text-primary ps-5 space-y-2 text-[15px] md:text-base leading-6 text-primary font-medium text-start">
                 {pkg.sections[0].paragraphs.map((p) => (
-                  <p style="line-height: 1.25rem;">{p}</p>
+                  <li>{p}</li>
                 ))}
-              </div>
+              </ul>
             </div>
-                   <!-- Price block: mt-auto pushes it (and the button below) to the bottom of the card -->
+
+            <!-- Price block: mt-auto pushes it (and the button below) to the bottom of the card -->
             <div class="mt-auto flex flex-col items-center text-center px-5 pt-6 pb-0 md:px-8 md:pt-8">
               <p class="text-primary mt-2">
-                <span class="text-2xl md:text-3xl font-bold">{pkg.price}</span>
-                <span class="text-xs md:text-sm font-medium align-bottom">₪</span>
+                <span class="text-3xl md:text-4xl font-bold">{pkg.price}</span>
+                <span class="text-sm md:text-base font-medium align-bottom">₪</span>
               </p>
               {pkg.priceadditional && (
-                <p class="text-sm md:text-base font-medium text-primary mt-0.5">{pkg.priceadditional}</p>
+                <p class="text-base md:text-lg font-medium text-primary mt-0.5">{pkg.priceadditional}</p>
               )}
-              {pkg.priceNote && <p class="text-[11px] text-muted mt-1">{pkg.priceNote}</p>}
+              {pkg.priceNote && <p class="text-xs md:text-sm text-muted mt-1">{pkg.priceNote}</p>}
             </div>
 
             <div class="px-4 pb-5 pt-4 md:px-5 flex justify-center">
-              <Button text="אני רוצה לתאם" href="https://wa.me/972543452440" class="w-full text-sm" />
+              <Button text="אני רוצה לתאם" href="https://wa.me/972543452440" class="w-full text-base" />
             </div>
           </div>
         ))}
       </div>
     </div>
 
-    <!-- GIFT COUPON NOTE -->
-    <div class="max-w-5xl mx-auto mb-10 md:mb-14">
-      <div class="flex flex-col sm:flex-row items-center sm:items-start gap-3 sm:gap-4 rounded-xl border border-2 border-primary bg-thirdly/60 px-5 py-5 md:px-6 text-center sm:text-start">
-        <div class="rounded-full bg-primary p-2.5 shrink-0">
+    <!-- GIFT COUPON NOTE — same card style as the packages, centered, icon on top -->
+    <div class="max-w-3xl mx-auto mb-10 md:mb-14">
+      <div class="flex flex-col items-center text-center rounded-xl border border-accent bg-thirdly shadow px-5 py-6 md:px-8 md:py-8">
+        <div class="rounded-full bg-primary p-2.5 mb-2">
           <Icon name="tabler:gift" class="w-5 h-5 text-accent" />
         </div>
-        <div>
-          <h3 class="text-sm md:text-base font-semibold text-primary mb-1">מחפשים מתנה מיוחדת?</h3>
-          <p class="text-sm text-muted">
-            ניתן לרכוש שובר מתנה לכל אחת מחבילות הסטיילינג - מתנה מושלמת לימי הולדת ולאירועים מיוחדים, ודרך אישית ומרגשת לפנק מישהו שאוהבים בחוויה שכולה מוקדשת לו
-          </p>
-        </div>
+        <h3 class="text-lg md:text-xl font-semibold text-primary leading-tight mb-3">מחפשים מתנה מיוחדת?</h3>
+        <p class="border-t border-accent/40 pt-4 text-[15px] md:text-base leading-6 text-primary font-medium max-w-xl">
+          ניתן לרכוש שובר מתנה לכל אחת מחבילות הסטיילינג - מתנה מושלמת לימי הולדת ולאירועים מיוחדים, ודרך אישית ומרגשת לפנק מישהו שאוהבים בחוויה שכולה מוקדשת לו
+        </p>
       </div>
     </div>
 
     <!-- FOOTER NOTES -->
     <div class="max-w-3xl mx-auto mb-10">
-      <div class="rounded-xl border border-accent bg-thirdly shadow px-5 py-5 md:px-6 md:py-6 text-center space-y-2 text-sm text-muted">
+      <div class="rounded-xl border border-accent bg-thirdly shadow px-5 py-5 md:px-6 md:py-6 text-center space-y-2 text-[15px] md:text-base text-muted">
         <p>הקניות מתבצעות מכיסך ולפי תקציב שנקבע יחד מראש על מנת להיות ממוקדות ובכדי לא להתפזר.</p>
         <p>התשלום עבורי יכול להתבצע באמצעות: העברה בנקאית / ביט / מזומן.</p>
         <p>לכל שאלה נוספת ניתן לפנות בוואטסאפ.</p>

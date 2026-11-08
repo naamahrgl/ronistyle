@@ -15,7 +15,7 @@ export const headerData = {
       href: '/#about',
     },
            {
-      text: 'למי?',
+      text: 'למי זה מתאים?',
       href: '/#who',
     },
       {

@@ -16,36 +16,36 @@ export interface Props extends HTMLAttributes<'section'> {
 }
 
 const { title, subtitle, image, inputs, textarea, button, id, disclaimer, description, ...props } = Astro.props;
-// Read the URL parameter on the server
 ---
 
 <section class="py-12 md:py-20 -mt-16" {...id ? { id } : {}}>
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <Headline title={title} subtitle={subtitle} />
+    <Headline title={title} subtitle={subtitle} />
 
-    {/* The Grid: Perfectly synced heights, side-by-side */}
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 md:gap-6 items-stretch">
-      
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 items-stretch">
+
       {/* Form Card */}
       <div class="bg-thirdly p-6 md:p-8 rounded-lg border border-accent flex flex-col">
         <div class="flex-grow">
-<FormContainer 
-  inputs={inputs} 
-  textarea={textarea} 
-  button={button} 
-  disclaimer={disclaimer}
-  description={description}
-/>
+          <FormContainer
+            inputs={inputs}
+            textarea={textarea}
+            button={button}
+            disclaimer={disclaimer}
+            description={description}
+          />
         </div>
       </div>
 
-      {/* Image Frame */}
-      <div class="relative w-full h-[300px] lg:h-auto rounded-lg overflow-hidden shadow-lg">
+      {/* Image Frame
+          mobile/tablet: fixed aspect ratio so the frame always has a height
+          desktop: stretches to exactly the form card's height */}
+      <div class="relative w-full aspect-[4/5] sm:aspect-[4/3] lg:aspect-auto lg:min-h-[480px] rounded-lg overflow-hidden shadow-lg bg-thirdly">
         <Image
-          class="absolute inset-0 w-full h-full object-cover"
-          widths={[400, 768, 1024]}
-          sizes="(max-width: 767px) 400px, 768px"
           {...image}
+          widths={[400, 768, 1024, 1280]}
+          sizes="(max-width: 1023px) 100vw, 50vw"
+          class="absolute inset-0 !w-full !h-full !max-w-none !max-h-none object-cover object-center"
         />
       </div>
     </div>
