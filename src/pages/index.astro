@@ -29,8 +29,13 @@ const metadata = {
   ignoreTitleTemplate: true,
 };
 const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxDyCd_LuK4CIJwveNPuhvT6T_pkf-HfqbPAh-3UqtAfDLNS7WkAXz9zPB524AqQAc66g/exec';
-const testimonials = await fetch(SHEET_URL).then(res => res.json()).catch(() => []);
-
+let testimonials = [];
+try {
+  const data = await fetch(SHEET_URL).then((res) => res.json());
+  testimonials = Array.isArray(data) ? data : [];
+} catch {
+  testimonials = [];
+}
 
 ---
 
@@ -183,7 +188,7 @@ id="hero"
     <Prices
     id="services"
     title="איך זה עובד?"
-    subtitle="(ולמי ששאל - כן, לגמרי גם לנשים וגם לגברים)"
+    subtitle='השירותים שלי מיועדים לנשים ולגברים בכל גיל ובכל שלב בחיים'
     prices={[
       {
         title: 'באה לביקור בארון',
@@ -204,7 +209,7 @@ id="hero"
 
           },
          {
-            description: 'שימו לב: מתאים גם ללקחות חדשים וגם ללקוחות חוזרים',
+            description: 'שימו לב: מתאים ללקחות חדשים וללקוחות חוזרים',
           },
         ],
         callToAction: {
@@ -319,7 +324,7 @@ id="hero"
             description: 'מפגש קצר שבו נעשה סדר מהיר בארון, נרענן את המלתחה הקיימת ונזהה אילו פריטים כדאי להוסיף או לחדש לקראת העונה הבאה ולסבב קניות נוסף.'
           },
       {
-            description: 'שימו לב: השירות מיועד ללקוחות חוזרים בלבד.',
+            description: 'שימו לב: השירות מיועד ללקוחות חוזרים בלבד, מתוך אמונה שסטיילינג מדויק מתחיל בהיכרות אישית מעמיקה.'
           },
         ],
         callToAction: {

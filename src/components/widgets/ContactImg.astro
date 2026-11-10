@@ -22,7 +22,7 @@ const { title, subtitle, image, inputs, textarea, button, id, disclaimer, descri
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
     <Headline title={title} subtitle={subtitle} />
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 items-stretch">
+<div class="grid grid-cols-1 lg:grid-cols-[1.25fr_1fr] gap-4 md:gap-6 items-stretch">
 
       {/* Form Card */}
       <div class="bg-thirdly p-6 md:p-8 rounded-lg border border-accent flex flex-col">
@@ -40,14 +40,14 @@ const { title, subtitle, image, inputs, textarea, button, id, disclaimer, descri
       {/* Image Frame
           mobile/tablet: fixed aspect ratio so the frame always has a height
           desktop: stretches to exactly the form card's height */}
-      <div class="relative w-full aspect-[4/5] sm:aspect-[4/3] lg:aspect-auto lg:min-h-[480px] rounded-lg overflow-hidden shadow-lg bg-thirdly">
-        <Image
-          {...image}
-          widths={[400, 768, 1024, 1280]}
-          sizes="(max-width: 1023px) 100vw, 50vw"
-          class="absolute inset-0 !w-full !h-full !max-w-none !max-h-none object-cover object-center"
-        />
-      </div>
+  <div class="relative w-full max-w-md mx-auto lg:max-w-none aspect-[4/5] lg:aspect-auto lg:min-h-[480px] rounded-lg overflow-hidden shadow-lg bg-thirdly">
+    <Image
+      {...image}
+      widths={[400, 768, 1024, 1280]}
+      sizes="(max-width: 1023px) 448px, 45vw"
+      class="absolute inset-0 !w-full !h-full !max-w-none !max-h-none object-cover object-center"
+    />
+  </div>
     </div>
   </div>
 </section>
