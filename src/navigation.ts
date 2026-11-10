@@ -44,6 +44,8 @@ export const footerData = {
   
   secondaryLinks: [
     { text: 'תנאי שימוש', href: '/terms' },
+        { text: 'מדיניות פרטיות', href: '/privacy' },
+
   ],
   socialLinks: [
     { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: 'https://www.instagram.com/roninathanel' },
