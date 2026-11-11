@@ -27,7 +27,7 @@ export default defineConfig({
   output: 'static',
 
   integrations: [
-    sitemap(),
+sitemap({ filter: (page) => !page.includes('private-pricing') }),
     mdx(),
     icon({
       include: {
